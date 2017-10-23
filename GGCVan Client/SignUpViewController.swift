@@ -1,18 +1,26 @@
 //
-//  LoginController.swift
+//  SignUpViewController.swift
 //  GGCVan Client
 //
-//  Created by Bryn Beaudry on 2017-10-20.
+//  Created by Bryn Beaudry on 2017-10-22.
 //  Copyright © 2017 Bryn Beaudry. All rights reserved.
 //
 
 import UIKit
+import AWSCore
+import AWSCognito
 
-class LoginController: UIViewController {
+class SignUpViewController: UIViewController {
 
+    @IBAction func backToMain(_ sender: Any) {
+        performSegue(withIdentifier: "unwindToMain", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.hideKeyboardWhenTappedAround()
+        
+        
         // Do any additional setup after loading the view.
     }
 

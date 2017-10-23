@@ -1,0 +1,6 @@
+framework module Pods_GGCVan_ClientUITests {
+  umbrella header "Pods-GGCVan ClientUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
