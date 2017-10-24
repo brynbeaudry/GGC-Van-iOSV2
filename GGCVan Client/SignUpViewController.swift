@@ -12,6 +12,8 @@ import AWSCognito
 
 class SignUpViewController: UIViewController {
 
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     @IBAction func backToMain(_ sender: Any) {
         performSegue(withIdentifier: "unwindToMain", sender: self)
     }
@@ -19,7 +21,7 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        
+        print("Debug pool in Vc \(appDelegate.pool?.debugDescription)")
         
         // Do any additional setup after loading the view.
     }

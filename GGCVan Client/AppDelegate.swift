@@ -8,15 +8,32 @@
 
 import UIKit
 import CoreData
+import AWSCore
+import AWSCognito
+import AWSCognitoIdentityProvider
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
+class AppDelegate: UIResponder, UIApplicationDelegate, AWSCognitoIdentityInteractiveAuthenticationDelegate {
+    let path = Bundle.main.path(forResource: "Config", ofType: "plist")
+    var cognitoConfig : NSDictionary! = nil
     var window: UIWindow?
+    var pool: AWSCognitoIdentityUserPool?
+    var credentialsProvider: AWSCognitoCredentialsProvider?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        // set up logging for AWS and Cognito
+        AWSDDLog.sharedInstance.logLevel = .verbose
+        AWSDDLog.add(AWSDDTTYLogger.sharedInstance)
+        
+        // set up Cognito config
+        let path = Bundle.main.path(forResource: "CognitoConfig", ofType: "plist")
+        self.cognitoConfig = NSDictionary(contentsOfFile: path!)
+        
+        // set up Cognito
+        setupCognitoUserPoolAndCredentialsProvider()
+        
         return true
     }
 
@@ -88,6 +105,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
+    
+    func setupCognitoUserPoolAndCredentialsProvider() {
+        // we pull the needed values from the CognitoConfig object
+        // this just pulls the values in from the plist
+        let clientId:String = self.cognitoConfig.value(forKeyPath: "clientId") as! String
+        let poolId:String = self.cognitoConfig.value(forKeyPath: "poolId") as! String
+        let clientSecret:String = self.cognitoConfig.value(forKeyPath: "clientSecret") as! String
+        let region:AWSRegionType = AWSRegionType.USWest2
+        
+        // we need to let Cognito know which region we plan to connect to
+        let serviceConfiguration:AWSServiceConfiguration = AWSServiceConfiguration(region: region, credentialsProvider: nil)
+        // we need to pass it the clientId and clientSecret from the app and the poolId for the user pool
+        let cognitoConfiguration:AWSCognitoIdentityUserPoolConfiguration = AWSCognitoIdentityUserPoolConfiguration(clientId: clientId, clientSecret: clientSecret, poolId: poolId)
+        AWSCognitoIdentityUserPool.register(with: serviceConfiguration, userPoolConfiguration: cognitoConfiguration, forKey: poolId)
+        pool = AWSCognitoIdentityUserPool(forKey: poolId)
+        print("Debug pool in AD \(pool?.debugDescription)")
+        credentialsProvider = AWSCognitoCredentialsProvider(regionType: region, identityPoolId: poolId, identityProviderManager: pool)
+        AWSServiceManager.default().defaultServiceConfiguration = serviceConfiguration
+        // we need to set the AppDelegate as the user pool's delegate, which will get called when events occur
+        pool?.delegate = self
+    }
 }
+
+
 

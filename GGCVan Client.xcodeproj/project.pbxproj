@@ -124,6 +124,7 @@
 		0E17DC731F9A90A900A97185 /* GGCVan Client */ = {
 			isa = PBXGroup;
 			children = (
+				3C9C9E091F9F1C2800AE936F /* Config */,
 				0E17DC741F9A90A900A97185 /* AppDelegate.swift */,
 				3CEB5F261F9AD9DD00359BC5 /* LoginViewController.swift */,
 				3CEB5F281F9D239300359BC5 /* SignUpViewController.swift */,
@@ -134,7 +135,6 @@
 				0E17DC831F9A90A900A97185 /* Info.plist */,
 				0E17DC7B1F9A90A900A97185 /* GGCVan_Client.xcdatamodeld */,
 				3C7B05A81F9DE4B600FB64E2 /* DismissKeyboard.swift */,
-				3C7B05AF1F9E77E100FB64E2 /* CognitoConfig.plist */,
 			);
 			path = "GGCVan Client";
 			sourceTree = "<group>";
@@ -155,6 +155,14 @@
 				0E17DC991F9A90A900A97185 /* Info.plist */,
 			);
 			path = "GGCVan ClientUITests";
+			sourceTree = "<group>";
+		};
+		3C9C9E091F9F1C2800AE936F /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				3C7B05AF1F9E77E100FB64E2 /* CognitoConfig.plist */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 		BEE118739B2D4546B642864E /* Pods */ = {
