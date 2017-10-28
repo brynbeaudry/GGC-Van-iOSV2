@@ -14,6 +14,7 @@
 		0E17DC821F9A90A900A97185 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E17DC801F9A90A900A97185 /* LaunchScreen.storyboard */; };
 		0E17DC8D1F9A90A900A97185 /* GGCVan_ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E17DC8C1F9A90A900A97185 /* GGCVan_ClientTests.swift */; };
 		0E17DC981F9A90A900A97185 /* GGCVan_ClientUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E17DC971F9A90A900A97185 /* GGCVan_ClientUITests.swift */; };
+		3C2D28591FA4663500F7CF67 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2D28581FA4663400F7CF67 /* User.swift */; };
 		3C7B05A91F9DE4B600FB64E2 /* DismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7B05A81F9DE4B600FB64E2 /* DismissKeyboard.swift */; };
 		3C7B05B01F9E77E100FB64E2 /* CognitoConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C7B05AF1F9E77E100FB64E2 /* CognitoConfig.plist */; };
 		3CEB5F271F9AD9DE00359BC5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB5F261F9AD9DD00359BC5 /* LoginViewController.swift */; };
@@ -57,6 +58,7 @@
 		0E17DC971F9A90A900A97185 /* GGCVan_ClientUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGCVan_ClientUITests.swift; sourceTree = "<group>"; };
 		0E17DC991F9A90A900A97185 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32405CF826CC23B9F7E70E9D /* Pods-GGCVan ClientUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GGCVan ClientUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GGCVan ClientUITests/Pods-GGCVan ClientUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		3C2D28581FA4663400F7CF67 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3C7B05A81F9DE4B600FB64E2 /* DismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboard.swift; sourceTree = "<group>"; };
 		3C7B05AF1F9E77E100FB64E2 /* CognitoConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = CognitoConfig.plist; sourceTree = "<group>"; };
 		3CEB5F261F9AD9DD00359BC5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			children = (
 				3C9C9E091F9F1C2800AE936F /* Config */,
 				0E17DC741F9A90A900A97185 /* AppDelegate.swift */,
+				3C2D28581FA4663400F7CF67 /* User.swift */,
 				3CEB5F261F9AD9DD00359BC5 /* LoginViewController.swift */,
 				3CEB5F281F9D239300359BC5 /* SignUpViewController.swift */,
 				3CEB5F2A1F9D23B100359BC5 /* MainViewController.swift */,
@@ -464,6 +467,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GGCVan Client/Pods-GGCVan Client-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSAutoScaling/AWSAutoScaling.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSCloudWatch/AWSCloudWatch.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSCognito/AWSCognito.framework",
@@ -474,6 +478,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSAutoScaling.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCloudWatch.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognito.framework",
@@ -500,6 +505,7 @@
 				0E17DC751F9A90A900A97185 /* AppDelegate.swift in Sources */,
 				3CEB5F2B1F9D23B100359BC5 /* MainViewController.swift in Sources */,
 				3C7B05A91F9DE4B600FB64E2 /* DismissKeyboard.swift in Sources */,
+				3C2D28591FA4663500F7CF67 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

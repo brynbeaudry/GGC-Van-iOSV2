@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "45EF12DD2D8A8FBBDAEEBFB820FF31EA"
+               BlueprintIdentifier = "3EACEC02D197D066A79B665BA8BB1C73"
                BuildableName = "Pods_GGCVan_Client.framework"
                BlueprintName = "Pods-GGCVan Client"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "45EF12DD2D8A8FBBDAEEBFB820FF31EA"
+            BlueprintIdentifier = "3EACEC02D197D066A79B665BA8BB1C73"
             BuildableName = "Pods_GGCVan_Client.framework"
             BlueprintName = "Pods-GGCVan Client"
             ReferencedContainer = "container:Pods.xcodeproj">

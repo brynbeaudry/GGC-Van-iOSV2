@@ -75,6 +75,9 @@
                                 <rect key="frame" x="201" y="378" width="38" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="loginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mv4-Ns-VVG"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TfJ-Yb-qVV">
                                 <rect key="frame" x="68" y="378" width="55" height="30"/>
@@ -122,6 +125,10 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="tfEmail" destination="x8n-Cj-T4V" id="SyB-1P-T7N"/>
+                        <outlet property="tfPassword" destination="hxd-eG-eU1" id="NWr-G6-apk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <exit id="7fG-jQ-RSh" userLabel="Exit" sceneMemberID="exit"/>
@@ -156,6 +163,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="signupPressed:" destination="w5w-la-GJR" eventType="editingDidEnd" id="0ew-hi-C7E"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZiG-A8-Nng">
                                 <rect key="frame" x="45" y="397" width="229" height="30"/>
@@ -175,6 +185,9 @@
                                 <rect key="frame" x="133" y="466" width="55" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <action selector="signupPressed:" destination="w5w-la-GJR" eventType="touchUpInside" id="4Px-LB-F3c"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgx-Rc-7bN">
                                 <rect key="frame" x="258" y="15" width="46" height="30"/>
@@ -193,6 +206,10 @@
                         <viewLayoutGuide key="safeArea" id="hhP-B3-O79"/>
                     </view>
                     <connections>
+                        <outlet property="email" destination="Dsk-IP-Qfn" id="uBa-y9-Ay8"/>
+                        <outlet property="password" destination="eIN-w4-UzX" id="bTk-ac-QPE"/>
+                        <outlet property="passwordConfirm" destination="ZiG-A8-Nng" id="fkZ-sC-zsj"/>
+                        <outlet property="userName" destination="V72-y7-6za" id="cAq-NG-jww"/>
                         <segue destination="stG-BJ-oDY" kind="unwind" identifier="unwindToMain" unwindAction="unwindToMainWithSegue:" id="BAi-to-H3o"/>
                     </connections>
                 </viewController>
