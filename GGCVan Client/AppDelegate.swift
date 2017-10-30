@@ -126,6 +126,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AWSCognitoIdentityInterac
         // we need to set the AppDelegate as the user pool's delegate, which will get called when events occur
         pool?.delegate = self
     }
+    
+    func startPasswordAuthentication() -> AWSCognitoIdentityPasswordAuthentication {
+        //implement code to instantiate and display login UI here
+        //return something that implements the AWSCognitoIdentityPasswordAuthentication protocol
+        return
+    }
 }
 
 
