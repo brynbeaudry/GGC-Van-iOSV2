@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AWSCognitoIdentityInterac
     var window: UIWindow?
     var pool: AWSCognitoIdentityUserPool?
     var credentialsProvider: AWSCognitoCredentialsProvider?
+    let loginVC = LoginViewController()
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -130,7 +131,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AWSCognitoIdentityInterac
     func startPasswordAuthentication() -> AWSCognitoIdentityPasswordAuthentication {
         //implement code to instantiate and display login UI here
         //return something that implements the AWSCognitoIdentityPasswordAuthentication protocol
-        return
+        return loginVC
     }
 }
 
