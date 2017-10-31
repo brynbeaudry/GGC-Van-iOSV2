@@ -13,6 +13,7 @@ import AWSCognitoIdentityProvider
 
 class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentication {
     
+    
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var user : AWSCognitoIdentityUser!
     var pool : AWSCognitoIdentityUserPool!
@@ -32,11 +33,12 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
         DispatchQueue.main.async(execute: {() -> Void in
             //present error to end user
             if error != nil {
-                UIAlertController(title: (error as NSError?)?.userInfo["__type"], message: (error as NSError?)?.userInfo["message"], preferredStyle: UIAlertControllerStyle.alert).show(self, sender: Any?)
+                let alert = UIAlertController.init(title: (error?.localizedDescription)!, message: (error?.localizedDescription)!, preferredStyle: .alert)
+                self.present(alert, animated: true)
             }
             else {
                 //dismiss view controller
-                self.dismiss(animated: true) { _ in }
+                self.dismiss(animated: true)
             }
         })
     }
