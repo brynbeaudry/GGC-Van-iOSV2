@@ -11,25 +11,46 @@ import AWSCore
 import AWSCognito
 import AWSCognitoIdentityProvider
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, AWSCognitoIdentityPasswordAuthentication {
 
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    var user : AWSCognitoIdentityUser!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var passwordConfirm: UITextField!
+    var passwordAuthenticationCompletion : AWSTaskCompletionSource<AWSCognitoIdentityPasswordAuthenticationDetails>!
+    
+    func getDetails(_ authenticationInput: AWSCognitoIdentityPasswordAuthenticationInput, passwordAuthenticationCompletionSource: AWSTaskCompletionSource<AWSCognitoIdentityPasswordAuthenticationDetails>) {
+        //using inputs from login UI create an AWSCognitoIdentityPasswordAuthenticationDetails object.
+        //These values are hardcoded for this example.
+        let result = AWSCognitoIdentityPasswordAuthenticationDetails(username: email.text!, password: password.text!)
+        self.passwordAuthenticationCompletion = passwordAuthenticationCompletionSource;
+        self.passwordAuthenticationCompletion.set(result: result)
+    }
+    
+    func didCompleteStepWithError(_ error: Error?) {
+        DispatchQueue.main.async(execute: {() -> Void in
+            //present error to end user
+            if error != nil {
+                let alert = UIAlertController.init(title: (error?.localizedDescription)!, message: (error?.localizedDescription)!, preferredStyle: .alert)
+                self.present(alert, animated: true)
+            }
+            else {
+                //dismiss view controller
+                self.dismiss(animated: true)
+            }
+        })
+    }
     
     @IBAction func signupPressed(_ sender: Any) {
         // Get a reference to the user pool
-        let userPool = appDelegate.pool
         // Collect all of the attributes that should be included in the signup call
         let emailAttribute = AWSCognitoIdentityUserAttributeType(name: "email", value: email.text!)
         let userNameAttribute = AWSCognitoIdentityUserAttributeType(name: "preferred_username", value: userName.text!)
         //check password
         if(password.text == passwordConfirm.text){
         // Actually make the signup call passing in those attributes
-            userPool?.signUp(email.text!, password: password.text!, userAttributes: [emailAttribute, userNameAttribute], validationData: nil)
+            appDelegate.pool?.signUp(email.text!, password: password.text!, userAttributes: [emailAttribute, userNameAttribute], validationData: nil)
             .continueWith { (response) -> Any? in
                 if response.error != nil {
                     // Error in the signup process
@@ -37,7 +58,6 @@ class SignUpViewController: UIViewController {
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
                     self.present(alert, animated: true, completion: nil)
                 } else {
-                    self.user = response.result!.user
                     // Does user need verification?
                     print("Response Result : \(String(describing: response.result))")
                     if (!Bool(truncating: (response.result?.userConfirmed)!)) {
@@ -49,7 +69,11 @@ class SignUpViewController: UIViewController {
                     } else {
                         // User signed up but does not need verification
                         //basically, you signed in
-                        print("User Debug no verification: \(self.user.debugDescription)")
+                        print("User Debug no verification: \(response.result!.user)")
+                        
+                        //authenticate user
+                        
+                        
                         DispatchQueue.main.async {
                             print("Self view controller. \(self.debugDescription)")
                             self.performSegue(withIdentifier: "unwindToMain", sender: self)

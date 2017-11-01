@@ -16,7 +16,6 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var user : AWSCognitoIdentityUser!
-    var pool : AWSCognitoIdentityUserPool!
     var passwordAuthenticationCompletion : AWSTaskCompletionSource<AWSCognitoIdentityPasswordAuthenticationDetails>!
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var tfPassword: UITextField!
@@ -51,8 +50,15 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     }
 
     @IBAction func loginPressed(_ sender: Any) {
-        pool = appDelegate.pool
-        
+        appDelegate.pool?.getUser().getDetails().continueOnSuccessWith(block: {(_ task: AWSTask<AWSCognitoIdentityUserGetDetailsResponse>) -> Any? in
+            let response: AWSCognitoIdentityUserGetDetailsResponse? = task.result
+            print("response: \(response.debugDescription)")
+            for attribute in (response?.userAttributes)! {
+                //print the user attributes
+                print("Attribute: \(attribute.name ?? "none") Value: \(attribute.value ?? "none")")
+            }
+            return nil
+        })
     }
     
     
