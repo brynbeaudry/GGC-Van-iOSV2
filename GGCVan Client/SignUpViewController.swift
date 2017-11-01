@@ -39,6 +39,7 @@ class SignUpViewController: UIViewController {
                 } else {
                     self.user = response.result!.user
                     // Does user need verification?
+                    print("Response Result : \(String(describing: response.result))")
                     if (!Bool(truncating: (response.result?.userConfirmed)!)) {
                         print("User Not confirmed")
                         // User needs confirmation, so we need to proceed to the verify view controller
@@ -49,8 +50,9 @@ class SignUpViewController: UIViewController {
                         // User signed up but does not need verification
                         print("User Debug no verification: \(self.user.debugDescription)")
                         DispatchQueue.main.async {
-                            self.presentingViewController?.dismiss(animated: true, completion: nil)
-                            //performSegue(withIdentifier: "unwindToMain", sender: self)
+                            print("Self view controller. \(self.debugDescription)")
+                            //self.presentingViewController?.dismiss(animated: true, completion: nil)
+                            self.presentingViewController?.performSegue(withIdentifier: "unwindToMain", sender: self)
                         }
                     }
                 }
