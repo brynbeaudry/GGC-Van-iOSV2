@@ -34,7 +34,7 @@
                                 <state key="normal" title="Goto Login"/>
                                 <connections>
                                     <action selector="gotoLogin:" destination="MxS-ij-hSF" eventType="touchUpInside" id="O4N-s6-Ypc"/>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="toLogin" id="5ye-vv-8aH"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="toLogin" modalPresentationStyle="overCurrentContext" id="5ye-vv-8aH"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -53,7 +53,7 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController title="Login Scene" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginViewController" customModule="GGCVan_Client" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="center" id="8bC-Xf-vdC" customClass="View">
+                    <view key="view" contentMode="center" id="8bC-Xf-vdC" customClass="View" customModule="GGCVan_Client" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -138,7 +138,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="Z25-cC-HQ2">
             <objects>
-                <viewController id="w5w-la-GJR" customClass="SignUpViewController" customModule="GGCVan_Client" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="w5w-la-GJR" customClass="SignUpViewController" customModule="GGCVan_Client" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nqX-eq-ogo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

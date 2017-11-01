@@ -48,11 +48,12 @@ class SignUpViewController: UIViewController {
                         }
                     } else {
                         // User signed up but does not need verification
+                        //basically, you signed in
                         print("User Debug no verification: \(self.user.debugDescription)")
                         DispatchQueue.main.async {
                             print("Self view controller. \(self.debugDescription)")
-                            //self.presentingViewController?.dismiss(animated: true, completion: nil)
-                            self.presentingViewController?.performSegue(withIdentifier: "unwindToMain", sender: self)
+                            self.performSegue(withIdentifier: "unwindToMain", sender: self)
+                            //self.performSegue(withIdentifier: "unwindToMain", sender: self)
                         }
                     }
                 }
