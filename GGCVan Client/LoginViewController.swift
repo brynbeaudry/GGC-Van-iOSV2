@@ -51,7 +51,7 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     }
 
     @IBAction func loginPressed(_ sender: Any) {
-        
+        pool = appDelegate.pool
         
     }
     
@@ -59,7 +59,7 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        pool = appDelegate.pool
+        //pool = appDelegate.pool
     }
 
     override func didReceiveMemoryWarning() {

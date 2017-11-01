@@ -29,7 +29,7 @@ class SignUpViewController: UIViewController {
         //check password
         if(password.text == passwordConfirm.text){
         // Actually make the signup call passing in those attributes
-        userPool?.signUp(UUID().uuidString, password: password.text!, userAttributes: [emailAttribute, userNameAttribute], validationData: nil)
+            userPool?.signUp(email.text!, password: password.text!, userAttributes: [emailAttribute, userNameAttribute], validationData: nil)
             .continueWith { (response) -> Any? in
                 if response.error != nil {
                     // Error in the signup process
@@ -39,16 +39,18 @@ class SignUpViewController: UIViewController {
                 } else {
                     self.user = response.result!.user
                     // Does user need verification?
-                    if (Int(truncating: (response.result?.userConfirmed)!) != (AWSCognitoIdentityUserStatus.confirmed.rawValue)) {
+                    if (!Bool(truncating: (response.result?.userConfirmed)!)) {
+                        print("User Not confirmed")
                         // User needs confirmation, so we need to proceed to the verify view controller
                         DispatchQueue.main.async {
-                            self.performSegue(withIdentifier: "VerifySegue", sender: self)
+                            //self.performSegue(withIdentifier: "VerifySegue", sender: self)
                         }
                     } else {
                         // User signed up but does not need verification
-                        print("User : \(self.user.debugDescription)")
+                        print("User Debug no verification: \(self.user.debugDescription)")
                         DispatchQueue.main.async {
                             self.presentingViewController?.dismiss(animated: true, completion: nil)
+                            //performSegue(withIdentifier: "unwindToMain", sender: self)
                         }
                     }
                 }
