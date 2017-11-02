@@ -54,9 +54,7 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
             else {
                 //dismiss view controller
                 //we are logged in
-                DispatchQueue.main.async{
-                   self.dismiss(animated: true)
-                }
+                print("LOGGED IN")
             }
         })
     }
@@ -77,6 +75,10 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
             for attribute in (response?.userAttributes)! {
                 //print the user attributes
                 print("Attribute: \(attribute.name ?? "none") Value: \(attribute.value ?? "none")")
+            }
+            //user logged in because success complete run, dismiss login view controller.
+            DispatchQueue.main.async{
+                self.dismiss(animated: true, completion: nil)
             }
             return nil
         })
