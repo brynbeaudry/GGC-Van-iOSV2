@@ -72,7 +72,15 @@ class SignUpViewController: UIViewController, AWSCognitoIdentityPasswordAuthenti
                         print("User Debug no verification: \(response.result!.user)")
                         
                         //authenticate user
-                        
+                        self.appDelegate.pool?.getUser().getDetails().continueOnSuccessWith(block: {(_ task: AWSTask<AWSCognitoIdentityUserGetDetailsResponse>) -> Any? in
+                            let response: AWSCognitoIdentityUserGetDetailsResponse? = task.result
+                            print("response: \(response.debugDescription)")
+                            for attribute in (response?.userAttributes)! {
+                                //print the user attributes
+                                print("Attribute: \(attribute.name ?? "none") Value: \(attribute.value ?? "none")")
+                            }
+                            return nil
+                        })
                         
                         DispatchQueue.main.async {
                             print("Self view controller. \(self.debugDescription)")

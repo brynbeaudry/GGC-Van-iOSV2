@@ -126,8 +126,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="tfEmail" destination="x8n-Cj-T4V" id="SyB-1P-T7N"/>
-                        <outlet property="tfPassword" destination="hxd-eG-eU1" id="NWr-G6-apk"/>
+                        <outlet property="tfEmail" destination="x8n-Cj-T4V" id="CPR-WC-fp6"/>
+                        <outlet property="tfPassword" destination="hxd-eG-eU1" id="dcr-eA-iic"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

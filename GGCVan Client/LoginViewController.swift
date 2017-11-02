@@ -16,16 +16,20 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var user : AWSCognitoIdentityUser!
-    var passwordAuthenticationCompletion : AWSTaskCompletionSource<AWSCognitoIdentityPasswordAuthenticationDetails>!
-    @IBOutlet weak var tfEmail: UITextField!
-    @IBOutlet weak var tfPassword: UITextField!
+    @IBOutlet var tfEmail: UITextField!
+    @IBOutlet var tfPassword: UITextField!
+    var email : String?
+    var password : String = ""
+    //var passwordAuthenticationCompletion: AWSTaskCompletionSource = AWSTaskCompletionSource()
     
     func getDetails(_ authenticationInput: AWSCognitoIdentityPasswordAuthenticationInput, passwordAuthenticationCompletionSource: AWSTaskCompletionSource<AWSCognitoIdentityPasswordAuthenticationDetails>) {
         //using inputs from login UI create an AWSCognitoIdentityPasswordAuthenticationDetails object.
         //These values are hardcoded for this example.
-        let result = AWSCognitoIdentityPasswordAuthenticationDetails(username: tfEmail.text!, password: tfPassword.text!)
-        self.passwordAuthenticationCompletion = passwordAuthenticationCompletionSource;
-        self.passwordAuthenticationCompletion.set(result: result)
+        //print("username: \(tfEmail.text!), password: \(tfPassword.text!)")
+        //print("username: \(tfEmail.text!), password: \(tfPassword.text!)")
+        
+        passwordAuthenticationCompletionSource.set(result: AWSCognitoIdentityPasswordAuthenticationDetails(username: "b@b.b", password: "password"))
+        //self.passwordAuthenticationCompletion.set(result: result)
     }
     
     func didCompleteStepWithError(_ error: Error?) {
@@ -37,7 +41,10 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
             }
             else {
                 //dismiss view controller
-                self.dismiss(animated: true)
+                //we are logged in
+                DispatchQueue.main.async{
+                   self.dismiss(animated: true)
+                }
             }
         })
     }
@@ -50,7 +57,10 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     }
 
     @IBAction func loginPressed(_ sender: Any) {
-        appDelegate.pool?.getUser().getDetails().continueOnSuccessWith(block: {(_ task: AWSTask<AWSCognitoIdentityUserGetDetailsResponse>) -> Any? in
+        email = tfEmail.text!
+        password = tfPassword.text!
+        appDelegate.credentialsProvider.
+        appDelegate.pool?.getUser().getDetails().continueOnSuccessWith(block: {(_ task: AWSTask<AWSCognitoIdentityUserGetDetailsResponse>) -> Any?  in
             let response: AWSCognitoIdentityUserGetDetailsResponse? = task.result
             print("response: \(response.debugDescription)")
             for attribute in (response?.userAttributes)! {
