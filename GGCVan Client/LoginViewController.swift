@@ -11,6 +11,19 @@ import AWSCore
 import AWSCognito
 import AWSCognitoIdentityProvider
 
+public class LoginItems {
+    var email : String?
+    var password : String?
+    public func setEmail(email:String) {
+        self.email = email
+    }
+    public func setPassword(pass: String){
+        self.password = pass
+    }
+    static let sharedInstance = LoginItems()
+    private init() {} //This prevents others from using the default '()' initializer for this class.
+}
+
 class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentication {
     
     
@@ -18,17 +31,16 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     var user : AWSCognitoIdentityUser!
     @IBOutlet var tfEmail: UITextField!
     @IBOutlet var tfPassword: UITextField!
-    var email : String?
-    var password : String = ""
+    public var email : String?
+    public var password : String = ""
     //var passwordAuthenticationCompletion: AWSTaskCompletionSource = AWSTaskCompletionSource()
     
     func getDetails(_ authenticationInput: AWSCognitoIdentityPasswordAuthenticationInput, passwordAuthenticationCompletionSource: AWSTaskCompletionSource<AWSCognitoIdentityPasswordAuthenticationDetails>) {
         //using inputs from login UI create an AWSCognitoIdentityPasswordAuthenticationDetails object.
         //These values are hardcoded for this example.
         //print("username: \(tfEmail.text!), password: \(tfPassword.text!)")
-        //print("username: \(tfEmail.text!), password: \(tfPassword.text!)")
-        
-        passwordAuthenticationCompletionSource.set(result: AWSCognitoIdentityPasswordAuthenticationDetails(username: "b@b.b", password: "password"))
+        print("username: \(LoginItems.sharedInstance.email!), password: \(LoginItems.sharedInstance.password!)")
+        passwordAuthenticationCompletionSource.set(result: AWSCognitoIdentityPasswordAuthenticationDetails(username: LoginItems.sharedInstance.email!, password: LoginItems.sharedInstance.password!))
         //self.passwordAuthenticationCompletion.set(result: result)
     }
     
@@ -57,9 +69,8 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     }
 
     @IBAction func loginPressed(_ sender: Any) {
-        email = tfEmail.text!
-        password = tfPassword.text!
-        appDelegate.credentialsProvider.
+        LoginItems.sharedInstance.setEmail(email: tfEmail.text!)
+        LoginItems.sharedInstance.setPassword(pass: tfPassword.text!)
         appDelegate.pool?.getUser().getDetails().continueOnSuccessWith(block: {(_ task: AWSTask<AWSCognitoIdentityUserGetDetailsResponse>) -> Any?  in
             let response: AWSCognitoIdentityUserGetDetailsResponse? = task.result
             print("response: \(response.debugDescription)")
