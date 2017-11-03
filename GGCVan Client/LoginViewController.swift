@@ -11,23 +11,10 @@ import AWSCore
 import AWSCognito
 import AWSCognitoIdentityProvider
 
-public class LoginItems {
-    var email : String?
-    var password : String?
-    public func setEmail(email:String) {
-        self.email = email
-    }
-    public func setPassword(pass: String){
-        self.password = pass
-    }
-    static let sharedInstance = LoginItems()
-    private init() {} //This prevents others from using the default '()' initializer for this class.
-}
-
 class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentication {
     
-    
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var avDelegate: AuthViewDelegate?
     var user : AWSCognitoIdentityUser!
     @IBOutlet var tfEmail: UITextField!
     @IBOutlet var tfPassword: UITextField!
@@ -37,11 +24,8 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     
     func getDetails(_ authenticationInput: AWSCognitoIdentityPasswordAuthenticationInput, passwordAuthenticationCompletionSource: AWSTaskCompletionSource<AWSCognitoIdentityPasswordAuthenticationDetails>) {
         //using inputs from login UI create an AWSCognitoIdentityPasswordAuthenticationDetails object.
-        //These values are hardcoded for this example.
-        //print("username: \(tfEmail.text!), password: \(tfPassword.text!)")
         print("username: \(LoginItems.sharedInstance.email!), password: \(LoginItems.sharedInstance.password!)")
         passwordAuthenticationCompletionSource.set(result: AWSCognitoIdentityPasswordAuthenticationDetails(username: LoginItems.sharedInstance.email!, password: LoginItems.sharedInstance.password!))
-        //self.passwordAuthenticationCompletion.set(result: result)
     }
     
     func didCompleteStepWithError(_ error: Error?) {
@@ -59,12 +43,15 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
         })
     }
 
-    @IBAction func gotoSignUp(_ sender: Any) {
-        self.performSegue(withIdentifier: "toSignUp", sender: self)
+    @IBAction func navigateToSignUp(_ sender: Any) {
+        self.performSegue(withIdentifier: "NavigateToSignUp", sender: self)
     }
+    /*
     @IBAction func dismissSelf(_ sender: Any) {
+        //login shouldn't be able to dismiss self
         self.dismiss(animated: true, completion: nil)
     }
+     */
 
     @IBAction func loginPressed(_ sender: Any) {
         LoginItems.sharedInstance.setEmail(email: tfEmail.text!)
@@ -78,12 +65,19 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
             }
             //user logged in because success complete run, dismiss login view controller.
             DispatchQueue.main.async{
-                self.dismiss(animated: true, completion: nil)
+                self.dismiss(animated: true, completion: {
+                    self.avDelegate = self.appDelegate.window?.rootViewController as? AuthViewDelegate
+                    self.avDelegate?.authViewDidClose()
+                })
             }
             return nil
         })
     }
     
+    func performSegueWithCompletion(id: String, sender: UIViewController, completion: ()->()?){
+        self.performSegue(withIdentifier: id, sender: self)
+        completion()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

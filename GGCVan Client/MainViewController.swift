@@ -7,26 +7,98 @@
 //
 
 import UIKit
+import AWSCore
+import AWSCognito
+import AWSCognitoIdentityProvider
 
-class MainViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-    }
-    @IBAction func gotoLogin(_ sender: Any) {
-        self.performSegue(withIdentifier: "toLogin", sender: self)
+class MainViewController: UIViewController, AuthViewDelegate {
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    func authViewDidClose() {
+        print("\(self.debugDescription) : \(#function)")
+        print("In Main after Auth did close delegation")
+        printCurrentUser()
     }
     
-    @IBAction func unwindToMain(segue:UIStoryboardSegue) { }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print("\(self.debugDescription) : \(#function)")
+        
+        //without this, it looks like the pool somehow caches the last know user.
+        //you should remove this in production
+        appDelegate.pool?.clearAll()
+        print("after clear")
+        printCurrentUser()
+        
+        
+        // Do any additional setup after loading the view.
+        //checkAuthHere
+        if (!isAuth()){
+            DispatchQueue.global().sync{
+                
+            }
+            DispatchQueue.main.async{
+                self.performSegue(withIdentifier: "modalAuthWall", sender: self)
+            }
+        }else{
+            
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "modalAuthWall" {
+            
+            let nav = segue.destination as! UINavigationController
+            //_ = nav.topViewController as! UINavigationController
+            
+            //data
+            
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
+        //network requests
+    }
+    //?? is nil coalescing operator. (returned if not nil) ?? (else return when first term nil)
+    func isAuth()-> Bool {
+        return (appDelegate.pool?.currentUser()?.isSignedIn) ?? false
+    }
+
+    
+    func printCurrentUser() {
+        
+        //omg, the user persists between app starts
+        let currentUser = appDelegate.pool?.currentUser()
+        //gets information from cognito about the current user
+        if appDelegate.pool?.currentUser()?.username != nil {
+            currentUser?.getDetails().continueOnSuccessWith(block: {(_ task: AWSTask<AWSCognitoIdentityUserGetDetailsResponse>) -> Any?  in
+                let response: AWSCognitoIdentityUserGetDetailsResponse? = task.result
+                print("response: \(response.debugDescription)")
+                for attribute in (response?.userAttributes)! {
+                    //print the user attributes
+                    print("Attribute: \(attribute.name ?? "none") Value: \(attribute.value ?? "none")")
+                }
+                return nil
+            })
+        }else{
+            print("There is no current user")
+        }
+    }
+    
+    @IBAction func unwindToMain(segue:UIStoryboardSegue) {
+        print("\(self.debugDescription) : \(#function)")
+        //print out current user attributes
+        printCurrentUser()
+    }
     
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
 
     /*
     // MARK: - Navigation

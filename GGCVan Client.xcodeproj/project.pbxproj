@@ -17,6 +17,9 @@
 		3C2D28591FA4663500F7CF67 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2D28581FA4663400F7CF67 /* User.swift */; };
 		3C7B05A91F9DE4B600FB64E2 /* DismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7B05A81F9DE4B600FB64E2 /* DismissKeyboard.swift */; };
 		3C7B05B01F9E77E100FB64E2 /* CognitoConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C7B05AF1F9E77E100FB64E2 /* CognitoConfig.plist */; };
+		3C7D70951FAC3F2800F311E5 /* AuthNavigationControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7D70941FAC3F2700F311E5 /* AuthNavigationControllerViewController.swift */; };
+		3CD9E3321FAB6DF700445B61 /* LoginItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD9E3311FAB6DF700445B61 /* LoginItems.swift */; };
+		3CD9E3381FABBB8100445B61 /* AuthViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD9E3371FABBB8000445B61 /* AuthViewDelegate.swift */; };
 		3CEB5F271F9AD9DE00359BC5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB5F261F9AD9DD00359BC5 /* LoginViewController.swift */; };
 		3CEB5F291F9D239300359BC5 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB5F281F9D239300359BC5 /* SignUpViewController.swift */; };
 		3CEB5F2B1F9D23B100359BC5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB5F2A1F9D23B100359BC5 /* MainViewController.swift */; };
@@ -61,6 +64,9 @@
 		3C2D28581FA4663400F7CF67 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3C7B05A81F9DE4B600FB64E2 /* DismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboard.swift; sourceTree = "<group>"; };
 		3C7B05AF1F9E77E100FB64E2 /* CognitoConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = CognitoConfig.plist; sourceTree = "<group>"; };
+		3C7D70941FAC3F2700F311E5 /* AuthNavigationControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNavigationControllerViewController.swift; sourceTree = "<group>"; };
+		3CD9E3311FAB6DF700445B61 /* LoginItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginItems.swift; sourceTree = "<group>"; };
+		3CD9E3371FABBB8000445B61 /* AuthViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewDelegate.swift; sourceTree = "<group>"; };
 		3CEB5F261F9AD9DD00359BC5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3CEB5F281F9D239300359BC5 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		3CEB5F2A1F9D23B100359BC5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -126,11 +132,13 @@
 		0E17DC731F9A90A900A97185 /* GGCVan Client */ = {
 			isa = PBXGroup;
 			children = (
+				3CD9E3371FABBB8000445B61 /* AuthViewDelegate.swift */,
 				3C9C9E091F9F1C2800AE936F /* Config */,
 				0E17DC741F9A90A900A97185 /* AppDelegate.swift */,
 				3C2D28581FA4663400F7CF67 /* User.swift */,
 				3CEB5F261F9AD9DD00359BC5 /* LoginViewController.swift */,
 				3CEB5F281F9D239300359BC5 /* SignUpViewController.swift */,
+				3CD9E3311FAB6DF700445B61 /* LoginItems.swift */,
 				3CEB5F2A1F9D23B100359BC5 /* MainViewController.swift */,
 				0E17DC781F9A90A900A97185 /* Main.storyboard */,
 				0E17DC7E1F9A90A900A97185 /* Assets.xcassets */,
@@ -138,6 +146,7 @@
 				0E17DC831F9A90A900A97185 /* Info.plist */,
 				0E17DC7B1F9A90A900A97185 /* GGCVan_Client.xcdatamodeld */,
 				3C7B05A81F9DE4B600FB64E2 /* DismissKeyboard.swift */,
+				3C7D70941FAC3F2700F311E5 /* AuthNavigationControllerViewController.swift */,
 			);
 			path = "GGCVan Client";
 			sourceTree = "<group>";
@@ -505,6 +514,9 @@
 				0E17DC751F9A90A900A97185 /* AppDelegate.swift in Sources */,
 				3CEB5F2B1F9D23B100359BC5 /* MainViewController.swift in Sources */,
 				3C7B05A91F9DE4B600FB64E2 /* DismissKeyboard.swift in Sources */,
+				3C7D70951FAC3F2800F311E5 /* AuthNavigationControllerViewController.swift in Sources */,
+				3CD9E3381FABBB8100445B61 /* AuthViewDelegate.swift in Sources */,
+				3CD9E3321FAB6DF700445B61 /* LoginItems.swift in Sources */,
 				3C2D28591FA4663500F7CF67 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
