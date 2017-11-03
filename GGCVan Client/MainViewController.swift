@@ -21,6 +21,10 @@ class MainViewController: UIViewController, AuthViewDelegate {
         printCurrentUser()
     }
     
+    @IBAction func backToMain(segue: UIStoryboardSegue) {
+        print("Unwind to Root View Controller")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("\(self.debugDescription) : \(#function)")
@@ -48,8 +52,6 @@ class MainViewController: UIViewController, AuthViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "modalAuthWall" {
-            
-            let nav = segue.destination as! UINavigationController
             //_ = nav.topViewController as! UINavigationController
             
             //data
@@ -61,11 +63,12 @@ class MainViewController: UIViewController, AuthViewDelegate {
         super.viewWillAppear(animated)
         //network requests
     }
+    
+    
     //?? is nil coalescing operator. (returned if not nil) ?? (else return when first term nil)
     func isAuth()-> Bool {
         return (appDelegate.pool?.currentUser()?.isSignedIn) ?? false
     }
-
     
     func printCurrentUser() {
         
@@ -85,12 +88,6 @@ class MainViewController: UIViewController, AuthViewDelegate {
         }else{
             print("There is no current user")
         }
-    }
-    
-    @IBAction func unwindToMain(segue:UIStoryboardSegue) {
-        print("\(self.debugDescription) : \(#function)")
-        //print out current user attributes
-        printCurrentUser()
     }
     
     

@@ -40,7 +40,6 @@
                         <viewLayoutGuide key="safeArea" id="xjl-sa-1Bk"/>
                     </view>
                     <connections>
-                        <segue destination="7fG-jQ-RSh" kind="unwind" unwindAction="unwindToMainWithSegue:" id="Ach-XK-IP7"/>
                         <segue destination="6RJ-kz-NP5" kind="presentation" identifier="modalAuthWall" id="128-CA-quu"/>
                     </connections>
                 </viewController>
@@ -128,7 +127,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <exit id="7fG-jQ-RSh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="75" y="600"/>
         </scene>
@@ -184,7 +182,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
-                                    <action selector="signupPressed:" destination="w5w-la-GJR" eventType="touchUpInside" id="4Px-LB-F3c"/>
+                                    <action selector="signupPressed:" destination="w5w-la-GJR" eventType="touchUpInside" id="hkj-GX-ibV"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="vanlogo" translatesAutoresizingMaskIntoConstraints="NO" id="C6u-jx-eNG">
@@ -202,9 +200,9 @@
                     <connections>
                         <outlet property="email" destination="Dsk-IP-Qfn" id="uBa-y9-Ay8"/>
                         <outlet property="password" destination="eIN-w4-UzX" id="bTk-ac-QPE"/>
-                        <outlet property="passwordConfirm" destination="ZiG-A8-Nng" id="fkZ-sC-zsj"/>
+                        <outlet property="passwordConfirm" destination="ZiG-A8-Nng" id="92K-lX-lDm"/>
                         <outlet property="userName" destination="V72-y7-6za" id="cAq-NG-jww"/>
-                        <segue destination="stG-BJ-oDY" kind="unwind" identifier="unwindToMain" customClass="UIStoryboardSegueWithCompletion" customModule="GGCVan_Client" customModuleProvider="target" unwindAction="unwindToMainWithSegue:" id="BAi-to-H3o"/>
+                        <segue destination="stG-BJ-oDY" kind="unwind" identifier="signUpBackToMain" unwindAction="backToMainWithSegue:" id="l8X-ql-Q9J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hxC-eS-SIE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -215,7 +213,7 @@
         <!--AuthNavigationViewController-->
         <scene sceneID="Aif-Gi-4PH">
             <objects>
-                <navigationController title="AuthNavigationViewController" id="6RJ-kz-NP5" customClass="AuthNavigationControllerViewController" customModule="GGCVan_Client" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController title="AuthNavigationViewController" id="6RJ-kz-NP5" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="v6e-Lj-15h">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

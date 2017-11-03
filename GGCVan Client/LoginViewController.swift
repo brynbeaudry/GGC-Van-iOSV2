@@ -44,7 +44,7 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     }
 
     @IBAction func navigateToSignUp(_ sender: Any) {
-        self.performSegue(withIdentifier: "NavigateToSignUp", sender: self)
+        self.performSegue(withIdentifier: "navigateToSignUp", sender: self)
     }
     /*
     @IBAction func dismissSelf(_ sender: Any) {

@@ -20,7 +20,7 @@ class SignUpViewController: UIViewController, AWSCognitoIdentityPasswordAuthenti
     @IBOutlet weak var passwordConfirm: UITextField!
     
     func getDetails(_ authenticationInput: AWSCognitoIdentityPasswordAuthenticationInput, passwordAuthenticationCompletionSource: AWSTaskCompletionSource<AWSCognitoIdentityPasswordAuthenticationDetails>) {
-        //using inputs from login UI create an AWSCognitoIdentityPasswordAuthenticationDetails object.
+        //using inputs from login UI create an AWSCognitoIdentityPasswordAuthenticat``ionDetails object.
         //These values are hardcoded for this example.
         print("username: \(LoginItems.sharedInstance.email!), password: \(LoginItems.sharedInstance.password!)")
         passwordAuthenticationCompletionSource.set(result: AWSCognitoIdentityPasswordAuthenticationDetails(username: LoginItems.sharedInstance.email!, password: LoginItems.sharedInstance.password!))
@@ -48,7 +48,9 @@ class SignUpViewController: UIViewController, AWSCognitoIdentityPasswordAuthenti
         let emailAttribute = AWSCognitoIdentityUserAttributeType(name: "email", value: email.text!)
         let userNameAttribute = AWSCognitoIdentityUserAttributeType(name: "preferred_username", value: userName.text!)
         //check password
+        let suG = DispatchGroup()
         if(password.text == passwordConfirm.text){
+        suG.enter()
         // Actually make the signup call passing in those attributes
             appDelegate.pool?.signUp(email.text!, password: password.text!, userAttributes: [emailAttribute, userNameAttribute], validationData: nil)
             .continueWith { (response) -> Any? in
@@ -64,59 +66,68 @@ class SignUpViewController: UIViewController, AWSCognitoIdentityPasswordAuthenti
                     if (!Bool(truncating: (response.result?.userConfirmed)!)) {
                         print("User Not confirmed")
                         // User needs confirmation, so we need to proceed to the verify view controller
-                        DispatchQueue.main.async {
-                            //self.performSegue(withIdentifier: "VerifySegue", sender: self)
-                        }
                     } else {
                         // User signed up but does not need verification
                         // basically, you signed up sucessfully
                         print("User Debug no verification: \(response.result!.user)")
                         
                         //set login items
-                        LoginItems.sharedInstance.setEmail(email: self.email.text!)
-                        LoginItems.sharedInstance.setPassword(pass: self.password.text!)
-                        
-                        //authenticate user
-                        
-                    self.appDelegate.pool?.getUser().getDetails().continueOnSuccessWith(block: {(_ task: AWSTask<AWSCognitoIdentityUserGetDetailsResponse>) -> Any? in
-                            //continue with success operation for signin
-                            let response: AWSCognitoIdentityUserGetDetailsResponse? = task.result
-                            print("response: \(response.debugDescription)")
-                            for attribute in (response?.userAttributes)! {
-                                //print the user attributes
-                                print("Attribute: \(attribute.name ?? "none") Value: \(attribute.value ?? "none")")
-                            }
-                            //unwind to main area
-                            DispatchQueue.main.async {
-                                print("Self view controller. \(self.debugDescription)")
-                                //performuniwnd segue
-                                
-                                //self.performSegue(withIdentifier: "unwindToMain", sender: self)
-                                let completion = {
-                                    self.avDelegate = self.appDelegate.window?.rootViewController as? AuthViewDelegate
-                                    self.avDelegate?.authViewDidClose()
-                                }
-                                self.performSegueWithCompletion(id: "unwindToMain", sender: self, completion: completion)
-                            }
-                            return nil
-                        })
-                    }
-                }
-                return nil
+                        DispatchQueue.main.async{
+                            LoginItems.sharedInstance.setEmail(email: self.email.text!)
+                            LoginItems.sharedInstance.setPassword(pass: self.password.text!)
+                        }
+                        suG.leave()
+                    }//end of user signup/sign in successful
+                }//end of user doesn't need to be verified
+                return nil //returning sign up
+            }//end of getting sign up response from async task
+            suG.notify(queue: .main, execute: {self.afterSignUpSignIn()})
+        }//end of form validation
+    }
+    
+    func afterSignUpSignIn() -> Void {
+        //authenticate user
+        let  lnDg = DispatchGroup()
+        lnDg.enter()
+        self.appDelegate.pool?.getUser().getDetails().continueOnSuccessWith(block: {(_ task: AWSTask<AWSCognitoIdentityUserGetDetailsResponse>) -> Any? in //begin
+            
+            //continue with success operation for signin
+            let response: AWSCognitoIdentityUserGetDetailsResponse? = task.result
+            print("response: \(response.debugDescription)")
+            for attribute in (response?.userAttributes)! {
+                //print the user attributes
+                print("Attribute: \(attribute.name ?? "none") Value: \(attribute.value ?? "none")")
             }
-        }
-        
+            //unwind to main area
+            print("Self view controller. \(self.debugDescription)")
+            //performuniwnd segue
+            //end of async cocastuff
+            lnDg.leave()
+            return nil
+        }) //end of async sign in task
+        lnDg.wait()
+        self.performSegueWithCompletion(id: "signUpBackToMain", sender: self, completion: {self.avDelegate?.authViewDidClose()})
     }
     
-    func performSegueWithCompletion(id: String, sender: UIViewController, completion: ()->()?){
+    func performSegueWithCompletion(id: String, sender: UIViewController,  completion: @escaping ()->()){
+        self.avDelegate = self.appDelegate.window?.rootViewController as? AuthViewDelegate
         self.performSegue(withIdentifier: id, sender: self)
+        print("")
         completion()
+        /*
+         let ops : [BlockOperation] = [
+         BlockOPeration(block : {self.performSegue(withIdentifier: id, sender: self)}),
+         BlockOperation(block: {self.avDelegate = self.appDelegate.window?.rootViewController as? AuthViewDelegate}),
+         
+         //b is the completion
+         let b = BlockOperation(block: {()->Void in completion()})
+         b.addDependency(a)
+         let ops : [BlockOperation] = [a,b]
+         weak var oq = OperationQueue.main
+         oq?.addOperations(ops, waitUntilFinished: true)
+         */
     }
-    
-    @IBAction func backToMain(_ sender: Any) {
-        performSegue(withIdentifier: "unwindToMain", sender: self)
-    }
-    
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
