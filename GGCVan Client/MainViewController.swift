@@ -14,11 +14,15 @@ import AWSCognitoIdentityProvider
 class MainViewController: UIViewController, AuthViewDelegate {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var credentialsProvider : AWSCognitoCredentialsProvider!
+    
     
     func authViewDidClose() {
         print("\(self.debugDescription) : \(#function)")
         print("In Main after Auth did close delegation")
         printCurrentUser()
+        //is authorized!
+        let cognitoId = credentialsProvider.identityId
     }
     
     @IBAction func backToMain(segue: UIStoryboardSegue) {
@@ -38,6 +42,7 @@ class MainViewController: UIViewController, AuthViewDelegate {
         
         // Do any additional setup after loading the view.
         //checkAuthHere
+        //not authorized
         if (!isAuth()){
             DispatchQueue.global().sync{
                 
@@ -46,7 +51,8 @@ class MainViewController: UIViewController, AuthViewDelegate {
                 self.performSegue(withIdentifier: "modalAuthWall", sender: self)
             }
         }else{
-            
+            //is authorized!
+            let cognitoId = credentialsProvider.identityId
         }
     }
     

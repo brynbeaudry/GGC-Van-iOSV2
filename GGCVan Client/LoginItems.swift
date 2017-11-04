@@ -17,6 +17,7 @@ public class LoginItems {
     public func setPassword(pass: String){
         self.password = pass
     }
+    
     static let sharedInstance = LoginItems(email: "", password: "")
     private init(email: String, password: String) {} //This prevents others from using the default '()' initializer for this class.
 }

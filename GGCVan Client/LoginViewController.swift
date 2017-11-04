@@ -10,8 +10,12 @@ import UIKit
 import AWSCore
 import AWSCognito
 import AWSCognitoIdentityProvider
+import GoogleSignIn
 
-class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentication {
+
+class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentication, GIDSignInDelegate {
+    
+    
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var avDelegate: AuthViewDelegate?
@@ -21,6 +25,33 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     public var email : String?
     public var password : String = ""
     //var passwordAuthenticationCompletion: AWSTaskCompletionSource = AWSTaskCompletionSource()
+    
+    @IBAction func googleSignInBtnPress(_ sender: UIButton) {
+        
+    }
+    
+    //Google's Sign In
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if (error == nil) {
+            //appearantly signed iat this point
+            var userId: String = user.userID
+            // For client-side use only!
+            var idToken: String = user.authentication.idToken
+            // Safe to send to the server
+            var fullName: String = user.profile.name
+            var givenName: String = user.profile.givenName
+            var familyName: String = user.profile.familyName
+            var email: String = user.profile.email
+            let credentialsProvider = appDelegate.credentialsProvider
+            credentialsProvider.logins = [AWSCognitoLoginProviderKey.Google.rawValue: idToken!]
+            self.mainDealwAuthSucess()
+        } else {
+            let credentialsProvider = appDelegate.credentialsProvider
+            print("\(error.localizedDescription)")
+            let idToken = auth.parameters.objectForKey("id_token")
+            credentialsProvider.logins = [AWSCognitoLoginProviderKey.Google.rawValue: idToken!]
+        }
+    }
     
     func getDetails(_ authenticationInput: AWSCognitoIdentityPasswordAuthenticationInput, passwordAuthenticationCompletionSource: AWSTaskCompletionSource<AWSCognitoIdentityPasswordAuthenticationDetails>) {
         //using inputs from login UI create an AWSCognitoIdentityPasswordAuthenticationDetails object.
@@ -64,14 +95,17 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
                 print("Attribute: \(attribute.name ?? "none") Value: \(attribute.value ?? "none")")
             }
             //user logged in because success complete run, dismiss login view controller.
-            DispatchQueue.main.async{
-                self.dismiss(animated: true, completion: {
-                    self.avDelegate = self.appDelegate.window?.rootViewController as? AuthViewDelegate
-                    self.avDelegate?.authViewDidClose()
-                })
-            }
+            self.mainDealwAuthSucess()
             return nil
         })
+    }
+    
+    func mainDealwAuthSucess(){
+        DispatchQueue.main.async{
+            self.dismiss(animated: true, completion: {
+                self.avDelegate = self.appDelegate.window?.rootViewController as? AuthViewDelegate
+                self.avDelegate?.authViewDidClose()
+            })
     }
     
     func performSegueWithCompletion(id: String, sender: UIViewController, completion: ()->()?){
@@ -82,6 +116,7 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        
         //pool = appDelegate.pool
     }
 

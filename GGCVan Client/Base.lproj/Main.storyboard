@@ -98,6 +98,9 @@
                                 <state key="normal" title=" " backgroundImage="gPlusBtn">
                                     <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="googleSignInBtnPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nny-6n-o33"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="vanlogo" translatesAutoresizingMaskIntoConstraints="NO" id="mPH-Vz-N0i">
                                 <rect key="frame" x="82" y="129" width="157" height="97"/>

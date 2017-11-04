@@ -13,6 +13,7 @@ target 'GGCVan Client' do
     pod 'AWSEC2'
     pod 'AWSLambda'
     pod 'AFNetworking', '~> 2.5'
+    pod 'GoogleSignIn', '~> 4.1'
 
   target 'GGCVan ClientTests' do
     inherit! :search_paths

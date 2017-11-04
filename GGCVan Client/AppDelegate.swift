@@ -11,10 +11,14 @@ import CoreData
 import AWSCore
 import AWSCognito
 import AWSCognitoIdentityProvider
+import GoogleSignIn
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, AWSCognitoIdentityInteractiveAuthenticationDelegate {
+    
     let path = Bundle.main.path(forResource: "Config", ofType: "plist")
+    let clientIdGoogle : String! = nil
     var cognitoConfig : NSDictionary! = nil
     var window: UIWindow?
     var pool: AWSCognitoIdentityUserPool?
@@ -33,6 +37,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AWSCognitoIdentityInterac
         
         // set up Cognito
         setupCognitoUserPoolAndCredentialsProvider()
+        
+        //set up Google SignIn
+        var configureError: NSError?
+        assert(configureError == nil, "Error configuring Google services: \(configureError ?? "Error")")
+        GIDSignIn.sharedInstance().clientID = String("986909663782-kn9h7jqgmnncggq00elr2d29j391i25c.apps.googleusercontent.com")
+        
+        GIDSignIn.sharedInstance().delegate = self
+        
+        
         
         return true
     }

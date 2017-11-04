@@ -62,6 +62,7 @@
 		0E17DC991F9A90A900A97185 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32405CF826CC23B9F7E70E9D /* Pods-GGCVan ClientUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GGCVan ClientUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GGCVan ClientUITests/Pods-GGCVan ClientUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3C2D28581FA4663400F7CF67 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		3C4B24021FADE52900D06CA0 /* client_986909663782-kn9h7jqgmnncggq00elr2d29j391i25c.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "client_986909663782-kn9h7jqgmnncggq00elr2d29j391i25c.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
 		3C7B05A81F9DE4B600FB64E2 /* DismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboard.swift; sourceTree = "<group>"; };
 		3C7B05AF1F9E77E100FB64E2 /* CognitoConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = CognitoConfig.plist; sourceTree = "<group>"; };
 		3C7D70941FAC3F2700F311E5 /* AuthNavigationControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNavigationControllerViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +133,7 @@
 		0E17DC731F9A90A900A97185 /* GGCVan Client */ = {
 			isa = PBXGroup;
 			children = (
+				3C4B24021FADE52900D06CA0 /* client_986909663782-kn9h7jqgmnncggq00elr2d29j391i25c.apps.googleusercontent.com.plist */,
 				3CD9E3371FABBB8000445B61 /* AuthViewDelegate.swift */,
 				3C9C9E091F9F1C2800AE936F /* Config */,
 				0E17DC741F9A90A900A97185 /* AppDelegate.swift */,
@@ -430,9 +432,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GGCVan Client/Pods-GGCVan Client-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -484,6 +489,9 @@
 				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSEC2/AWSEC2.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSLambda/AWSLambda.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -495,6 +503,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSEC2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSLambda.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
