@@ -12,6 +12,11 @@ import AWSCore
 import AWSCognito
 import AWSCognitoIdentityProvider
 import GoogleSignIn
+import Google
+
+#if !Bridge_header_h
+    //#define Bridge_header_h
+#endif
 
 
 @UIApplicationMain
@@ -39,15 +44,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AWSCognitoIdentityInterac
         setupCognitoUserPoolAndCredentialsProvider()
         
         //set up Google SignIn
-        var configureError: NSError?
-        assert(configureError == nil, "Error configuring Google services: \(configureError ?? "Error")")
+        let _: NSError?
+        //assert(configureError == nil, "There is a configure error \(configureError?.localizedDescription as! String)")
         GIDSignIn.sharedInstance().clientID = String("986909663782-kn9h7jqgmnncggq00elr2d29j391i25c.apps.googleusercontent.com")
-        
-        GIDSignIn.sharedInstance().delegate = self
         
         
         
         return true
+    }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return GPPURLHandler.handle(url, sourceApplication: sourceApplication, annotation: annotation)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

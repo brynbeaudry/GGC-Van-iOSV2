@@ -11,6 +11,11 @@ import AWSCore
 import AWSCognito
 import AWSCognitoIdentityProvider
 import GoogleSignIn
+import Google
+
+#if !Bridge_header_h
+    //#define Bridge_header_h
+#endif
 
 
 class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentication, GIDSignInDelegate {
@@ -19,6 +24,7 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var avDelegate: AuthViewDelegate?
+    let signIn = GIDSignIn.sharedInstance()
     var user : AWSCognitoIdentityUser!
     @IBOutlet var tfEmail: UITextField!
     @IBOutlet var tfPassword: UITextField!
@@ -27,29 +33,46 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     //var passwordAuthenticationCompletion: AWSTaskCompletionSource = AWSTaskCompletionSource()
     
     @IBAction func googleSignInBtnPress(_ sender: UIButton) {
-        
+        signIn?.shouldFetchBasicProfile = true
     }
     
     //Google's Sign In
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if (error == nil) {
-            //appearantly signed iat this point
-            var userId: String = user.userID
+            let userId: String = user.userID
             // For client-side use only!
-            var idToken: String = user.authentication.idToken
+            let idToken: String = user.authentication.idToken
             // Safe to send to the server
-            var fullName: String = user.profile.name
-            var givenName: String = user.profile.givenName
-            var familyName: String = user.profile.familyName
-            var email: String = user.profile.email
+            let fullName: String = user.profile.name
+            let givenName: String = user.profile.givenName
+            let familyName: String = user.profile.familyName
+            let email: String = user.profile.email
+            let d : [String:String] = [
+                "userId":userId,
+                "idToken":idToken,
+                "fullName":fullName,
+                "givenName":givenName,
+                "familyName":familyName,
+                "email":email
+            ]
+            //appearantly signed iat this point
+            for (name, value) in d {
+                print("Back from google Name : \(name)   Value: \(value)")
+            }
+            
+            
             let credentialsProvider = appDelegate.credentialsProvider
-            credentialsProvider.logins = [AWSCognitoLoginProviderKey.Google.rawValue: idToken!]
+            
+            //facebook's key is graph.facebook.com
+            credentialsProvider?.identityProvider.logins().continueWith(block: {(task) -> AWSTask<NSDictionary>! in
+                return AWSTask<NSDictionary>(result: NSDictionary(object: idToken, forKey:"accounts.google.com" as NSCopying))
+            }).waitUntilFinished()
+            
+            
+            //credentialsProvider.identityProviderManager.logins = AWSCognitoIdentityGetOpenIdTokenInput.init(dictionary: [idToken], error: )
             self.mainDealwAuthSucess()
         } else {
-            let credentialsProvider = appDelegate.credentialsProvider
             print("\(error.localizedDescription)")
-            let idToken = auth.parameters.objectForKey("id_token")
-            credentialsProvider.logins = [AWSCognitoLoginProviderKey.Google.rawValue: idToken!]
         }
     }
     
@@ -59,6 +82,7 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
         passwordAuthenticationCompletionSource.set(result: AWSCognitoIdentityPasswordAuthenticationDetails(username: LoginItems.sharedInstance.email!, password: LoginItems.sharedInstance.password!))
     }
     
+    //For Email login
     func didCompleteStepWithError(_ error: Error?) {
         DispatchQueue.main.async(execute: {() -> Void in
             //present error to end user
@@ -117,6 +141,9 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         
+        //LoginCtrl asks google object to remind it to do something
+        signIn?.delegate = self;
+        signIn?.scopes = ["profile"]
         //pool = appDelegate.pool
     }
 
@@ -128,3 +155,4 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
 
 }
 
+}
