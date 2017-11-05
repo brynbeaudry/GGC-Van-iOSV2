@@ -18,13 +18,13 @@ import Google
 #endif
 
 
-class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentication, GIDSignInDelegate {
+class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentication, GIDSignInDelegate, GIDSignInUIDelegate {
     
     
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var avDelegate: AuthViewDelegate?
-    let signIn = GIDSignIn.sharedInstance()
+    let googleSignIn = GIDSignIn.sharedInstance()
     var user : AWSCognitoIdentityUser!
     @IBOutlet var tfEmail: UITextField!
     @IBOutlet var tfPassword: UITextField!
@@ -33,8 +33,35 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     //var passwordAuthenticationCompletion: AWSTaskCompletionSource = AWSTaskCompletionSource()
     
     @IBAction func googleSignInBtnPress(_ sender: UIButton) {
-        signIn?.shouldFetchBasicProfile = true
+        googleSignIn?.signIn()
     }
+    
+    @IBOutlet weak var actIndicator: UIActivityIndicatorView!
+    
+    
+    //did disconnect, maybe for legacy, probably for logout
+    func sign(_ signIn: GIDSignIn, didDisconnectWith user: GIDGoogleUser) throws {
+        // Perform any operations when the user disconnects from app here.
+        // ...
+    }
+    
+    func signInWillDispatch(signIn: GIDSignIn!, error: NSError!) {
+        myActivityIndicator.stopAnimating()
+    }
+    
+    // Present a view that prompts the user to sign in with Google
+    func signIn(signIn: GIDSignIn!,
+                presentViewController viewController: UIViewController!) {
+        self.presentViewController(viewController, animated: true, completion: nil)
+    }
+    
+    // Dismiss the sign in with Google view
+    func signIn(signIn: GIDSignIn!,
+                dismissViewController viewController: UIViewController!) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
     
     //Google's Sign In
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
@@ -60,12 +87,14 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
                 print("Back from google Name : \(name)   Value: \(value)")
             }
             
+            //possible put into static user object here
             
             let credentialsProvider = appDelegate.credentialsProvider
             
             //facebook's key is graph.facebook.com
+            //I'm wondering if this will actually set the logins array for aws
             credentialsProvider?.identityProvider.logins().continueWith(block: {(task) -> AWSTask<NSDictionary>! in
-                return AWSTask<NSDictionary>(result: NSDictionary(object: idToken, forKey:"accounts.google.com" as NSCopying))
+                return AWSTask<NSDictionary>(result: NSDictionary(dictionary: ["accounts.google.com":idToken]))
             }).waitUntilFinished()
             
             
@@ -76,6 +105,7 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
         }
     }
     
+    //for regular sign in
     func getDetails(_ authenticationInput: AWSCognitoIdentityPasswordAuthenticationInput, passwordAuthenticationCompletionSource: AWSTaskCompletionSource<AWSCognitoIdentityPasswordAuthenticationDetails>) {
         //using inputs from login UI create an AWSCognitoIdentityPasswordAuthenticationDetails object.
         print("username: \(LoginItems.sharedInstance.email!), password: \(LoginItems.sharedInstance.password!)")
@@ -130,6 +160,7 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
                 self.avDelegate = self.appDelegate.window?.rootViewController as? AuthViewDelegate
                 self.avDelegate?.authViewDidClose()
             })
+        }
     }
     
     func performSegueWithCompletion(id: String, sender: UIViewController, completion: ()->()?){
@@ -140,10 +171,12 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        actIndicator.stopAnimating()
         
         //LoginCtrl asks google object to remind it to do something
-        signIn?.delegate = self;
-        signIn?.scopes = ["profile"]
+        googleSignIn?.delegate = self
+        googleSignIn?.uiDelegate = self
+        googleSignIn?.scopes = ["profile"]
         //pool = appDelegate.pool
     }
 
@@ -152,7 +185,5 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
         // Dispose of any resources that can be recreated.
     }
 
-
-}
 
 }

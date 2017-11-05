@@ -23,6 +23,7 @@ class MainViewController: UIViewController, AuthViewDelegate {
         printCurrentUser()
         //is authorized!
         let cognitoId = credentialsProvider.identityId
+        print("Cognito Id : \(cognitoId)")
     }
     
     @IBAction func backToMain(segue: UIStoryboardSegue) {

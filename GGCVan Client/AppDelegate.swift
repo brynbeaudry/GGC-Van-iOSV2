@@ -44,17 +44,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AWSCognitoIdentityInterac
         setupCognitoUserPoolAndCredentialsProvider()
         
         //set up Google SignIn
-        let _: NSError?
-        //assert(configureError == nil, "There is a configure error \(configureError?.localizedDescription as! String)")
+        //var configureError: NSError?
+        //GGLContext.sharedInstance().configureWithError(&configureError)
+        //assert(configureError == nil, "Error configuring Google services: \(configureError)")
         GIDSignIn.sharedInstance().clientID = String("986909663782-kn9h7jqgmnncggq00elr2d29j391i25c.apps.googleusercontent.com")
-        
         
         
         return true
     }
     
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        return GPPURLHandler.handle(url, sourceApplication: sourceApplication, annotation: annotation)
+    //appearantly only required for older versions?
+    private func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : AnyObject] = [:]) -> Bool {
+        return GIDSignIn.sharedInstance().handle(url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String, annotation: options[UIApplicationOpenURLOptionsKey.annotation]) ? true : false
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

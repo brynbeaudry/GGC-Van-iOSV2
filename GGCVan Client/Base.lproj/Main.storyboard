@@ -118,12 +118,17 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="X"/>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="o0O-eA-Omj">
+                                <rect key="frame" x="150" y="83" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="djE-xO-d3B"/>
                     <connections>
+                        <outlet property="actIndicator" destination="o0O-eA-Omj" id="NkD-az-YI6"/>
                         <outlet property="tfEmail" destination="x8n-Cj-T4V" id="CPR-WC-fp6"/>
                         <outlet property="tfPassword" destination="hxd-eG-eU1" id="dcr-eA-iic"/>
                         <segue destination="w5w-la-GJR" kind="show" identifier="navigateToSignUp" id="pbv-Vm-GCZ"/>
