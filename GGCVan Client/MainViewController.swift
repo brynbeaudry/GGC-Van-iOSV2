@@ -22,8 +22,8 @@ class MainViewController: UIViewController, AuthViewDelegate {
         print("In Main after Auth did close delegation")
         printCurrentUser()
         //is authorized!
-        let cognitoId = credentialsProvider.identityId
-        print("Cognito Id : \(cognitoId)")
+        let cognitoId = appDelegate.credentialsProvider?.identityProvider.identityId
+        //print("Cognito Id : \(cognitoId)")
     }
     
     @IBAction func backToMain(segue: UIStoryboardSegue) {
@@ -53,7 +53,7 @@ class MainViewController: UIViewController, AuthViewDelegate {
             }
         }else{
             //is authorized!
-            let cognitoId = credentialsProvider.identityId
+            let cognitoId = credentialsProvider.identityProvider.identityId
         }
     }
     

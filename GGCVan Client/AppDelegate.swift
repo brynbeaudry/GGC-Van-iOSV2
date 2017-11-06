@@ -144,7 +144,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AWSCognitoIdentityInterac
         
         pool = AWSCognitoIdentityUserPool(forKey: poolId)
         print("Debug pool in AD \(pool?.debugDescription)")
-        customIdentityProvider = CustomIdentityProvider(regionType: region, identityPoolId: poolId, useEnhancedFlow: false, identityProviderManager: nil)
+        customIdentityProvider = CustomIdentityProvider(regionType: region, identityPoolId: poolId, useEnhancedFlow: true, identityProviderManager: nil)
         credentialsProvider = AWSCognitoCredentialsProvider(regionType: region, identityPoolId: poolId, identityProviderManager: customIdentityProvider)
         AWSServiceManager.default().defaultServiceConfiguration = serviceConfiguration
         // we need to set the AppDelegate as the user pool's delegate, which will get called when events occur

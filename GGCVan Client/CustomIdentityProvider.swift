@@ -18,7 +18,10 @@ class CustomIdentityProvider : AWSCognitoCredentialsProviderHelper, GIDSignInDel
         var avDelegate: AuthViewDelegate?
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         var loginDictionary = [String: String]()
-        private var currentAccessToken : String?
+        var currentAccessToken : String? 
+        //could just create own user, and store the token
+        //but, pool, comes with its own current user. Idenitty provider should have access to the pool
+        //yes, its initialized with a poolId
     
         //get contacts service for token
         override func token() -> AWSTask<NSString> {
@@ -31,16 +34,18 @@ class CustomIdentityProvider : AWSCognitoCredentialsProviderHelper, GIDSignInDel
             //pass username/password to backend or some sort of token to authenticate user, if successful,
             switch self.loginType {
             case "EMAIL":
-                return appDelegate.pool?.getUser().getDetails().continueOnSuccessWith(block: {(_ task: AWSTask<AWSCognitoIdentityUserGetDetailsResponse>) -> String?  in
+                return appDelegate.pool?.getUser().getDetails().continueOnSuccessWith(block: {(_ task: AWSTask<AWSCognitoIdentityUserGetDetailsResponse>) -> AWSTask<NSString>?  in
                     let response: AWSCognitoIdentityUserGetDetailsResponse? = task.result
                     print("response: \(response.debugDescription)")
                     for attribute in (response?.userAttributes)! {
                         //print the user attributes
                         print("Attribute: \(attribute.name ?? "none") Value: \(attribute.value ?? "none")")
                     }
+                    //could return self, get Identity id, get token
+                    //
                     //user logged in because success complete run, dismiss login view controller.
                     //could store user here.
-                    return "Back From CIP, could have store user info"
+                    return self.appDelegate.pool?.token()
                 }) as! AWSTask<NSString>
             case "GOOGLE":
                 return appDelegate.pool?.getUser().getSession().continueOnSuccessWith(block: {(task : AWSTask<AWSCognitoIdentityUserSession>) -> Any? in

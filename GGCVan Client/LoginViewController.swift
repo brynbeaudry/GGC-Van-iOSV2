@@ -137,7 +137,7 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
                 //dismiss view controller
                 //we are logged in
                 print("LOGGED IN")
-                self.mainDealwAuthSucess()
+                //self.mainDealwAuthSucess()
             }
         })
     }
@@ -157,14 +157,16 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
         LoginItems.sharedInstance.setEmail(email: tfEmail.text!)
         LoginItems.sharedInstance.setPassword(pass: tfPassword.text!)
         appDelegate.customIdentityProvider?.loginType = "EMAIL"
-        appDelegate.pool?.getUser().getDetails().continueOnSuccessWith(block: {(task : AWSTask<AWSCognitoIdentityUserGetDetailsResponse>) -> Void in
-            //appDelegate.customIdentityProvider?.token()
-                print(task.result ?? "no result!")
+        appDelegate.customIdentityProvider?.token().continueOnSuccessWith(block: {(task : AWSTask<NSString>) -> Void in
+            //appDelegate.customIdentityProvider?.token() This will print a string
+            print("Result Token :  \(task.result ?? "no result!")" )
+            self.appDelegate.customIdentityProvider?.currentAccessToken = task.result as? String
+            self.mainDealwAuthSucess()
         })
     }
     
     func mainDealwAuthSucess(){
-        DispatchQueue.main.async{
+        DispatchQueue.main.async {
             self.dismiss(animated: true, completion: {
                 self.avDelegate = self.appDelegate.window?.rootViewController as? AuthViewDelegate
                 self.avDelegate?.authViewDidClose()
