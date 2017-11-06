@@ -16,11 +16,33 @@ import Google
 #if !Bridge_header_h
     //#define Bridge_header_h
 #endif
+/*
+class GoogleOIDCProvider: NSObject, AWSIdentityProviderManager {
+    func logins() -> AWSTask<NSDictionary> {
+        let completion = AWSTaskCompletionSource<NSString>()
+        getToken(tokenCompletion: completion)
+        return completion.task.continueOnSuccessWith { (task) -> AWSTask<NSDictionary>? in
+            //login.provider.name is the name of the OIDC provider as setup in the Cognito console
+            return AWSTask(result:["accounts.google.com":task.result!])
+            } as! AWSTask<NSDictionary>
+    }
+    
+    func getToken(tokenCompletion: AWSTaskCompletionSource<NSString>) -> Void {
+        //get a valid oidc token from your server, or if you have one that hasn't expired cached, return it
+        
+        //TODO code to get token from your server
+        //...
+        
+        //if error getting token, set error appropriately
+        tokenCompletion.set(error:NSError(domain: "OIDC Login", code: -1 , userInfo: ["Unable to get OIDC token" : "Details about your error"]))
+        //else
+        tokenCompletion.set(result:"result from server id token")
+    }
+}
+ */
 
 
 class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentication, GIDSignInDelegate, GIDSignInUIDelegate {
-    
-    
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var avDelegate: AuthViewDelegate?
@@ -33,6 +55,7 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     //var passwordAuthenticationCompletion: AWSTaskCompletionSource = AWSTaskCompletionSource()
     
     @IBAction func googleSignInBtnPress(_ sender: UIButton) {
+        appDelegate.customIdentityProvider?.loginType = "GOOGLE"
         googleSignIn?.signIn()
     }
     
@@ -45,61 +68,49 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
         // ...
     }
     
+    /*
     func signInWillDispatch(signIn: GIDSignIn!, error: NSError!) {
-        myActivityIndicator.stopAnimating()
+        actIndicator?.stopAnimating()
     }
     
     // Present a view that prompts the user to sign in with Google
     func signIn(signIn: GIDSignIn!,
                 presentViewController viewController: UIViewController!) {
-        self.presentViewController(viewController, animated: true, completion: nil)
+        self.present(viewController, animated: true, completion: nil)
     }
     
     // Dismiss the sign in with Google view
     func signIn(signIn: GIDSignIn!,
                 dismissViewController viewController: UIViewController!) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
-    
-    
+ */
     
     //Google's Sign In
+    //Enter this function when google comes back
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if (error == nil) {
-            let userId: String = user.userID
-            // For client-side use only!
-            let idToken: String = user.authentication.idToken
-            // Safe to send to the server
-            let fullName: String = user.profile.name
-            let givenName: String = user.profile.givenName
-            let familyName: String = user.profile.familyName
-            let email: String = user.profile.email
-            let d : [String:String] = [
-                "userId":userId,
-                "idToken":idToken,
-                "fullName":fullName,
-                "givenName":givenName,
-                "familyName":familyName,
-                "email":email
-            ]
-            //appearantly signed iat this point
-            for (name, value) in d {
-                print("Back from google Name : \(name)   Value: \(value)")
-            }
-            
+        if error != nil {
             //possible put into static user object here
-            
-            let credentialsProvider = appDelegate.credentialsProvider
-            
+            //to later upload to the server
             //facebook's key is graph.facebook.com
-            //I'm wondering if this will actually set the logins array for aws
-            credentialsProvider?.identityProvider.logins().continueWith(block: {(task) -> AWSTask<NSDictionary>! in
+            //Store the token
+            appDelegate.customIdentityProvider?.loginType = "GOOGLE"
+            
+            appDelegate.customIdentityProvider?.logins().continueOnSuccessWith(block: {(task : AWSTask<NSDictionary>) -> Any? in
+                if((task.error) != nil){
+                    self.mainDealwAuthSucess()
+                    return nil
+                }else{
+                    return self.appDelegate.customIdentityProvider?.token()
+                }
+            })
+
+            /*
+            credentialsProvider.logins().continueOnSuccessWith(block: {() -> AWSTask<NSDictionary>! in
                 return AWSTask<NSDictionary>(result: NSDictionary(dictionary: ["accounts.google.com":idToken]))
             }).waitUntilFinished()
-            
-            
-            //credentialsProvider.identityProviderManager.logins = AWSCognitoIdentityGetOpenIdTokenInput.init(dictionary: [idToken], error: )
-            self.mainDealwAuthSucess()
+             */
+            //self.mainDealwAuthSucess()
         } else {
             print("\(error.localizedDescription)")
         }
@@ -108,8 +119,10 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     //for regular sign in
     func getDetails(_ authenticationInput: AWSCognitoIdentityPasswordAuthenticationInput, passwordAuthenticationCompletionSource: AWSTaskCompletionSource<AWSCognitoIdentityPasswordAuthenticationDetails>) {
         //using inputs from login UI create an AWSCognitoIdentityPasswordAuthenticationDetails object.
-        print("username: \(LoginItems.sharedInstance.email!), password: \(LoginItems.sharedInstance.password!)")
-        passwordAuthenticationCompletionSource.set(result: AWSCognitoIdentityPasswordAuthenticationDetails(username: LoginItems.sharedInstance.email!, password: LoginItems.sharedInstance.password!))
+        print("username: \(LoginItems.sharedInstance.email ?? "none entered"), password: \(LoginItems.sharedInstance.password ?? "none entered")")
+        if(LoginItems.sharedInstance.email != nil){
+            passwordAuthenticationCompletionSource.set(result: AWSCognitoIdentityPasswordAuthenticationDetails(username: LoginItems.sharedInstance.email!, password: LoginItems.sharedInstance.password!))
+        }
     }
     
     //For Email login
@@ -124,6 +137,7 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
                 //dismiss view controller
                 //we are logged in
                 print("LOGGED IN")
+                self.mainDealwAuthSucess()
             }
         })
     }
@@ -137,20 +151,15 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
         self.dismiss(animated: true, completion: nil)
     }
      */
-
+    
+    //for regular email
     @IBAction func loginPressed(_ sender: Any) {
         LoginItems.sharedInstance.setEmail(email: tfEmail.text!)
         LoginItems.sharedInstance.setPassword(pass: tfPassword.text!)
-        appDelegate.pool?.getUser().getDetails().continueOnSuccessWith(block: {(_ task: AWSTask<AWSCognitoIdentityUserGetDetailsResponse>) -> Any?  in
-            let response: AWSCognitoIdentityUserGetDetailsResponse? = task.result
-            print("response: \(response.debugDescription)")
-            for attribute in (response?.userAttributes)! {
-                //print the user attributes
-                print("Attribute: \(attribute.name ?? "none") Value: \(attribute.value ?? "none")")
-            }
-            //user logged in because success complete run, dismiss login view controller.
-            self.mainDealwAuthSucess()
-            return nil
+        appDelegate.customIdentityProvider?.loginType = "EMAIL"
+        appDelegate.pool?.getUser().getDetails().continueOnSuccessWith(block: {(task : AWSTask<AWSCognitoIdentityUserGetDetailsResponse>) -> Void in
+            //appDelegate.customIdentityProvider?.token()
+                print(task.result ?? "no result!")
         })
     }
     
@@ -187,3 +196,4 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
 
 
 }
+

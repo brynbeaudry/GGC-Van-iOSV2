@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AWSCognitoIdentityInterac
     var window: UIWindow?
     var pool: AWSCognitoIdentityUserPool?
     var credentialsProvider: AWSCognitoCredentialsProvider?
+    var customIdentityProvider: CustomIdentityProvider?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -140,9 +141,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AWSCognitoIdentityInterac
         // we need to pass it the clientId and clientSecret from the app and the poolId for the user pool
         let cognitoConfiguration:AWSCognitoIdentityUserPoolConfiguration = AWSCognitoIdentityUserPoolConfiguration(clientId: clientId, clientSecret: clientSecret, poolId: poolId)
         AWSCognitoIdentityUserPool.register(with: serviceConfiguration, userPoolConfiguration: cognitoConfiguration, forKey: poolId)
+        
         pool = AWSCognitoIdentityUserPool(forKey: poolId)
         print("Debug pool in AD \(pool?.debugDescription)")
-        credentialsProvider = AWSCognitoCredentialsProvider(regionType: region, identityPoolId: poolId, identityProviderManager: pool)
+        customIdentityProvider = CustomIdentityProvider(regionType: region, identityPoolId: poolId, useEnhancedFlow: false, identityProviderManager: nil)
+        credentialsProvider = AWSCognitoCredentialsProvider(regionType: region, identityPoolId: poolId, identityProviderManager: customIdentityProvider)
         AWSServiceManager.default().defaultServiceConfiguration = serviceConfiguration
         // we need to set the AppDelegate as the user pool's delegate, which will get called when events occur
         pool?.delegate = self
