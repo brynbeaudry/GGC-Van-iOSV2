@@ -20,7 +20,7 @@ import Google
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, AWSCognitoIdentityInteractiveAuthenticationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let path = Bundle.main.path(forResource: "Config", ofType: "plist")
     let clientIdGoogle : String! = nil
@@ -148,14 +148,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AWSCognitoIdentityInterac
         credentialsProvider = AWSCognitoCredentialsProvider(regionType: region, identityPoolId: poolId, identityProviderManager: customIdentityProvider)
         AWSServiceManager.default().defaultServiceConfiguration = serviceConfiguration
         // we need to set the AppDelegate as the user pool's delegate, which will get called when events occur
-        pool?.delegate = self
+        //pool?.delegate = self
     }
-    
+    /*
     func startPasswordAuthentication() -> AWSCognitoIdentityPasswordAuthentication {
         //implement code to instantiate and display login UI here
         //return something that implements the AWSCognitoIdentityPasswordAuthentication protocol
         return LoginViewController()
     }
+     */
 }
 
 

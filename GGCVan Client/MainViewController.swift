@@ -83,7 +83,8 @@ class MainViewController: UIViewController, AuthViewDelegate {
         //gets information from cognito about the current user
         //here, the current user has not been attached to the identity pool
         if (currentUser?.isSignedIn)! {
-            currentUser?.getDetails().continueOnSuccessWith(block: {(_ task: AWSTask<AWSCognitoIdentityUserGetDetailsResponse>) -> Any?  in
+            print(currentUser?.username)
+            appDelegate.pool?.getUser(currentUser!.username!).getDetails().continueOnSuccessWith(block: {(_ task: AWSTask<AWSCognitoIdentityUserGetDetailsResponse>) -> Any?  in
                 let response: AWSCognitoIdentityUserGetDetailsResponse? = task.result
                 print("response: \(response.debugDescription)")
                 for attribute in (response?.userAttributes)! {

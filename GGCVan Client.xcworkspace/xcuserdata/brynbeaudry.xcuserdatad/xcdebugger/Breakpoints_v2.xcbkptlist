@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/MainViewController.swift"
-            timestampString = "531737929.411871"
+            timestampString = "531744358.217881"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "20"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/LoginViewController.swift"
-            timestampString = "531737929.412772"
+            timestampString = "531744358.221105"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "69"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/LoginViewController.swift"
-            timestampString = "531737929.41443"
+            timestampString = "531744358.223326"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "59"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/LoginViewController.swift"
-            timestampString = "531737929.41588"
+            timestampString = "531744358.225033"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "69"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/LoginViewController.swift"
-            timestampString = "531737929.417538"
+            timestampString = "531744358.226728"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "148"
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/AppDelegate.swift"
-            timestampString = "531737929.419516"
+            timestampString = "531744358.228549"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "60"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/LoginViewController.swift"
-            timestampString = "531737929.41964"
+            timestampString = "531744358.228662"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "108"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/LoginViewController.swift"
-            timestampString = "531737929.421414"
+            timestampString = "531744358.230353"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "107"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/LoginViewController.swift"
-            timestampString = "531737929.422983"
+            timestampString = "531744358.231985"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "119"
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/LoginViewController.swift"
-            timestampString = "531737929.424551"
+            timestampString = "531744358.233711"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "112"
@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/LoginViewController.swift"
-            timestampString = "531737929.426436"
+            timestampString = "531744358.235595"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "107"
@@ -202,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/LoginViewController.swift"
-            timestampString = "531737929.428173"
+            timestampString = "531744358.237622"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "113"
@@ -218,7 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/LoginViewController.swift"
-            timestampString = "531737929.429873"
+            timestampString = "531744358.23939"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "112"
@@ -234,7 +234,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/LoginViewController.swift"
-            timestampString = "531737929.43141"
+            timestampString = "531744358.241057"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "112"
@@ -250,7 +250,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/LoginViewController.swift"
-            timestampString = "531737929.4329"
+            timestampString = "531744358.242667"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "157"
@@ -262,11 +262,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/LoginViewController.swift"
-            timestampString = "531737929.434508"
+            timestampString = "531744358.244473"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "163"
@@ -282,7 +282,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/LoginViewController.swift"
-            timestampString = "531737929.436172"
+            timestampString = "531744358.246353"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "130"
@@ -330,7 +330,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/LoginViewController.swift"
-            timestampString = "531737929.437611"
+            timestampString = "531744358.248222"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "139"
@@ -346,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/CustomIdentityProvider.swift"
-            timestampString = "531737929.439037"
+            timestampString = "531744358.249981"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "logins()"
             landmarkType = "7">
          </BreakpointContent>
@@ -358,15 +358,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/CustomIdentityProvider.swift"
-            timestampString = "531737929.439897"
+            timestampString = "531744358.250126"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "token()"
             landmarkType = "7">
          </BreakpointContent>
@@ -378,7 +378,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/LoginViewController.swift"
-            timestampString = "531737929.440629"
+            timestampString = "531744358.250262"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "158"
@@ -394,7 +394,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/MainViewController.swift"
-            timestampString = "531737929.442141"
+            timestampString = "531744358.251995"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
@@ -410,7 +410,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/LoginViewController.swift"
-            timestampString = "531737929.442838"
+            timestampString = "531744358.255155"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "174"
@@ -454,15 +454,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/CustomIdentityProvider.swift"
-            timestampString = "531737929.445229"
+            timestampString = "531744358.257158"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "token()"
             landmarkType = "7">
          </BreakpointContent>
@@ -474,7 +474,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/LoginViewController.swift"
-            timestampString = "531737929.449085"
+            timestampString = "531744358.257314"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "168"
@@ -490,7 +490,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/LoginViewController.swift"
-            timestampString = "531737929.451059"
+            timestampString = "531744358.258946"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "171"
@@ -502,11 +502,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/MainViewController.swift"
-            timestampString = "531737929.452684"
+            timestampString = "531744358.260868"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "82"
@@ -518,11 +518,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/MainViewController.swift"
-            timestampString = "531737929.453486"
+            timestampString = "531744358.263563"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "85"
@@ -531,14 +531,14 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "GGCVan_Client.MainViewController.printCurrentUser() -&gt; ()"
                   moduleName = "GGCVan Client"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/brynbeaudry/iOSProjects/GGCVanClient/GGCVan%20Client/MainViewController.swift"
-                  timestampString = "531737929.798045"
+                  timestampString = "531743516.122551"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "85"
@@ -546,14 +546,14 @@
                   offsetFromSymbolStart = "289">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "GGCVan_Client.MainViewController.printCurrentUser() -&gt; ()"
                   moduleName = "GGCVan Client"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/brynbeaudry/iOSProjects/GGCVanClient/GGCVan%20Client/MainViewController.swift"
-                  timestampString = "531737929.802591"
+                  timestampString = "531743516.126551"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "85"
@@ -570,7 +570,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/MainViewController.swift"
-            timestampString = "531737929.454224"
+            timestampString = "531744358.266066"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "23"
@@ -586,7 +586,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/MainViewController.swift"
-            timestampString = "531737929.454885"
+            timestampString = "531744358.268657"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
@@ -598,15 +598,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/MainViewController.swift"
-            timestampString = "531737929.45551"
+            timestampString = "531744358.271578"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "printCurrentUser()"
             landmarkType = "7">
          </BreakpointContent>
@@ -670,20 +670,20 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/CustomIdentityProvider.swift"
-            timestampString = "531737929.456169"
+            timestampString = "531744358.274121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "token()"
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "GGCVan_Client.CustomIdentityProvider.token() -&gt; __ObjC.AWSTask&lt;__ObjC.NSString&gt;"
@@ -698,7 +698,7 @@
                   offsetFromSymbolStart = "1228">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (__ObjC.AWSTask&lt;__ObjC.AWSCognitoIdentityUserGetDetailsResponse&gt;) -&gt; Swift.Optional&lt;__ObjC.AWSTask&lt;__ObjC.NSString&gt;&gt; in GGCVan_Client.CustomIdentityProvider.token() -&gt; __ObjC.AWSTask&lt;__ObjC.NSString&gt;"
@@ -722,7 +722,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/LoginViewController.swift"
-            timestampString = "531737929.457733"
+            timestampString = "531744358.274278"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "120"
@@ -738,7 +738,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/LoginViewController.swift"
-            timestampString = "531737929.459205"
+            timestampString = "531744358.275955"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "121"
@@ -754,7 +754,7 @@
                   moduleName = "GGCVan Client"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/brynbeaudry/iOSProjects/GGCVanClient/GGCVan%20Client/LoginViewController.swift"
-                  timestampString = "531737929.947943"
+                  timestampString = "531744359.470341"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "122"
@@ -769,7 +769,7 @@
                   moduleName = "GGCVan Client"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/brynbeaudry/iOSProjects/GGCVanClient/GGCVan%20Client/LoginViewController.swift"
-                  timestampString = "531737929.952238"
+                  timestampString = "531744359.481479"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "122"
@@ -784,7 +784,7 @@
                   moduleName = "GGCVan Client"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/brynbeaudry/iOSProjects/GGCVanClient/GGCVan%20Client/LoginViewController.swift"
-                  timestampString = "531737929.956115"
+                  timestampString = "531744359.498459"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "122"
@@ -806,12 +806,202 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "objc_msgSend"
-                  moduleName = "libobjc.A.dylib"
                   usesParentBreakpointCondition = "Yes"
-                  offsetFromSymbolStart = "151">
+                  offsetFromSymbolStart = "0">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GGCVan Client/LoginViewController.swift"
+            timestampString = "531744358.277472"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "loginPressed(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__ObjC.AWSTask&lt;__ObjC.NSString&gt;) -&gt; () in GGCVan_Client.LoginViewController.loginPressed(Any) -&gt; ()"
+                  moduleName = "GGCVan Client"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brynbeaudry/iOSProjects/GGCVanClient/GGCVan%20Client/LoginViewController.swift"
+                  timestampString = "531744359.579904"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "162"
+                  endingLineNumber = "162"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "implicit closure #1 : @autoclosure () throws -&gt; __ObjC.NSString in closure #1 (__ObjC.AWSTask&lt;__ObjC.NSString&gt;) -&gt; () in GGCVan_Client.LoginViewController.loginPressed(Any) -&gt; ()"
+                  moduleName = "GGCVan Client"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brynbeaudry/iOSProjects/GGCVanClient/GGCVan%20Client/LoginViewController.swift"
+                  timestampString = "531744359.596708"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "162"
+                  endingLineNumber = "162"
+                  offsetFromSymbolStart = "4">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GGCVan Client/CustomIdentityProvider.swift"
+            timestampString = "531744358.27911"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "token()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GGCVan Client/CustomIdentityProvider.swift"
+            timestampString = "531744358.279235"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "token()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GGCVan Client/CustomIdentityProvider.swift"
+            timestampString = "531744358.279335"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "token()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GGCVan Client/MainViewController.swift"
+            timestampString = "531744358.279453"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "printCurrentUser()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGCVan_Client.MainViewController.printCurrentUser() -&gt; ()"
+                  moduleName = "GGCVan Client"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brynbeaudry/iOSProjects/GGCVanClient/GGCVan%20Client/MainViewController.swift"
+                  timestampString = "531744359.694034"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "952">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__ObjC.AWSTask&lt;__ObjC.AWSCognitoIdentityUserGetDetailsResponse&gt;) -&gt; Swift.Optional&lt;Any&gt; in GGCVan_Client.MainViewController.printCurrentUser() -&gt; ()"
+                  moduleName = "GGCVan Client"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brynbeaudry/iOSProjects/GGCVanClient/GGCVan%20Client/MainViewController.swift"
+                  timestampString = "531744359.697972"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88"
+                  offsetFromSymbolStart = "23">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GGCVan Client/MainViewController.swift"
+            timestampString = "531744358.282006"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "printCurrentUser()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GGCVan Client/MainViewController.swift"
+            timestampString = "531744606.414287"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "printCurrentUser()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GGCVan Client/MainViewController.swift"
+            timestampString = "531744612.807301"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "printCurrentUser()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
