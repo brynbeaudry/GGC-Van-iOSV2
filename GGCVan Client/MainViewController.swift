@@ -21,9 +21,8 @@ class MainViewController: UIViewController, AuthViewDelegate {
         print("\(self.debugDescription) : \(#function)")
         print("In Main after Auth did close delegation")
         printCurrentUser()
-        //is authorized!
-        let cognitoId = appDelegate.credentialsProvider?.identityProvider.identityId
-        //print("Cognito Id : \(cognitoId)")
+        //is authorized
+   
     }
     
     @IBAction func backToMain(segue: UIStoryboardSegue) {
@@ -53,7 +52,7 @@ class MainViewController: UIViewController, AuthViewDelegate {
             }
         }else{
             //is authorized!
-            let cognitoId = credentialsProvider.identityProvider.identityId
+            //let cognitoId = credentialsProvider.identityProvider.identityId
         }
     }
     
@@ -82,7 +81,8 @@ class MainViewController: UIViewController, AuthViewDelegate {
         //omg, the user persists between app starts
         let currentUser = appDelegate.pool?.currentUser()
         //gets information from cognito about the current user
-        if appDelegate.pool?.currentUser()?.username != nil {
+        //here, the current user has not been attached to the identity pool
+        if (currentUser?.isSignedIn)! {
             currentUser?.getDetails().continueOnSuccessWith(block: {(_ task: AWSTask<AWSCognitoIdentityUserGetDetailsResponse>) -> Any?  in
                 let response: AWSCognitoIdentityUserGetDetailsResponse? = task.result
                 print("response: \(response.debugDescription)")
@@ -90,6 +90,11 @@ class MainViewController: UIViewController, AuthViewDelegate {
                     //print the user attributes
                     print("Attribute: \(attribute.name ?? "none") Value: \(attribute.value ?? "none")")
                 }
+                //could return self, get Identity id, get token
+                //
+                //user logged in because success complete run, dismiss login view controller.
+                //could store user here.
+                //return self.appDelegate.pool?.token()
                 return nil
             })
         }else{
@@ -102,16 +107,16 @@ class MainViewController: UIViewController, AuthViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
