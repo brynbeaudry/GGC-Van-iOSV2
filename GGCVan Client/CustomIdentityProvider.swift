@@ -13,7 +13,7 @@ import AWSCognitoIdentityProvider
 import GoogleSignIn
 import Google
 
-class CustomIdentityProvider : AWSCognitoCredentialsProviderHelper, GIDSignInDelegate {
+class CustomIdentityProvider : AWSCognitoCredentialsProviderHelper {
     public var loginType : String = "EMAIL"
     var avDelegate: AuthViewDelegate?
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -24,6 +24,7 @@ class CustomIdentityProvider : AWSCognitoCredentialsProviderHelper, GIDSignInDel
     //could just create own user, and store the token
     //but, pool, comes with its own current user. Idenitty provider should have access to the pool
     //yes, its initialized with a poolId
+
     
     //get contacts service for token
     override func token() -> AWSTask<NSString> {
@@ -48,6 +49,7 @@ class CustomIdentityProvider : AWSCognitoCredentialsProviderHelper, GIDSignInDel
                 }
             }) as! AWSTask<NSString>
                 case "GOOGLE":
+                    //I'm expecting get session to get the token from logins
                 return appDelegate.pool?.getUser().getSession().continueOnSuccessWith(block: {(task : AWSTask<AWSCognitoIdentityUserSession>) -> AWSTask<NSString>? in
                     if task.error != nil {
                         return AWSTask(result: "ERROR")
@@ -92,22 +94,14 @@ class CustomIdentityProvider : AWSCognitoCredentialsProviderHelper, GIDSignInDel
             return super.logins()
             
         }
-        
-        //did disconnect, maybe for legacy, probably for logout
-        func sign(_ signIn: GIDSignIn, didDisconnectWith user: GIDGoogleUser) throws {
-            // Perform any operations when the user disconnects from app here.
-            // ...
-        }
+    
         
         //Google's Sign In
         //Enter this function when google comes back
-        func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-            if error == nil {
-                //possible put into static user object here
-                //to later upload to the server
-                //facebook's key is graph.facebook.com
+        func printGoogleUser() {
+            if googleSignIn?.currentUser?.userID != nil {
                 //Store the token
-                self.loginType = "GOOGLE"
+                let user = googleSignIn!.currentUser!
                 let userId: String = user.userID
                 // For client-side use only!
                 let idToken: String = user.authentication.idToken
@@ -126,27 +120,14 @@ class CustomIdentityProvider : AWSCognitoCredentialsProviderHelper, GIDSignInDel
                 ]
                 //appearantly signed iat this point
                 for (name, value) in d {
-                    print("Back from google Name : \(name)   Value: \(value)")
+                    print("Google User Key : \(name)   Value: \(value)")
                 }
-                self.loginDictionary =  NSDictionary(dictionary: [AWSIdentityProviderGoogle:idToken]) as! [String : String]
-                self.currentAccessToken = idToken
-                //facebook's key is graph.facebook.com
+               
                 //possible put into static user object here
                 //to later upload to the server
-                //let googleLogins: NSDictionary = NSDictionary(dictionary: [AWSIdentityProviderGoogle:idToken])
-                //facebook's key is graph.facebook.com
                 
-                /*
-                 credentialsProvider.logins().continueOnSuccessWith(block: {() -> AWSTask<NSDictionary>! in
-                 return AWSTask<NSDictionary>(result: NSDictionary(dictionary: ["accounts.google.com":idToken]))
-                 }).waitUntilFinished()
-                 */
-                //self.mainDealwAuthSucess()
             } else {
-                print("\(error.localizedDescription.description)")
+                print("no google user")
             }
         }
-        
-        
-        
 }

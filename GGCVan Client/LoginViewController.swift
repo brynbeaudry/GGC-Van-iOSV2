@@ -41,7 +41,7 @@ class GoogleOIDCProvider: NSObject, AWSIdentityProviderManager {
 }
  */
 
-class LoginViewController: UIViewController, GIDSignInUIDelegate {
+class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var avDelegate: AuthViewDelegate?
@@ -49,7 +49,6 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
     var user : AWSCognitoIdentityUser!
     @IBOutlet var tfEmail: UITextField!
     @IBOutlet var tfPassword: UITextField!
-    //var passwordAuthenticationCompletion: AWSTaskCompletionSource = AWSTaskCompletionSource()
     
     @IBAction func googleSignInBtnPress(_ sender: UIButton) {
         appDelegate.customIdentityProvider?.loginType = "GOOGLE"
@@ -65,49 +64,22 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         // ...
     }
     
-    /*
-    func signInWillDispatch(signIn: GIDSignIn!, error: NSError!) {
-        actIndicator?.stopAnimating()
-    }
-    
-    // Present a view that prompts the user to sign in with Google
-    func signIn(signIn: GIDSignIn!,
-                presentViewController viewController: UIViewController!) {
-        self.present(viewController, animated: true, completion: nil)
-    }
-    
-    // Dismiss the sign in with Google view
-    func signIn(signIn: GIDSignIn!,
-                dismissViewController viewController: UIViewController!) {
-        self.dismiss(animated: true, completion: nil)
-    }
- */
-    
-    //Google's Sign In
     //Enter this function when google comes back
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if error != nil {
-            //possible put into static user object here
-            //to later upload to the server
-            //facebook's key is graph.facebook.com
-            //Store the token
-            appDelegate.customIdentityProvider?.loginType = "GOOGLE"
-            
-            appDelegate.customIdentityProvider?.logins().continueOnSuccessWith(block: {(task : AWSTask<NSDictionary>) -> Any? in
+        if error == nil {
+            appDelegate.customIdentityProvider?.currentAccessToken = user.authentication.
+            appDelegate.pool?.logins().continueOnSuccessWith(block: {(task : AWSTask<NSDictionary>) -> Void in
                 if((task.error) != nil){
-                    self.mainDealwAuthSucess()
-                    return nil
+                    self.appDelegate.customIdentityProvider?.token().continueWith(block: {(task : AWSTask<NSString>) -> Void in
+                        //appDelegate.customIdentityProvider?.token() This will print a string
+                        print("Result Token :  \(task.result ?? "no result!")" )
+                        self.appDelegate.customIdentityProvider?.currentAccessToken = task.result as String?
+                        self.mainDealwAuthSucess()
+                    })
                 }else{
-                    return self.appDelegate.customIdentityProvider?.token()
+                    print("Didn't get token from pool session")
                 }
             })
-
-            /*
-            credentialsProvider.logins().continueOnSuccessWith(block: {() -> AWSTask<NSDictionary>! in
-                return AWSTask<NSDictionary>(result: NSDictionary(dictionary: ["accounts.google.com":idToken]))
-            }).waitUntilFinished()
-             */
-            //self.mainDealwAuthSucess()
         } else {
             print("\(error.localizedDescription)")
         }
@@ -160,7 +132,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         googleSignIn?.uiDelegate = self
         googleSignIn?.scopes = ["profile"]
         //pool = appDelegate.pool
-        googleSignIn?.delegate = appDelegate.customIdentityProvider
+        googleSignIn?.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
