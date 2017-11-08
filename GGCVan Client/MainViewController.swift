@@ -95,7 +95,6 @@ class MainViewController: UIViewController, AuthViewDelegate {
                 //
                 //user logged in because success complete run, dismiss login view controller.
                 //could store user here.
-                //return self.appDelegate.pool?.token()
                 return nil
             })
         }else{

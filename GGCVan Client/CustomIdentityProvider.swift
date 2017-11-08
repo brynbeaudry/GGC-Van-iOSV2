@@ -36,7 +36,7 @@ class CustomIdentityProvider : AWSCognitoCredentialsProviderHelper, GIDSignInDel
         switch self.loginType {
         //getUser, gets blank user.
         case "EMAIL":
-            return appDelegate.pool?.getUser().getSession(LoginItems.sharedInstance.email!, password: LoginItems.sharedInstance.password!, validationData: nil).continueOnSuccessWith(block: {(_ task: AWSTask<AWSCognitoIdentityUserSession>) -> AWSTask<NSString>?  in
+            return appDelegate.pool?.getUser().getSession(LoginItems.sharedInstance.email ?? " ", password: LoginItems.sharedInstance.password ?? " ", validationData: nil).continueOnSuccessWith(block: {(_ task: AWSTask<AWSCognitoIdentityUserSession>) -> AWSTask<NSString>?  in
                 if task.error != nil {
                     return AWSTask(result: "ERROR")
                 }else{

@@ -49,8 +49,6 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
     var user : AWSCognitoIdentityUser!
     @IBOutlet var tfEmail: UITextField!
     @IBOutlet var tfPassword: UITextField!
-    public var email : String?
-    public var password : String = ""
     //var passwordAuthenticationCompletion: AWSTaskCompletionSource = AWSTaskCompletionSource()
     
     @IBAction func googleSignInBtnPress(_ sender: UIButton) {
@@ -158,7 +156,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         actIndicator.stopAnimating()
         
         //LoginCtrl asks google object to remind it to do something
-        googleSignIn?.delegate = self
+        //googleSignIn?.delegate = self
         googleSignIn?.uiDelegate = self
         googleSignIn?.scopes = ["profile"]
         //pool = appDelegate.pool
