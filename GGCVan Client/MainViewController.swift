@@ -10,6 +10,7 @@ import UIKit
 import AWSCore
 import AWSCognito
 import AWSCognitoIdentityProvider
+import GoogleSignIn
 
 class MainViewController: UIViewController, AuthViewDelegate {
     
@@ -36,6 +37,9 @@ class MainViewController: UIViewController, AuthViewDelegate {
         //without this, it looks like the pool somehow caches the last know user.
         //you should remove this in production
         appDelegate.pool?.clearAll()
+        if GIDSignIn.sharedInstance().hasAuthInKeychain() {
+            GIDSignIn.sharedInstance().disconnect()
+        }
         print("after clear")
         printCurrentUser()
         

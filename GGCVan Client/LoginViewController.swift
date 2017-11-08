@@ -160,6 +160,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         googleSignIn?.uiDelegate = self
         googleSignIn?.scopes = ["profile"]
         //pool = appDelegate.pool
+        googleSignIn?.delegate = appDelegate.customIdentityProvider
     }
 
     override func didReceiveMemoryWarning() {

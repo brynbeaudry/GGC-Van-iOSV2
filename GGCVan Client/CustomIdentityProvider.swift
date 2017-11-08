@@ -17,6 +17,7 @@ class CustomIdentityProvider : AWSCognitoCredentialsProviderHelper, GIDSignInDel
     public var loginType : String = "EMAIL"
     var avDelegate: AuthViewDelegate?
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let googleSignIn = GIDSignIn.sharedInstance()
     var loginDictionary = [String: String]()
     var currentAWSUser : AWSCognitoIdentityUser?
     var currentAccessToken : String?
@@ -101,7 +102,7 @@ class CustomIdentityProvider : AWSCognitoCredentialsProviderHelper, GIDSignInDel
         //Google's Sign In
         //Enter this function when google comes back
         func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-            if error != nil {
+            if error == nil {
                 //possible put into static user object here
                 //to later upload to the server
                 //facebook's key is graph.facebook.com
@@ -132,7 +133,7 @@ class CustomIdentityProvider : AWSCognitoCredentialsProviderHelper, GIDSignInDel
                 //facebook's key is graph.facebook.com
                 //possible put into static user object here
                 //to later upload to the server
-                let googleLogins: NSDictionary = NSDictionary(dictionary: [AWSIdentityProviderGoogle:idToken])
+                //let googleLogins: NSDictionary = NSDictionary(dictionary: [AWSIdentityProviderGoogle:idToken])
                 //facebook's key is graph.facebook.com
                 
                 /*
@@ -142,7 +143,7 @@ class CustomIdentityProvider : AWSCognitoCredentialsProviderHelper, GIDSignInDel
                  */
                 //self.mainDealwAuthSucess()
             } else {
-                print("\(error.localizedDescription)")
+                print("\(error.localizedDescription.description)")
             }
         }
         
