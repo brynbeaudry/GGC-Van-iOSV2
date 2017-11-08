@@ -41,8 +41,7 @@ class GoogleOIDCProvider: NSObject, AWSIdentityProviderManager {
 }
  */
 
-
-class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentication, GIDSignInDelegate, GIDSignInUIDelegate {
+class LoginViewController: UIViewController, GIDSignInUIDelegate {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var avDelegate: AuthViewDelegate?
@@ -114,32 +113,6 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
         } else {
             print("\(error.localizedDescription)")
         }
-    }
-    
-    //for regular sign in
-    func getDetails(_ authenticationInput: AWSCognitoIdentityPasswordAuthenticationInput, passwordAuthenticationCompletionSource: AWSTaskCompletionSource<AWSCognitoIdentityPasswordAuthenticationDetails>) {
-        //using inputs from login UI create an AWSCognitoIdentityPasswordAuthenticationDetails object.
-        print("username: \(LoginItems.sharedInstance.email ?? "none entered"), password: \(LoginItems.sharedInstance.password ?? "none entered")")
-        if(LoginItems.sharedInstance.email != nil){
-            passwordAuthenticationCompletionSource.set(result: AWSCognitoIdentityPasswordAuthenticationDetails(username: LoginItems.sharedInstance.email!, password: LoginItems.sharedInstance.password!))
-        }
-    }
-    
-    //For Email login
-    func didCompleteStepWithError(_ error: Error?) {
-        DispatchQueue.main.async(execute: {() -> Void in
-            //present error to end user
-            if error != nil {
-                let alert = UIAlertController.init(title: (error?.localizedDescription)!, message: (error?.localizedDescription)!, preferredStyle: .alert)
-                self.present(alert, animated: true)
-            }
-            else {
-                //dismiss view controller
-                //we are logged in
-                print("LOGGED IN")
-                //self.mainDealwAuthSucess()
-            }
-        })
     }
 
     @IBAction func navigateToSignUp(_ sender: Any) {
