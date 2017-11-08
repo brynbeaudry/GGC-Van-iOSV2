@@ -39,7 +39,7 @@ class CustomIdentityProvider : AWSCognitoCredentialsProviderHelper {
         //getUser, gets blank user.
         case "EMAIL":
             return appDelegate.pool?.getUser().getSession(LoginItems.sharedInstance.email ?? " ", password: LoginItems.sharedInstance.password ?? " ", validationData: nil).continueOnSuccessWith(block: {(_ task: AWSTask<AWSCognitoIdentityUserSession>) -> AWSTask<NSString>?  in
-                if task.error != nil {
+                if task.error == nil {
                     return AWSTask(result: "ERROR")
                 }else{
                     let response: AWSCognitoIdentityUserSession? = task.result

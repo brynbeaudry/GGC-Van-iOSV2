@@ -37,7 +37,7 @@ class MainViewController: UIViewController, AuthViewDelegate {
         //without this, it looks like the pool somehow caches the last know user.
         //you should remove this in production
         appDelegate.pool?.clearAll()
-        if GIDSignIn.sharedInstance().hasAuthInKeychain() {
+        if GIDSignIn.sharedInstance().currentUser != nil {
             GIDSignIn.sharedInstance().disconnect()
         }
         print("after clear")

@@ -66,19 +66,43 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     
     //Enter this function when google comes back
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        print("\(self.debugDescription) : \(#function)")
+        print("In Signin after Google")
         if error == nil {
-            appDelegate.customIdentityProvider?.currentAccessToken = user.authentication.
-            appDelegate.pool?.logins().continueOnSuccessWith(block: {(task : AWSTask<NSDictionary>) -> Void in
-                if((task.error) != nil){
-                    self.appDelegate.customIdentityProvider?.token().continueWith(block: {(task : AWSTask<NSString>) -> Void in
-                        //appDelegate.customIdentityProvider?.token() This will print a string
-                        print("Result Token :  \(task.result ?? "no result!")" )
-                        self.appDelegate.customIdentityProvider?.currentAccessToken = task.result as String?
+            
+            
+            /*   REGISTERATION WITH USERNAME AND PASSWORD WORKS TO SIGN IN USER  */
+            /*   LOGIN WITH USERNAME AND PASSWORD WORKS TO SIGN IN USER  */
+            /*   IT GETS
+            
+            
+            //No errors after google signin
+            //identity provider get the google token
+            
+            
+            //here is our google user.
+            
+            
+            //this is the pool object
+            
+            
+            appDelegate.customIdentityProvider?.currentAccessToken = user.authentication.accessToken!
+            
+            
+            
+            
+            
+            print("AccessToken in google \(String(describing: signIn.currentUser?.authentication.accessToken)) Decription \(signIn.currentUser.authentication.description ?? "" )")
+            appDelegate.pool?.currentUser()?.getSession().continueOnSuccessWith(block: {(task:AWSTask<AWSCognitoIdentityUserSession>) -> Any? in
+                if((task.error) == nil){
+                    let response: AWSCognitoIdentityUserSession? = task.result
+                    print("Access Token : from pool \(String(describing: response!.accessToken)) \n Id Token from pool: \(String(describing: response!.idToken)) \n Refresh Token from pool : \n \(String(describing: response!.refreshToken))")
+                        self.appDelegate.credentialsProvider?.getIdentityId()
                         self.mainDealwAuthSucess()
-                    })
                 }else{
                     print("Didn't get token from pool session")
                 }
+                return nil
             })
         } else {
             print("\(error.localizedDescription)")
