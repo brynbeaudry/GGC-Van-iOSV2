@@ -21,7 +21,15 @@ class MainViewController: UIViewController, AuthViewDelegate {
     func authViewDidClose() {
         print("\(self.debugDescription) : \(#function)")
         print("In Main after Auth did close delegation")
-        printCurrentUser()
+        if(appDelegate.customIdentityProvider?.loginType=="EMAIL")
+        {
+            printCurrentUser()
+        }
+        if(appDelegate.customIdentityProvider?.loginType=="GOOGLE")
+        {
+            appDelegate.customIdentityProvider?.printGoogleUser()
+        }
+        
         //is authorized
    
     }

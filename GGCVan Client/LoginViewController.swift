@@ -16,30 +16,7 @@ import Google
 #if !Bridge_header_h
     //#define Bridge_header_h
 #endif
-/*
-class GoogleOIDCProvider: NSObject, AWSIdentityProviderManager {
-    func logins() -> AWSTask<NSDictionary> {
-        let completion = AWSTaskCompletionSource<NSString>()
-        getToken(tokenCompletion: completion)
-        return completion.task.continueOnSuccessWith { (task) -> AWSTask<NSDictionary>? in
-            //login.provider.name is the name of the OIDC provider as setup in the Cognito console
-            return AWSTask(result:["accounts.google.com":task.result!])
-            } as! AWSTask<NSDictionary>
-    }
-    
-    func getToken(tokenCompletion: AWSTaskCompletionSource<NSString>) -> Void {
-        //get a valid oidc token from your server, or if you have one that hasn't expired cached, return it
-        
-        //TODO code to get token from your server
-        //...
-        
-        //if error getting token, set error appropriately
-        tokenCompletion.set(error:NSError(domain: "OIDC Login", code: -1 , userInfo: ["Unable to get OIDC token" : "Details about your error"]))
-        //else
-        tokenCompletion.set(result:"result from server id token")
-    }
-}
- */
+
 
 class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
@@ -73,7 +50,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
             
             /*   REGISTERATION WITH USERNAME AND PASSWORD WORKS TO SIGN IN USER  */
             /*   LOGIN WITH USERNAME AND PASSWORD WORKS TO SIGN IN USER  */
-            /*   IT GETS
+            /*   IT GETS */
             
             
             //No errors after google signin
@@ -85,15 +62,10 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
             
             //this is the pool object
             
-            
             appDelegate.customIdentityProvider?.currentAccessToken = user.authentication.accessToken!
             
-            
-            
-            
-            
-            print("AccessToken in google \(String(describing: signIn.currentUser?.authentication.accessToken)) Decription \(signIn.currentUser.authentication.description ?? "" )")
-            appDelegate.pool?.currentUser()?.getSession().continueOnSuccessWith(block: {(task:AWSTask<AWSCognitoIdentityUserSession>) -> Any? in
+            print("AccessToken in google \(String(describing: signIn.currentUser?.authentication.accessToken)) Decription \(signIn.currentUser.authentication.description )")
+            appDelegate.pool?.getUser(signIn.currentUser.userID).getSession().continueWith(block: {(task:AWSTask<AWSCognitoIdentityUserSession>) -> Any? in
                 if((task.error) == nil){
                     let response: AWSCognitoIdentityUserSession? = task.result
                     print("Access Token : from pool \(String(describing: response!.accessToken)) \n Id Token from pool: \(String(describing: response!.idToken)) \n Refresh Token from pool : \n \(String(describing: response!.refreshToken))")
@@ -104,6 +76,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
                 }
                 return nil
             })
+            self.mainDealwAuthSucess()
         } else {
             print("\(error.localizedDescription)")
         }
