@@ -32,8 +32,6 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         googleSignIn?.signIn()
     }
     
-    @IBOutlet weak var actIndicator: UIActivityIndicatorView!
-    
     
     //did disconnect, maybe for legacy, probably for logout
     func sign(_ signIn: GIDSignIn, didDisconnectWith user: GIDGoogleUser) throws {
@@ -122,7 +120,6 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        actIndicator.stopAnimating()
         
         //LoginCtrl asks google object to remind it to do something
         //googleSignIn?.delegate = self
