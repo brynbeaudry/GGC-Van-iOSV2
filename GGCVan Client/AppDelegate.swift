@@ -34,12 +34,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var credentialsProvider: AWSCognitoCredentialsProvider?
     var customIdentityProvider: CustomIdentityProvider?
     
-    public func application(_ application: UIApplication, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         // Override point for customization after application launch.
         // set up logging for AWS and Cognito
         AWSDDLog.sharedInstance.logLevel = .verbose
         AWSDDLog.add(AWSDDTTYLogger.sharedInstance)
+        //FBSDKLoginButton.self
         
         // set up Cognito config
         let path = Bundle.main.path(forResource: "CognitoConfig", ofType: "plist")
@@ -60,9 +61,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //  Converted to Swift 4 with Swiftify v1.0.6527 - https://objectivec2swift.com/
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        let handled: Bool = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[.sourceApplication] as? String, annotation: options[.annotation])
+        let gDidHandle =  GIDSignIn.sharedInstance().handle(url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        let fDidHandle = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[.sourceApplication] as? String, annotation: options[.annotation])
+        return gDidHandle || fDidHandle
         // Add any custom logic here.
-        return handled
     }
     
     //appearantly only required for older versions?

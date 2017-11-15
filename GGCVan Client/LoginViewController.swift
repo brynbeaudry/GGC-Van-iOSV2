@@ -31,13 +31,15 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     @IBOutlet var tfPassword: UITextField!
     var login = FBSDKLoginManager()
     var result: FBSDKLoginManagerLoginResult?
-    var NSError = FBSDKLoginManagerLoginResult()
-    @IBOutlet weak FBSDKLoginButton FbButton: UIButton!
+   // var NSError = FBSDKLoginManagerLoginResult()
+    
+    @IBOutlet weak var FbButton: FBSDKLoginButton!
     
     @IBAction func FbSignInBtnPress(_ sender: Any) {
-        loginButton.readPermissions = ["public_profile", "email", "user_friends"]
-        if (FBSDKAccessToken.currentAccessToken) {
+        FbButton.readPermissions = ["public_profile", "email", "user_friends"]
+        if let fba = FBSDKAccessToken.current() {
             // User is logged in, do work such as go to next view controller.
+            print("\(fba.appID) \(fba.tokenString) \(fba.userID) \(fba.tokenString) \(fba.permissions) \(fba.appID)")
         }
     }
     

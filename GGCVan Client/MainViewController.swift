@@ -49,7 +49,7 @@ class MainViewController: UIViewController, AuthViewDelegate {
             GIDSignIn.sharedInstance().disconnect()
         }
         print("after clear")
-        printCurrentUser()
+        //printCurrentUser()
         
         
         // Do any additional setup after loading the view.
