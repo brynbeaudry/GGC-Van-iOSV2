@@ -6,15 +6,12 @@ target 'GGCVan Client' do
   use_frameworks!
 
   # Pods for GGCVan Client
-  pod 'AWSAutoScaling'
-    pod 'AWSCloudWatch'
     pod 'AWSCognito'
     pod 'AWSCognitoIdentityProvider'
-    pod 'AWSEC2'
-    pod 'AWSLambda'
     pod 'AFNetworking', '~> 2.5'
     pod 'GoogleSignIn', '~> 4.1'
     pod 'Google'
+    pod 'PromiseKit/Alamofire', '~> 4.0'
 
   target 'GGCVan ClientTests' do
     inherit! :search_paths
