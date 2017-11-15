@@ -36,12 +36,32 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     @IBOutlet weak var FbButton: FBSDKLoginButton!
     
     @IBAction func FbSignInBtnPress(_ sender: Any) {
-        FbButton.readPermissions = ["public_profile", "email", "user_friends"]
-        if let fba = FBSDKAccessToken.current() {
-            // User is logged in, do work such as go to next view controller.
-            print("\(fba.appID) \(fba.tokenString) \(fba.userID) \(fba.tokenString) \(fba.permissions) \(fba.appID)")
+        let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
+        fbLoginManager .logIn(withReadPermissions: ["public_profile", "email"], from: self, handler: { (result, error) -> Void in
+            if (error == nil) {
+                let fbloginresult : FBSDKLoginManagerLoginResult = result!
+                if(fbloginresult.grantedPermissions.contains("email"))
+                {
+                    self.getFBUserData()
+                    fbLoginManager.logOut()
+                }
+            }
+        })
+    }
+    
+    func getFBUserData(){
+        if((FBSDKAccessToken.current()) != nil){
+            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).start(completionHandler: { (connection, result, error) -> Void in
+                if (error == nil){
+                    if let result = result as? [String:Any] {
+                        print(result)
+                    }
+                }
+            })
         }
     }
+    
+    
     
     @IBAction func googleSignInBtnPress(_ sender: UIButton) {
         appDelegate.customIdentityProvider?.loginType = "GOOGLE"

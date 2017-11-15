@@ -55,8 +55,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //assert(configureError == nil, "Error configuring Google services: \(configureError)")
         GIDSignIn.sharedInstance().clientID = String("986909663782-kn9h7jqgmnncggq00elr2d29j391i25c.apps.googleusercontent.com")
         
-        
-        return true
+        FBSDKProfile.enableUpdates(onAccessTokenChange: true)
+        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
     //  Converted to Swift 4 with Swiftify v1.0.6527 - https://objectivec2swift.com/
@@ -162,6 +162,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AWSServiceManager.default().defaultServiceConfiguration = serviceConfiguration
         // we need to set the AppDelegate as the user pool's delegate, which will get called when events occur
         //pool?.delegate = self
+    }
+
+    func applicationDidBecomeActive(application: UIApplication) {
+        FBSDKAppEvents.activateApp()
     }
     /*
     func startPasswordAuthentication() -> AWSCognitoIdentityPasswordAuthentication {
