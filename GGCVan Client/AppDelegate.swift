@@ -13,6 +13,10 @@ import AWSCognito
 import AWSCognitoIdentityProvider
 import GoogleSignIn
 import Google
+import FBSDKCoreKit
+import FBSDKLoginKit;
+import Alamofire;
+
 
 #if !Bridge_header_h
     //#define Bridge_header_h
@@ -29,9 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var pool: AWSCognitoIdentityUserPool?
     var credentialsProvider: AWSCognitoCredentialsProvider?
     var customIdentityProvider: CustomIdentityProvider?
+    
+    public func application(_ application: UIApplication, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
 
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         // set up logging for AWS and Cognito
         AWSDDLog.sharedInstance.logLevel = .verbose
@@ -52,6 +56,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         return true
+    }
+    
+    //  Converted to Swift 4 with Swiftify v1.0.6527 - https://objectivec2swift.com/
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        let handled: Bool = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[.sourceApplication] as? String, annotation: options[.annotation])
+        // Add any custom logic here.
+        return handled
     }
     
     //appearantly only required for older versions?

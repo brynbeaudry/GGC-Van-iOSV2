@@ -12,6 +12,8 @@ target 'GGCVan Client' do
     pod 'GoogleSignIn', '~> 4.1'
     pod 'Google'
     pod 'PromiseKit/Alamofire', '~> 4.0'
+    pod 'FBSDKCoreKit'
+    pod 'FBSDKLoginKit'
 
   target 'GGCVan ClientTests' do
     inherit! :search_paths

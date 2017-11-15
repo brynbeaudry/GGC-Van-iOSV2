@@ -10,6 +10,7 @@ import UIKit
 import AWSCore
 import AWSCognito
 import AWSCognitoIdentityProvider
+import Alamofire;
 
 class SignUpViewController: UIViewController {
     var avDelegate: AuthViewDelegate?

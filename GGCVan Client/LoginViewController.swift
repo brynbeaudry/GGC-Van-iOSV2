@@ -12,6 +12,9 @@ import AWSCognito
 import AWSCognitoIdentityProvider
 import GoogleSignIn
 import Google
+import FBSDKCoreKit
+import FBSDKLoginKit;
+import Alamofire;
 
 #if !Bridge_header_h
     //#define Bridge_header_h
@@ -26,6 +29,17 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     var user : AWSCognitoIdentityUser!
     @IBOutlet var tfEmail: UITextField!
     @IBOutlet var tfPassword: UITextField!
+    var login = FBSDKLoginManager()
+    var result: FBSDKLoginManagerLoginResult?
+    var NSError = FBSDKLoginManagerLoginResult()
+    @IBOutlet weak FBSDKLoginButton FbButton: UIButton!
+    
+    @IBAction func FbSignInBtnPress(_ sender: Any) {
+        loginButton.readPermissions = ["public_profile", "email", "user_friends"]
+        if (FBSDKAccessToken.currentAccessToken) {
+            // User is logged in, do work such as go to next view controller.
+        }
+    }
     
     @IBAction func googleSignInBtnPress(_ sender: UIButton) {
         appDelegate.customIdentityProvider?.loginType = "GOOGLE"
@@ -62,7 +76,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
             
             appDelegate.customIdentityProvider?.currentAccessToken = user.authentication.accessToken!
             
-            print("AccessToken in google \(String(describing: signIn.currentUser?.authentication.accessToken)) Decription \(signIn.currentUser.authentication.description )")
+            print("AccessToken in google \(String(describing: signIn.currentUser?.authentication.accessToken)) \n id Token \(String(describing: signIn.currentUser?.authentication.idToken)) \n client Id \(String(describing: signIn.currentUser?.authentication.clientID)) Decription \(signIn.currentUser.authentication.description )")
             appDelegate.pool?.getUser(signIn.currentUser.userID).getSession().continueWith(block: {(task:AWSTask<AWSCognitoIdentityUserSession>) -> Any? in
                 if((task.error) == nil){
                     let response: AWSCognitoIdentityUserSession? = task.result

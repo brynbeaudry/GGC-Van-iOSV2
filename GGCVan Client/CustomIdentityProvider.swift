@@ -12,6 +12,9 @@ import AWSCognito
 import AWSCognitoIdentityProvider
 import GoogleSignIn
 import Google
+import FBSDKCoreKit
+import FBSDKLoginKit;
+import Alamofire;
 
 class CustomIdentityProvider : AWSCognitoCredentialsProviderHelper {
     public var loginType : String = "EMAIL"
