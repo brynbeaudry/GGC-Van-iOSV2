@@ -16,87 +16,42 @@ import FBSDKCoreKit
 import FBSDKLoginKit;
 import Alamofire;
 
-class CustomIdentityProvider : AWSCognitoCredentialsProviderHelper {
-    public var loginType : String = "EMAIL"
+public enum LoginType {
+    case EMAIL, GOOGLE, FACEBOOK, NONE
+}
+
+class CustomIdentityProvider : NSObject {
+    public var loginType : LoginType = LoginType.EMAIL
+    public var isAuthenticated : Bool = false;
     var avDelegate: AuthViewDelegate?
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let googleSignIn = GIDSignIn.sharedInstance()
-    var loginDictionary = [String: String]()
+    let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
+    var loginDictionary = [LoginType : String]()
     var currentAWSUser : AWSCognitoIdentityUser?
     var currentAccessToken : String?
-    //could just create own user, and store the token
-    //but, pool, comes with its own current user. Idenitty provider should have access to the pool
-    //yes, its initialized with a poolId
-
+    var currentIdentityId : String?
+    var currentAuthorizationToken : String?
+    
+    private override init(){}
+    static let sharedInstance = CustomIdentityProvider()
     
     //get contacts service for token
-    override func token() -> AWSTask<NSString> {
-        //Write code to call your backend:
-        /*
-         return isCurrentUser.getSession().continue(withSuccessBlock: {(_ task: AWSTask<AWSCognitoIdentityUserSession>) -> Any in
-         return AWSTask(result: task.result.idToken.tokenString)
-         })
-         */
-        //pass username/password to backend or some sort of token to authenticate user, if successful,
+    //tokenForTheServer
+    func token() -> [LoginType : String] {
+        
         switch self.loginType {
         //getUser, gets blank user.
-        case "EMAIL":
-            return appDelegate.pool?.getUser().getSession(LoginItems.sharedInstance.email ?? " ", password: LoginItems.sharedInstance.password ?? " ", validationData: nil).continueOnSuccessWith(block: {(_ task: AWSTask<AWSCognitoIdentityUserSession>) -> AWSTask<NSString>?  in
-                if task.error == nil {
-                    return AWSTask(result: "ERROR")
-                }else{
-                    let response: AWSCognitoIdentityUserSession? = task.result
-                    print("Access Token : \(response!.accessToken) \n Id Token : \(response!.idToken) \n Refresh Token : \n \(response!.refreshToken)")
-                    self.identityId = response!.idToken?.tokenString
-                    return AWSTask<NSString>(result: response!.accessToken!.tokenString as NSString)
-                }
-            }) as! AWSTask<NSString>
-                case "GOOGLE":
-                    //I'm expecting get session to get the token from logins
-                return appDelegate.pool?.getUser().getSession().continueOnSuccessWith(block: {(task : AWSTask<AWSCognitoIdentityUserSession>) -> AWSTask<NSString>? in
-                    if task.error != nil {
-                        return AWSTask(result: "ERROR")
-                    }else{
-                        let response: AWSCognitoIdentityUserSession? = task.result
-                        print("Access Token : \(response!.accessToken) \n Id Token : \(response!.idToken) \n Refresh Token : \n \(response!.refreshToken)")
-                        self.identityId = response!.idToken?.tokenString
-                        return AWSTask<NSString>(result: response!.accessToken!.tokenString as NSString)
-                    }
-                }) as! AWSTask<NSString>
-                    case "FACEBOOK":
-                    print("You are choosing Facebook")
-                    return super.token()
-                    default:
-                    print("something ain't right")
-                    return super.token()
+            case LoginType.EMAIL:
+                return [LoginType.EMAIL: currentAccessToken!]
+            case LoginType.GOOGLE:
+                return [LoginType.GOOGLE: currentAccessToken!]
+            case LoginType.FACEBOOK:
+                return [LoginType.FACEBOOK: currentAccessToken!]
+            default:
+                return [LoginType.NONE: ""]
         }
     }
-        
-        //get the token the first time and set logins information, calls token probably
-        //pass in the token here
-        override func logins () -> AWSTask<NSDictionary> {
-            switch self.loginType {
-            case "EMAIL":
-                if let token = self.currentAccessToken {
-                    return AWSTask(result:[AWSIdentityProviderAmazonCognitoIdentity:token])
-                }
-                return AWSTask(error:NSError(domain: "Facebook Login", code: -1 , userInfo: ["Facebook" : "No current Facebook access token"]))
-            case "GOOGLE":
-                if let token = self.currentAccessToken {
-                    return AWSTask(result: [AWSIdentityProviderGoogle:token])
-                }
-                return AWSTask(error:NSError(domain: "Facebook Login", code: -1 , userInfo: ["Facebook" : "No current Facebook access token"]))
-            case "FACEBOOK":
-                if let token = self.currentAccessToken {
-                    return AWSTask(result: [AWSIdentityProviderFacebook:token])
-                }
-                return AWSTask(error:NSError(domain: "Facebook Login", code: -1 , userInfo: ["Google" : "No current Google access token"]))
-            default:
-                print("You reachdefault")
-            }
-            return super.logins()
-            
-        }
     
         
         //Google's Sign In

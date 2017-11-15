@@ -44,23 +44,11 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
                 {
                     self.appDelegate.customIdentityProvider?.loginType = "FACEBOOK"
                     self.mainDealwAuthSucess()
-                    fbLoginManager.logOut()
                 }
             }
         })
     }
-    
-    func getFBUserData(){
-        if((FBSDKAccessToken.current()) != nil){
-            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).start(completionHandler: { (connection, result, error) -> Void in
-                if (error == nil){
-                    if let result = result as? [String:Any] {
-                        print(result)
-                    }
-                }
-            })
-        }
-    }
+
     
     
     

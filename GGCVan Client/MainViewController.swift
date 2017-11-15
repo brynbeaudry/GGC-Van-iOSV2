@@ -11,6 +11,10 @@ import AWSCore
 import AWSCognito
 import AWSCognitoIdentityProvider
 import GoogleSignIn
+import FBSDKCoreKit
+import FBSDKLoginKit;
+import Alamofire;
+
 
 class MainViewController: UIViewController, AuthViewDelegate {
     
@@ -31,7 +35,8 @@ class MainViewController: UIViewController, AuthViewDelegate {
         }
         if(appDelegate.customIdentityProvider?.loginType=="FACEBOOK")
         {
-            appDelegate.customIdentityProvider?.printGoogleUser()
+            getFBUserData()
+            fbLoginManager.logOut()
         }
         
         
