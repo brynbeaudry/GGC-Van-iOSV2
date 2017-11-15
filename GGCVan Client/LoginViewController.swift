@@ -36,13 +36,14 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     @IBOutlet weak var FbButton: FBSDKLoginButton!
     
     @IBAction func FbSignInBtnPress(_ sender: Any) {
+        self.appDelegate.customIdentityProvider.loginType = LoginType.FACEBOOK
         let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
         fbLoginManager .logIn(withReadPermissions: ["public_profile", "email"], from: self, handler: { (result, error) -> Void in
             if (error == nil) {
                 let fbloginresult : FBSDKLoginManagerLoginResult = result!
                 if(fbloginresult.grantedPermissions.contains("email"))
                 {
-                    self.appDelegate.customIdentityProvider?.loginType = "FACEBOOK"
+                    appDelegate.customIdentityProvider.isAuthenticated = true
                     self.mainDealwAuthSucess()
                 }
             }
@@ -53,7 +54,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     
     
     @IBAction func googleSignInBtnPress(_ sender: UIButton) {
-        appDelegate.customIdentityProvider?.loginType = "GOOGLE"
+        appDelegate.customIdentityProvider.loginType = LoginType.GOOGLE
         googleSignIn?.signIn()
     }
     
@@ -70,7 +71,8 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         print("In Signin after Google")
         if error == nil {
             
-            appDelegate.customIdentityProvider?.currentAccessToken = user.authentication.accessToken!
+            appDelegate.customIdentityProvider.currentAccessToken = user.authentication.accessToken!
+            appDelegate.customIdentityProvider.isAuthenticated = true
             self.mainDealwAuthSucess()
         } else {
             print("\(error.localizedDescription)")
@@ -89,15 +91,16 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     
     //for regular email
     @IBAction func loginPressed(_ sender: Any) {
+        self.appDelegate.customIdentityProvider.loginType = LoginType.EMAIL
         LoginItems.sharedInstance.setEmail(email: tfEmail.text!)
         LoginItems.sharedInstance.setPassword(pass: tfPassword.text!)
-        appDelegate.customIdentityProvider?.loginType = "EMAIL"
-        appDelegate.customIdentityProvider?.token().continueOnSuccessWith(block: {(task : AWSTask<NSString>) -> Void in
-            //appDelegate.customIdentityProvider?.token() This will print a string
-            print("Result Token :  \(task.result ?? "no result!")" )
-            self.appDelegate.customIdentityProvider?.currentAccessToken = task.result as String?
+        appDelegate.customIdentityProvider.loginType = LoginType.EMAIL
+        
+        //  TODO: LOGIN HERE  BY EMAIL
+        
+            appDelegate.customIdentityProvider.isAuthenticated = true
             self.mainDealwAuthSucess()
-        })
+
     }
     
     func mainDealwAuthSucess(){

@@ -25,18 +25,19 @@ class MainViewController: UIViewController, AuthViewDelegate {
     func authViewDidClose() {
         print("\(self.debugDescription) : \(#function)")
         print("In Main after Auth did close delegation")
-        if(appDelegate.customIdentityProvider?.loginType=="EMAIL")
+        if(appDelegate.customIdentityProvider.loginType==LoginType.EMAIL)
         {
             printCurrentUser()
         }
-        if(appDelegate.customIdentityProvider?.loginType=="GOOGLE")
+        if(appDelegate.customIdentityProvider.loginType==LoginType.GOOGLE)
         {
-            appDelegate.customIdentityProvider?.printGoogleUser()
+            appDelegate.customIdentityProvider.printGoogleUser()
+            
         }
-        if(appDelegate.customIdentityProvider?.loginType=="FACEBOOK")
+        if(appDelegate.customIdentityProvider.loginType==LoginType.FACEBOOK)
         {
-            getFBUserData()
-            fbLoginManager.logOut()
+            appDelegate.customIdentityProvider.getFBUserData()
+            appDelegate.customIdentityProvider.fbLoginManager.logOut()
         }
         
         
@@ -107,30 +108,19 @@ class MainViewController: UIViewController, AuthViewDelegate {
     
     //?? is nil coalescing operator. (returned if not nil) ?? (else return when first term nil)
     func isAuth()-> Bool {
-        return (appDelegate.pool?.currentUser()?.isSignedIn) ?? false
+        return appDelegate.customIdentityProvider.isAuthenticated
     }
     
-    func printCurrentUser() {
+    func printEmailUser() {
         
         //omg, the user persists between app starts
-        let currentUser = appDelegate.pool?.currentUser()
         //gets information from cognito about the current user
         //here, the current user has not been attached to the identity pool
-        if (currentUser?.isSignedIn)! {
-            print(currentUser?.username)
-            appDelegate.pool?.getUser(currentUser!.username!).getDetails().continueOnSuccessWith(block: {(_ task: AWSTask<AWSCognitoIdentityUserGetDetailsResponse>) -> Any?  in
-                let response: AWSCognitoIdentityUserGetDetailsResponse? = task.result
-                print("response: \(response.debugDescription)")
-                for attribute in (response?.userAttributes)! {
-                    //print the user attributes
-                    print("Attribute: \(attribute.name ?? "none") Value: \(attribute.value ?? "none")")
-                }
-                //could return self, get Identity id, get token
-                //
-                //user logged in because success complete run, dismiss login view controller.
-                //could store user here.
-                return nil
-            })
+        if (appDelegate.customIdentityProvider.isAuthenticated) {
+            
+            
+            //Printcurrent User
+            
         }else{
             print("There is no current user")
         }
