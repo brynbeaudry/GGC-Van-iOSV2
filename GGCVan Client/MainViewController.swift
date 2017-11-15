@@ -29,9 +29,26 @@ class MainViewController: UIViewController, AuthViewDelegate {
         {
             appDelegate.customIdentityProvider?.printGoogleUser()
         }
+        if(appDelegate.customIdentityProvider?.loginType=="FACEBOOK")
+        {
+            appDelegate.customIdentityProvider?.printGoogleUser()
+        }
+        
         
         //is authorized
    
+    }
+    
+    func getFBUserData(){
+        if((FBSDKAccessToken.current()) != nil){
+            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).start(completionHandler: { (connection, result, error) -> Void in
+                if (error == nil){
+                    if let result = result as? [String:Any] {
+                        print(result)
+                    }
+                }
+            })
+        }
     }
     
     @IBAction func backToMain(segue: UIStoryboardSegue) {

@@ -42,7 +42,8 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
                 let fbloginresult : FBSDKLoginManagerLoginResult = result!
                 if(fbloginresult.grantedPermissions.contains("email"))
                 {
-                    self.getFBUserData()
+                    self.appDelegate.customIdentityProvider?.loginType = "FACEBOOK"
+                    self.mainDealwAuthSucess()
                     fbLoginManager.logOut()
                 }
             }
@@ -81,35 +82,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         print("In Signin after Google")
         if error == nil {
             
-            
-            /*   REGISTERATION WITH USERNAME AND PASSWORD WORKS TO SIGN IN USER  */
-            /*   LOGIN WITH USERNAME AND PASSWORD WORKS TO SIGN IN USER  */
-            /*   IT GETS */
-            
-            
-            //No errors after google signin
-            //identity provider get the google token
-            
-            
-            //here is our google user.
-            
-            
-            //this is the pool object
-            
             appDelegate.customIdentityProvider?.currentAccessToken = user.authentication.accessToken!
-            
-            print("AccessToken in google \(String(describing: signIn.currentUser?.authentication.accessToken)) \n id Token \(String(describing: signIn.currentUser?.authentication.idToken)) \n client Id \(String(describing: signIn.currentUser?.authentication.clientID)) Decription \(signIn.currentUser.authentication.description )")
-            appDelegate.pool?.getUser(signIn.currentUser.userID).getSession().continueWith(block: {(task:AWSTask<AWSCognitoIdentityUserSession>) -> Any? in
-                if((task.error) == nil){
-                    let response: AWSCognitoIdentityUserSession? = task.result
-                    print("Access Token : from pool \(String(describing: response!.accessToken)) \n Id Token from pool: \(String(describing: response!.idToken)) \n Refresh Token from pool : \n \(String(describing: response!.refreshToken))")
-                        self.appDelegate.credentialsProvider?.getIdentityId()
-                        self.mainDealwAuthSucess()
-                }else{
-                    print("Didn't get token from pool session")
-                }
-                return nil
-            })
             self.mainDealwAuthSucess()
         } else {
             print("\(error.localizedDescription)")
