@@ -33,10 +33,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var pool: AWSCognitoIdentityUserPool?
     var credentialsProvider: AWSCognitoCredentialsProvider?
-    var customIdentityProvider = CustomIdentityProvider.sharedInstance
+    var customIdentityProvider: CustomIdentityProvider?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
+        
+        customIdentityProvider = CustomIdentityProvider.sharedInstance
         // Override point for customization after application launch.
         // set up logging for AWS and Cognito
         //AWSDDLog.sharedInstance.logLevel = .verbose

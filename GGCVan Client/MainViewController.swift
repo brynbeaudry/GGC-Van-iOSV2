@@ -25,19 +25,34 @@ class MainViewController: UIViewController, AuthViewDelegate {
     func authViewDidClose() {
         print("\(self.debugDescription) : \(#function)")
         print("In Main after Auth did close delegation")
-        if(appDelegate.customIdentityProvider.loginType==LoginType.EMAIL)
+        if(appDelegate.customIdentityProvider?.loginType==LoginType.EMAIL)
         {
-            printCurrentUser()
+            
+            appDelegate.customIdentityProvider?.printEmailUser()
+            //lgout
         }
-        if(appDelegate.customIdentityProvider.loginType==LoginType.GOOGLE)
+        if(appDelegate.customIdentityProvider?.loginType==LoginType.GOOGLE)
         {
-            appDelegate.customIdentityProvider.printGoogleUser()
+            if GIDSignIn.sharedInstance().currentUser != nil {
+                appDelegate.customIdentityProvider?.printGoogleUser()
+                GIDSignIn.sharedInstance().disconnect()
+            }
+            print("after clear")
+            //printCurrentUser()
             
         }
-        if(appDelegate.customIdentityProvider.loginType==LoginType.FACEBOOK)
+        if(appDelegate.customIdentityProvider?.loginType==LoginType.FACEBOOK)
         {
-            appDelegate.customIdentityProvider.getFBUserData()
-            appDelegate.customIdentityProvider.fbLoginManager.logOut()
+            if(FBSDKAccessToken.current().userID != nil){
+                appDelegate.customIdentityProvider?.getFBUserData() //waits
+                appDelegate.customIdentityProvider?.fbLoginManager.logOut()
+            }
+        }
+        self.appDelegate.customIdentityProvider?.isAuthenticated = false
+        let when = DispatchTime.now() + 2 // change 2 to desired number of seconds
+        //put the auth wall back up for testing
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            self.performSegue(withIdentifier: "modalAuthWall", sender: self)
         }
         
         
@@ -46,14 +61,16 @@ class MainViewController: UIViewController, AuthViewDelegate {
     }
     
     func getFBUserData(){
-        if((FBSDKAccessToken.current()) != nil){
-            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).start(completionHandler: { (connection, result, error) -> Void in
-                if (error == nil){
-                    if let result = result as? [String:Any] {
-                        print(result)
+        DispatchQueue.global().sync {
+            if((FBSDKAccessToken.current()) != nil){
+                FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).start(completionHandler: { (connection, result, error) -> Void in
+                    if (error == nil){
+                        if let result = result as? [String:Any] {
+                            print(result)
+                        }
                     }
-                }
-            })
+                })
+            }
         }
     }
     
@@ -65,14 +82,20 @@ class MainViewController: UIViewController, AuthViewDelegate {
         super.viewDidLoad()
         print("\(self.debugDescription) : \(#function)")
         
-        //without this, it looks like the pool somehow caches the last know user.
+        
+        //clear credentials
         //you should remove this in production
-        appDelegate.pool?.clearAll()
+        self.appDelegate.customIdentityProvider?.isAuthenticated = false
         if GIDSignIn.sharedInstance().currentUser != nil {
             GIDSignIn.sharedInstance().disconnect()
         }
+        let fbAccessToken = FBSDKAccessToken.current() ?? nil
+        if fbAccessToken != nil {
+            appDelegate.customIdentityProvider?.fbLoginManager.logOut()
+        }
         print("after clear")
         //printCurrentUser()
+        
         
         
         // Do any additional setup after loading the view.
@@ -108,7 +131,7 @@ class MainViewController: UIViewController, AuthViewDelegate {
     
     //?? is nil coalescing operator. (returned if not nil) ?? (else return when first term nil)
     func isAuth()-> Bool {
-        return appDelegate.customIdentityProvider.isAuthenticated
+        return appDelegate.customIdentityProvider?.isAuthenticated ?? false
     }
     
     func printEmailUser() {
@@ -116,7 +139,7 @@ class MainViewController: UIViewController, AuthViewDelegate {
         //omg, the user persists between app starts
         //gets information from cognito about the current user
         //here, the current user has not been attached to the identity pool
-        if (appDelegate.customIdentityProvider.isAuthenticated) {
+        if (appDelegate.customIdentityProvider?.isAuthenticated)! {
             
             
             //Printcurrent User

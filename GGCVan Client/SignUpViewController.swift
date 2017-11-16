@@ -75,13 +75,12 @@ class SignUpViewController: UIViewController {
         //authenticate user
         let  lnDg = DispatchGroup()
         lnDg.enter()
-        appDelegate.customIdentityProvider?.loginType = "EMAIL"
-        appDelegate.customIdentityProvider?.token().continueOnSuccessWith(block: {(task : AWSTask<NSString>) -> Void in
-            //appDelegate.customIdentityProvider?.token() This will print a string
-            print("Result Token :  \(task.result ?? "no result!")" )
-            self.appDelegate.customIdentityProvider?.currentAccessToken = task.result as String?
-            lnDg.leave()
-        })//end of async sign in task
+        appDelegate.customIdentityProvider?.loginType = LoginType.EMAIL
+        
+        // Sign in after sign up
+        
+        lnDg.leave()
+
         lnDg.notify(queue: .main, execute: {
             self.performSegueWithCompletion(id: "signUpBackToMain", sender: self, completion: {self.avDelegate?.authViewDidClose()})
         })

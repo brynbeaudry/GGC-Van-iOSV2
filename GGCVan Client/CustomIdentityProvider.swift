@@ -15,6 +15,7 @@ import Google
 import FBSDKCoreKit
 import FBSDKLoginKit;
 import Alamofire;
+import PromiseKit;
 
 public enum LoginType {
     case EMAIL, GOOGLE, FACEBOOK, NONE
@@ -100,4 +101,73 @@ class CustomIdentityProvider : NSObject {
             })
         }
     }
+    
+    func printEmailUser() {
+        
+        //omg, the user persists between app starts
+        //gets information from cognito about the current user
+        //here, the current user has not been attached to the identity pool
+        if (self.isAuthenticated && self.loginType == LoginType.EMAIL) {
+            
+            
+            //Printcurrent User
+            
+        }else{
+            print("There is no current user")
+        }
+    }
+    
+    func login(with: LoginType, params: String) -> Promise<String> {
+        let q = DispatchQueue.global()
+        let url = "http://localhost:54321"
+        //UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        return firstly {
+            Alamofire.request(url, method: .post).responseData()
+            }.then(on: q) { (data : Data) in
+                //convertToUser(data)
+                //token is data
+                if !data.isEmpty {
+                        print(data.startIndex.description)
+                    //this won't actually work, must fix
+                        self.currentAccessToken = data.startIndex.description
+                    return Promise<String>(value: self.currentAccessToken!)
+                }else{
+                    return Promise(error: NSError(domain: "Couldn't get token", code: 404))
+                }
+            }.always {
+                //UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        }
+    }
+    
+    func signUp(type: LoginType, params: String) -> Promise<String> {
+        let q = DispatchQueue.global()
+        let url = "http://localhost:54321"
+        //UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        return firstly {
+            Alamofire.request(url, method: .post).responseData()
+            }.then(on: q) { (data : Data) in
+                //convertToUser(data)
+                //token is data
+                if !data.isEmpty {
+                    print(data.startIndex.description)
+                    //this won't actually work, must fix
+                    self.currentAccessToken = data.startIndex.description
+                    return Promise<String>(value: self.currentAccessToken!)
+                }else{
+                    return Promise(error: NSError(domain: "Couldn't get token", code: 404))
+                }
+            }.always {
+                //UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        }
+    }
+    
+    
+    
+    
+    
+    /*
+     
+     */
+    
+    
 }

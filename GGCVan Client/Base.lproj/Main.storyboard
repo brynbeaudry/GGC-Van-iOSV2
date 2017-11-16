@@ -112,7 +112,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </stackView>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsg-sf-SqB" customClass="FBSDKLoginButton">
+                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsg-sf-SqB">
                                         <rect key="frame" x="0.0" y="303" width="230" height="34"/>
                                         <state key="normal" title=" " backgroundImage="fbBtn">
                                             <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>

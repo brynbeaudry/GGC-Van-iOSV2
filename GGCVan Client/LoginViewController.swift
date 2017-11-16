@@ -31,22 +31,33 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     @IBOutlet var tfPassword: UITextField!
     var login = FBSDKLoginManager()
     var result: FBSDKLoginManagerLoginResult?
+    let fbLoginDspGrp = DispatchGroup()
    // var NSError = FBSDKLoginManagerLoginResult()
     
-    @IBOutlet weak var FbButton: FBSDKLoginButton!
+    @IBOutlet weak var FbButton: UIButton!
     
     @IBAction func FbSignInBtnPress(_ sender: Any) {
-        self.appDelegate.customIdentityProvider.loginType = LoginType.FACEBOOK
+        self.appDelegate.customIdentityProvider?.loginType = LoginType.FACEBOOK
         let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
-        fbLoginManager .logIn(withReadPermissions: ["public_profile", "email"], from: self, handler: { (result, error) -> Void in
+        fbLoginDspGrp.enter()
+        fbLoginManager.logIn(withReadPermissions: ["public_profile", "email"], from: self, handler: { (result, error) -> Void in
             if (error == nil) {
                 let fbloginresult : FBSDKLoginManagerLoginResult = result!
                 if(fbloginresult.grantedPermissions.contains("email"))
                 {
-                    appDelegate.customIdentityProvider.isAuthenticated = true
-                    self.mainDealwAuthSucess()
+                    print("Facebook is logged in")
+                    print("App Id : \n\(fbloginresult.token.appID)\n Token String Id : \n\(fbloginresult.token.tokenString) \nUserId Id : \n\(fbloginresult.token.userID)")
+                    print("Granted permissions")
+                    for granted in fbloginresult.grantedPermissions {
+                        print("\(granted)")
+                    }
                 }
             }
+            self.fbLoginDspGrp.leave()
+        })
+        self.fbLoginDspGrp.notify(queue: .main, execute: {
+            self.appDelegate.customIdentityProvider?.isAuthenticated = true
+            self.mainDealwAuthSucess()
         })
     }
 
@@ -54,7 +65,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     
     
     @IBAction func googleSignInBtnPress(_ sender: UIButton) {
-        appDelegate.customIdentityProvider.loginType = LoginType.GOOGLE
+        appDelegate.customIdentityProvider?.loginType = LoginType.GOOGLE
         googleSignIn?.signIn()
     }
     
@@ -70,9 +81,11 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         print("\(self.debugDescription) : \(#function)")
         print("In Signin after Google")
         if error == nil {
+            let _ : [Any] = [user.accessibleScopes, user.authentication, user.profile, user.serverAuthCode, user.userID, user.hostedDomain]
             
-            appDelegate.customIdentityProvider.currentAccessToken = user.authentication.accessToken!
-            appDelegate.customIdentityProvider.isAuthenticated = true
+            
+            appDelegate.customIdentityProvider?.currentAccessToken = user.authentication.accessToken!
+            appDelegate.customIdentityProvider?.isAuthenticated = true
             self.mainDealwAuthSucess()
         } else {
             print("\(error.localizedDescription)")
@@ -91,14 +104,15 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     
     //for regular email
     @IBAction func loginPressed(_ sender: Any) {
-        self.appDelegate.customIdentityProvider.loginType = LoginType.EMAIL
+        self.appDelegate.customIdentityProvider?.loginType = LoginType.EMAIL
         LoginItems.sharedInstance.setEmail(email: tfEmail.text!)
         LoginItems.sharedInstance.setPassword(pass: tfPassword.text!)
-        appDelegate.customIdentityProvider.loginType = LoginType.EMAIL
+        appDelegate.customIdentityProvider?.loginType = LoginType.EMAIL
+        
         
         //  TODO: LOGIN HERE  BY EMAIL
         
-            appDelegate.customIdentityProvider.isAuthenticated = true
+        appDelegate.customIdentityProvider?.isAuthenticated = true
             self.mainDealwAuthSucess()
 
     }
@@ -133,7 +147,5 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 
