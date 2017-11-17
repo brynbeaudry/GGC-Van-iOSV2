@@ -6,15 +6,23 @@
          contextName = "-[AWSCognitoIdentityUser getDetails]:AWSCognitoIdentityUser.m">
       </ContextState>
       <ContextState
+         contextName = "LoginViewController.sign(_:didSignInFor:withError:):LoginViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "(GIDGoogleUser?)user">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MainViewController.authViewDidClose():MainViewController.swift">
+      </ContextState>
+      <ContextState
          contextName = "MainViewController.printCurrentUser():MainViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "(AWSCognitoIdentityUser?)currentUser">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MainViewController.authViewDidClose():MainViewController.swift">
       </ContextState>
       <ContextState
          contextName = "-[AWSCognitoCredentialsProvider identityProvider]:AWSCredentialsProvider.h">

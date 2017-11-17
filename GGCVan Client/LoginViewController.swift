@@ -81,7 +81,11 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         print("\(self.debugDescription) : \(#function)")
         print("In Signin after Google")
         if error == nil {
-            let _ : [Any] = [user.accessibleScopes, user.authentication, user.profile, user.serverAuthCode, user.userID, user.hostedDomain]
+            let userinfo = ["accessibleScopes": user.accessibleScopes, "authentication":user.authentication, "user.serverAuthCode":user.serverAuthCode, "user.userID":user.userID, "user.hostedDomain":user.hostedDomain, "user.authentication.clientID":user.authentication.clientID, "user.authentication.idToken":user.authentication.idToken, "user.authentication.accessToken":user.authentication.accessToken] as [String : Any]
+            for item in userinfo {
+                print("\(item.key) : \(item.value)")
+            }
+            
             
             
             appDelegate.customIdentityProvider?.currentAccessToken = user.authentication.accessToken!
