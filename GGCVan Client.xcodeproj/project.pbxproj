@@ -21,7 +21,7 @@
 		3C7D70951FAC3F2800F311E5 /* AuthNavigationControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7D70941FAC3F2700F311E5 /* AuthNavigationControllerViewController.swift */; };
 		3CD9E3321FAB6DF700445B61 /* LoginItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD9E3311FAB6DF700445B61 /* LoginItems.swift */; };
 		3CD9E3381FABBB8100445B61 /* AuthViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD9E3371FABBB8000445B61 /* AuthViewDelegate.swift */; };
-		3CDDC6251FC0499400ED9A38 /* TokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDDC6241FC0499300ED9A38 /* TokenResponse.swift */; };
+		3CDDC6251FC0499400ED9A38 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDDC6241FC0499300ED9A38 /* Token.swift */; };
 		3CEB5F271F9AD9DE00359BC5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB5F261F9AD9DD00359BC5 /* LoginViewController.swift */; };
 		3CEB5F291F9D239300359BC5 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB5F281F9D239300359BC5 /* SignUpViewController.swift */; };
 		3CEB5F2B1F9D23B100359BC5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB5F2A1F9D23B100359BC5 /* MainViewController.swift */; };
@@ -71,7 +71,7 @@
 		3C7D70941FAC3F2700F311E5 /* AuthNavigationControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNavigationControllerViewController.swift; sourceTree = "<group>"; };
 		3CD9E3311FAB6DF700445B61 /* LoginItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginItems.swift; sourceTree = "<group>"; };
 		3CD9E3371FABBB8000445B61 /* AuthViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewDelegate.swift; sourceTree = "<group>"; };
-		3CDDC6241FC0499300ED9A38 /* TokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenResponse.swift; sourceTree = "<group>"; };
+		3CDDC6241FC0499300ED9A38 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		3CEB5F261F9AD9DD00359BC5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3CEB5F281F9D239300359BC5 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		3CEB5F2A1F9D23B100359BC5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 				0E17DC741F9A90A900A97185 /* AppDelegate.swift */,
 				3C2D28581FA4663400F7CF67 /* User.swift */,
 				3CEB5F261F9AD9DD00359BC5 /* LoginViewController.swift */,
-				3CDDC6241FC0499300ED9A38 /* TokenResponse.swift */,
+				3CDDC6241FC0499300ED9A38 /* Token.swift */,
 				3C3298531FB0301A00AC79DF /* CustomIdentityProvider.swift */,
 				3CEB5F281F9D239300359BC5 /* SignUpViewController.swift */,
 				3CD9E3311FAB6DF700445B61 /* LoginItems.swift */,
@@ -539,7 +539,7 @@
 				3CD9E3381FABBB8100445B61 /* AuthViewDelegate.swift in Sources */,
 				3C3298541FB0301A00AC79DF /* CustomIdentityProvider.swift in Sources */,
 				3CD9E3321FAB6DF700445B61 /* LoginItems.swift in Sources */,
-				3CDDC6251FC0499400ED9A38 /* TokenResponse.swift in Sources */,
+				3CDDC6251FC0499400ED9A38 /* Token.swift in Sources */,
 				3C2D28591FA4663500F7CF67 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

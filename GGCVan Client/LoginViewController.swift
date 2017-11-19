@@ -121,16 +121,14 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         print("Paarams \(test[0]) \(test[1])")
         firstly {
             appDelegate.customIdentityProvider!.token(LoginType.EMAIL, email: test[0], password: test[1])
-        }.then { token in
-            print((token as! TokenResponse).access_token)
-        }.catch{ error in
+        }.then { message in
+            //success message and deal with success
+            //tokenDG.leave()
+            //print(message)
+            self.mainDealwAuthSucess()
+        }.catch { error in
             print(error)
         }
-        tokenDG.notify(queue: .main, execute: {
-            self.appDelegate.customIdentityProvider?.isAuthenticated = true
-            
-            self.mainDealwAuthSucess()
-        })
 
     }
     

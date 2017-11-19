@@ -9,7 +9,7 @@
 import Foundation
 import EVReflection
 
-public class TokenResponse : EVObject {
+public class Token : EVObject {
     //self.PrintOptions.Active = .All
     var scope: String = ""
     var token_type: String = ""

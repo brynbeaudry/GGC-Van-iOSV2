@@ -34,7 +34,7 @@ class CustomIdentityProvider : NSObject {
     var currentIdentityId : String?
     var currentAuthorizationToken : String?
     let LOCALHOST = "http://localhost:54321"
-    var currentToken : TokenResponse?
+    var currentToken : Token?
     let tokenDG = DispatchGroup()
     
     private override init(){}
@@ -133,12 +133,13 @@ class CustomIdentityProvider : NSObject {
         case .EMAIL?:
             return Alamofire.request(url, method: .post, parameters: parameters, encoding: URLEncoding() ).responseString()
                 .then { json in
-                    print( json )
-                    let tokenResponse = TokenResponse(json : json)
-                    return Promise(value: tokenResponse)
+                    let tokenResponse = Token(json : json)
+                    self.currentToken = tokenResponse
+                    print("Current Access Token \(self.currentToken?.access_token ?? "No current Access Token")")
+                    return Promise(value: "EMAIL LOGIN SUCCESS")
                 }.catch{ error in
                     print(error)
-            }
+                }
             case .GOOGLE? :
                 return Promise(value: "error")
             case .FACEBOOK? :
