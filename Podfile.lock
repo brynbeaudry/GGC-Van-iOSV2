@@ -32,6 +32,9 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
+  - EVReflection (5.1.6):
+    - EVReflection/Core (= 5.1.6)
+  - EVReflection/Core (5.1.6)
   - FBSDKCoreKit (4.27.1):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.27.1):
@@ -79,11 +82,21 @@ DEPENDENCIES:
   - AFNetworking (~> 2.5)
   - AWSCognito
   - AWSCognitoIdentityProvider
+  - EVReflection (from `https://github.com/evermeer/EVReflection.git`)
   - FBSDKCoreKit
   - FBSDKLoginKit
   - Google
   - GoogleSignIn (~> 4.1)
   - PromiseKit/Alamofire (~> 4.0)
+
+EXTERNAL SOURCES:
+  EVReflection:
+    :git: https://github.com/evermeer/EVReflection.git
+
+CHECKOUT OPTIONS:
+  EVReflection:
+    :commit: 7ea11e7f28f5d855d79938385605c8da8b9d2f9c
+    :git: https://github.com/evermeer/EVReflection.git
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
@@ -92,6 +105,7 @@ SPEC CHECKSUMS:
   AWSCognitoIdentityProvider: 20106092269dc86ae8b2070840bb568aa9097787
   AWSCore: f5611be1c3edc38dbf9d6da0a5d2b6c4841d1c05
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  EVReflection: 0785c9911a067ccd53b7f392c03c38fa2ae01f8b
   FBSDKCoreKit: 03365dad5d790249196ffad8be4f6d8a2d98f932
   FBSDKLoginKit: 66ff53b73cffd967ab773e32fac39e90a60e6d46
   FirebaseAnalytics: e5fe8486efc01bec33f6bf82e2fa9fce4b124052
@@ -104,6 +118,6 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
   PromiseKit: fbb52a0d154402c57eeb6eccd36dd7724fcf6117
 
-PODFILE CHECKSUM: cfa6de08a48fe2cd3c44332c8e0915faa8ac286d
+PODFILE CHECKSUM: 3cffdd8aa975fd9ed0788ae3333490f31260323c
 
 COCOAPODS: 1.3.1

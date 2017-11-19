@@ -6,16 +6,80 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GGCVan Client/LoginViewController.swift"
+            timestampString = "532824321.975532"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "loginPressed(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GGCVan Client/AppDelegate.swift"
-            timestampString = "532599136.355883"
+            filePath = "GGCVan Client/LoginViewController.swift"
+            timestampString = "532824323.287225"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "loginPressed(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGCVan_Client.LoginViewController.loginPressed(Any) -&gt; ()"
+                  moduleName = "GGCVan Client"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brynbeaudry/iOSProjects/GGCVanClient/GGCVan%20Client/LoginViewController.swift"
+                  timestampString = "532824323.460025"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "122"
+                  endingLineNumber = "122"
+                  offsetFromSymbolStart = "2464">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; PromiseKit.Promise&lt;Any&gt; in GGCVan_Client.LoginViewController.loginPressed(Any) -&gt; ()"
+                  moduleName = "GGCVan Client"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brynbeaudry/iOSProjects/GGCVanClient/GGCVan%20Client/LoginViewController.swift"
+                  timestampString = "532824323.465401"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "123"
+                  endingLineNumber = "123"
+                  offsetFromSymbolStart = "29">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GGCVan Client/LoginViewController.swift"
+            timestampString = "532824326.174381"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "loginPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,60 +90,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/LoginViewController.swift"
-            timestampString = "532599136.356745"
+            timestampString = "532824329.542795"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "googleSignInBtnPress(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GGCVan Client/AppDelegate.swift"
-            timestampString = "532599136.359128"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GGCVan Client/MainViewController.swift"
-            timestampString = "532512637.743281"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "authViewDidClose()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GGCVan Client/LoginViewController.swift"
-            timestampString = "532599136.359782"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "FbSignInBtnPress(_:)"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "loginPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -90,316 +106,58 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/LoginViewController.swift"
-            timestampString = "532599136.361935"
+            timestampString = "532824330.799038"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "mainDealwAuthSucess()"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "loginPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GGCVan Client/MainViewController.swift"
-            timestampString = "532512637.750441"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "getFBUserData()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GGCVan Client/MainViewController.swift"
-            timestampString = "532512637.750557"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "authViewDidClose()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GGCVan Client/MainViewController.swift"
-            timestampString = "532512637.750655"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "authViewDidClose()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GGCVan Client/MainViewController.swift"
-            timestampString = "532512637.750752"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GGCVan Client/MainViewController.swift"
-            timestampString = "532512637.750849"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GGCVan_Client.MainViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "GGCVan Client"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/brynbeaudry/iOSProjects/GGCVanClient/GGCVan%20Client/MainViewController.swift"
-                  timestampString = "532512339.909132"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "92"
-                  endingLineNumber = "92"
-                  offsetFromSymbolStart = "1706">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "implicit closure #1 : @autoclosure () throws -&gt; Swift.Optional&lt;__ObjC.FBSDKAccessToken&gt; in GGCVan_Client.MainViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "GGCVan Client"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/brynbeaudry/iOSProjects/GGCVanClient/GGCVan%20Client/MainViewController.swift"
-                  timestampString = "532512339.913658"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "92"
-                  endingLineNumber = "92"
-                  offsetFromSymbolStart = "4">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GGCVan Client/MainViewController.swift"
-            timestampString = "532512637.750946"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.AddressBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            symbolName = "*0x110bd1dbb">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  usesParentBreakpointCondition = "Yes"
-                  offsetFromSymbolStart = "0">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/LoginViewController.swift"
-            timestampString = "532599136.364252"
+            timestampString = "532824333.430787"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "FbSignInBtnPress(_:)"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "loginPressed(_:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "GGCVan_Client.LoginViewController.FbSignInBtnPress(Any) -&gt; ()"
+                  symbolName = "GGCVan_Client.LoginViewController.loginPressed(Any) -&gt; ()"
                   moduleName = "GGCVan Client"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/brynbeaudry/iOSProjects/GGCVanClient/GGCVan%20Client/LoginViewController.swift"
-                  timestampString = "532498227.075315"
+                  timestampString = "532824333.691588"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "41"
-                  endingLineNumber = "41"
-                  offsetFromSymbolStart = "298">
+                  startingLineNumber = "129"
+                  endingLineNumber = "129"
+                  offsetFromSymbolStart = "2906">
                </Location>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__ObjC.FBSDKLoginManagerLoginResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GGCVan_Client.LoginViewController.FbSignInBtnPress(Any) -&gt; ()"
+                  symbolName = "closure #4 () -&gt; () in GGCVan_Client.LoginViewController.loginPressed(Any) -&gt; ()"
                   moduleName = "GGCVan Client"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/brynbeaudry/iOSProjects/GGCVanClient/GGCVan%20Client/LoginViewController.swift"
-                  timestampString = "532498227.080303"
+                  timestampString = "532824333.696727"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "42"
-                  endingLineNumber = "42"
-                  offsetFromSymbolStart = "25">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GGCVan Client/LoginViewController.swift"
-            timestampString = "532599136.366059"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "FbSignInBtnPress(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GGCVan Client/LoginViewController.swift"
-            timestampString = "532599136.367852"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "FbSignInBtnPress(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GGCVan_Client.LoginViewController.FbSignInBtnPress(Any) -&gt; ()"
-                  moduleName = "GGCVan Client"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/brynbeaudry/iOSProjects/GGCVanClient/GGCVan%20Client/LoginViewController.swift"
-                  timestampString = "532498703.13334"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "50"
-                  endingLineNumber = "50"
-                  offsetFromSymbolStart = "763">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__ObjC.FBSDKLoginManagerLoginResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GGCVan_Client.LoginViewController.FbSignInBtnPress(Any) -&gt; ()"
-                  moduleName = "GGCVan Client"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/brynbeaudry/iOSProjects/GGCVanClient/GGCVan%20Client/LoginViewController.swift"
-                  timestampString = "532498703.136973"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "50"
-                  endingLineNumber = "50"
-                  offsetFromSymbolStart = "1026">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GGCVan Client/LoginViewController.swift"
-            timestampString = "532599136.369584"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "FbSignInBtnPress(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GGCVan_Client.LoginViewController.FbSignInBtnPress(Any) -&gt; ()"
-                  moduleName = "GGCVan Client"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/brynbeaudry/iOSProjects/GGCVanClient/GGCVan%20Client/LoginViewController.swift"
-                  timestampString = "532512339.969937"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "58"
-                  endingLineNumber = "58"
-                  offsetFromSymbolStart = "963">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 () -&gt; () in GGCVan_Client.LoginViewController.FbSignInBtnPress(Any) -&gt; ()"
-                  moduleName = "GGCVan Client"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/brynbeaudry/iOSProjects/GGCVanClient/GGCVan%20Client/LoginViewController.swift"
-                  timestampString = "532512339.975202"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "59"
-                  endingLineNumber = "59"
+                  startingLineNumber = "130"
+                  endingLineNumber = "130"
                   offsetFromSymbolStart = "22">
                </Location>
             </Locations>
@@ -411,13 +169,61 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GGCVan Client/MainViewController.swift"
-            timestampString = "532512637.764203"
+            filePath = "GGCVan Client/CustomIdentityProvider.swift"
+            timestampString = "532824346.886702"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "authViewDidClose()"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "token(_:email:password:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GGCVan_Client.CustomIdentityProvider.token(GGCVan_Client.LoginType, email: Swift.Optional&lt;Swift.String&gt;, password: Swift.Optional&lt;Swift.String&gt;) -&gt; PromiseKit.Promise&lt;Any&gt;"
+                  moduleName = "GGCVan Client"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brynbeaudry/iOSProjects/GGCVanClient/GGCVan%20Client/CustomIdentityProvider.swift"
+                  timestampString = "532824347.016573"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "135"
+                  endingLineNumber = "135"
+                  offsetFromSymbolStart = "2821">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.String) -&gt; PromiseKit.Promise&lt;Any&gt; in GGCVan_Client.CustomIdentityProvider.token(GGCVan_Client.LoginType, email: Swift.Optional&lt;Swift.String&gt;, password: Swift.Optional&lt;Swift.String&gt;) -&gt; PromiseKit.Promise&lt;Any&gt;"
+                  moduleName = "GGCVan Client"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brynbeaudry/iOSProjects/GGCVanClient/GGCVan%20Client/CustomIdentityProvider.swift"
+                  timestampString = "532824347.026051"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "136"
+                  endingLineNumber = "136"
+                  offsetFromSymbolStart = "25">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GGCVan Client/CustomIdentityProvider.swift"
+            timestampString = "532824351.846739"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "token(_:email:password:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -427,13 +233,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GGCVan Client/LoginViewController.swift"
-            timestampString = "532599136.371401"
+            filePath = "GGCVan Client/CustomIdentityProvider.swift"
+            timestampString = "532824356.894283"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "sign(_:didSignInFor:withError:)"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "token(_:email:password:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GGCVan Client/CustomIdentityProvider.swift"
+            timestampString = "532824362.534794"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "token(_:email:password:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

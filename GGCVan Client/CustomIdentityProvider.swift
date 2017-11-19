@@ -8,14 +8,14 @@
 
 import Foundation
 import AWSCore
-import AWSCognito
 import AWSCognitoIdentityProvider
 import GoogleSignIn
 import Google
 import FBSDKCoreKit
-import FBSDKLoginKit;
-import Alamofire;
-import PromiseKit;
+import FBSDKLoginKit
+import Alamofire
+import PromiseKit
+import EVReflection
 
 public enum LoginType {
     case EMAIL, GOOGLE, FACEBOOK, NONE
@@ -33,6 +33,9 @@ class CustomIdentityProvider : NSObject {
     var currentAccessToken : String?
     var currentIdentityId : String?
     var currentAuthorizationToken : String?
+    let LOCALHOST = "http://localhost:54321"
+    var currentToken : TokenResponse?
+    let tokenDG = DispatchGroup()
     
     private override init(){}
     static let sharedInstance = CustomIdentityProvider()
@@ -117,10 +120,34 @@ class CustomIdentityProvider : NSObject {
         }
     }
     
-    func login(with: LoginType, params: String) -> Promise<String> {
-        let q = DispatchQueue.global()
-        let url = "http://localhost:54321"
-        //UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    
+    func token( _ with: LoginType, email: String?, password : String?) -> Promise<Any> {
+        let parameters: Parameters = [
+            "username": email ?? " ",
+            "password": password ?? " ",
+            "grant_type": "password",
+            "response_type" : "code",
+        ]
+        let url = "\(LOCALHOST)/connect/token"
+        switch appDelegate.customIdentityProvider?.loginType {
+        case .EMAIL?:
+            return Alamofire.request(url, method: .post, parameters: parameters, encoding: URLEncoding() ).responseString()
+                .then { json in
+                    print( json )
+                    let tokenResponse = TokenResponse(json : json)
+                    return Promise(value: tokenResponse)
+                }.catch{ error in
+                    print(error)
+            }
+            case .GOOGLE? :
+                return Promise(value: "error")
+            case .FACEBOOK? :
+                return Promise(value: "error")
+            default :
+                return Promise(value: "error")
+        }
+    }
+        /*
         return firstly {
             Alamofire.request(url, method: .post).responseData()
             }.then(on: q) { (data : Data) in
@@ -137,8 +164,9 @@ class CustomIdentityProvider : NSObject {
             }.always {
                 //UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
-    }
-    
+         }
+         */
+    /*
     func signUp(type: LoginType, params: String) -> Promise<String> {
         let q = DispatchQueue.global()
         let url = "http://localhost:54321"
@@ -160,14 +188,8 @@ class CustomIdentityProvider : NSObject {
                 //UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
     }
-    
-    
-    
-    
-    
-    /*
-     
-     */
+ */
+
     
     
 }

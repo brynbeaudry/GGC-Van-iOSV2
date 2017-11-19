@@ -56,6 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //GGLContext.sharedInstance().configureWithError(&configureError)
         //assert(configureError == nil, "Error configuring Google services: \(configureError)")
         GIDSignIn.sharedInstance().clientID = String("986909663782-kn9h7jqgmnncggq00elr2d29j391i25c.apps.googleusercontent.com")
+        GIDSignIn.sharedInstance().serverClientID = String("")
         
         FBSDKProfile.enableUpdates(onAccessTokenChange: true)
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)

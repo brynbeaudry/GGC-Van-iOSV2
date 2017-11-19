@@ -15,6 +15,8 @@ import Google
 import FBSDKCoreKit
 import FBSDKLoginKit;
 import Alamofire;
+import EVReflection
+import PromiseKit
 
 #if !Bridge_header_h
     //#define Bridge_header_h
@@ -109,15 +111,26 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     //for regular email
     @IBAction func loginPressed(_ sender: Any) {
         self.appDelegate.customIdentityProvider?.loginType = LoginType.EMAIL
-        LoginItems.sharedInstance.setEmail(email: tfEmail.text!)
-        LoginItems.sharedInstance.setPassword(pass: tfPassword.text!)
-        appDelegate.customIdentityProvider?.loginType = LoginType.EMAIL
-        
-        
+        //LoginItems.sharedInstance.setEmail(email: tfEmail.text!)
+        //LoginItems.sharedInstance.setPassword(pass: tfPassword.text!)
+        let _ = [tfEmail.text!, tfPassword.text!]
+        let test = ["a@a.a", "qwerty"]
         //  TODO: LOGIN HERE  BY EMAIL
-        
-        appDelegate.customIdentityProvider?.isAuthenticated = true
+        let tokenDG = DispatchGroup()
+        tokenDG.enter()
+        print("Paarams \(test[0]) \(test[1])")
+        firstly {
+            appDelegate.customIdentityProvider!.token(LoginType.EMAIL, email: test[0], password: test[1])
+        }.then { token in
+            print((token as! TokenResponse).access_token)
+        }.catch{ error in
+            print(error)
+        }
+        tokenDG.notify(queue: .main, execute: {
+            self.appDelegate.customIdentityProvider?.isAuthenticated = true
+            
             self.mainDealwAuthSucess()
+        })
 
     }
     
