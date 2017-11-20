@@ -54,11 +54,18 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
                         print("\(granted)")
                     }
                 }
+                //get token from the server
+                firstly {
+                    self.appDelegate.customIdentityProvider!.token(LoginType.FACEBOOK, email: nil, password: nil)
+                    }.then { message in
+                        self.fbLoginDspGrp.leave()
+                    }.catch { error in
+                        print(error)
+                        self.fbLoginDspGrp.leave()
+                }
             }
-            self.fbLoginDspGrp.leave()
         })
         self.fbLoginDspGrp.notify(queue: .main, execute: {
-            self.appDelegate.customIdentityProvider?.isAuthenticated = true
             self.mainDealwAuthSucess()
         })
     }
