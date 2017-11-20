@@ -122,30 +122,54 @@ class CustomIdentityProvider : NSObject {
     
     
     func token( _ with: LoginType, email: String?, password : String?) -> Promise<Any> {
-        let parameters: Parameters = [
-            "username": email ?? " ",
-            "password": password ?? " ",
-            "grant_type": "password",
-            "response_type" : "code",
-        ]
         let url = "\(LOCALHOST)/connect/token"
         switch appDelegate.customIdentityProvider?.loginType {
         case .EMAIL?:
+            let parameters: Parameters = [
+                "username": email ?? " ",
+                "password": password ?? " ",
+                "grant_type": "password",
+                "response_type" : "code",
+                ]
             return Alamofire.request(url, method: .post, parameters: parameters, encoding: URLEncoding() ).responseString()
                 .then { json in
                     let tokenResponse = Token(json : json)
                     self.currentToken = tokenResponse
                     print("Current Access Token \(self.currentToken?.access_token ?? "No current Access Token")")
+                    self.isAuthenticated = true
                     return Promise(value: "EMAIL LOGIN SUCCESS")
                 }.catch{ error in
                     print(error)
                 }
             case .GOOGLE? :
-                return Promise(value: "error")
+                let parameters: Parameters = [
+                    "response_type": "code",
+                    "scope": "openid profile email",
+                    "grant_type": "urn:ietf:params:oauth:grant-type:google_identity_token",
+                    "assertion" : googleSignIn?.currentUser.authentication.idToken ?? "error",
+                    ]
+                return Alamofire.request(url, method: .post, parameters: parameters, encoding: URLEncoding() ).responseString()
+                    .then { json in
+                        let tokenResponse = Token(json : json)
+                        self.currentToken = tokenResponse
+                        print("Current Access Token \(self.currentToken?.access_token ?? "No current Access Token")")
+                        self.isAuthenticated = true
+                        return Promise(value: "GOOGLE LOGIN SUCCESS")
+                    }.catch{ error in
+                        print(error)
+                    }
             case .FACEBOOK? :
                 return Promise(value: "error")
             default :
                 return Promise(value: "error")
+        }
+    }
+    
+    public func printCurrentToken() {
+        let obj = self.currentToken
+        var aMirror = Mirror(reflecting: obj!)
+        for (label, value) in aMirror.children {
+            print (label, value)
         }
     }
         /*

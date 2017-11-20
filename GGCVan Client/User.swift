@@ -9,15 +9,25 @@
 import Foundation
 
 class User {
-    var email : String?
+    var username : String?
     var password : String?
-    public func setEmail(email:String) {
-        self.email = email
+    var emailId : String?
+    var googleId : String?
+    public func setUsername(username:String) {
+        self.username = username
     }
+    
     public func setPassword(pass: String){
         self.password = pass
     }
+    public func setGoogleId(id: String){
+        self.googleId = id
+    }
     
-    static let sharedInstance = User(email: "", password: "")
-    private init(email: String, password: String) {} //This prevents others from using the default '()' initializer for this class.
+    public func setEmailId(id : String){
+        self.emailId = id
+    }
+    
+    static let sharedInstance = User()
+    private init() {} //This prevents others from using the default '()' initializer for this class.
 }

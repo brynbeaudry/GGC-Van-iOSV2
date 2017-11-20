@@ -87,14 +87,15 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
             for item in userinfo {
                 print("\(item.key) : \(item.value)")
             }
-            
-            
-            
-            appDelegate.customIdentityProvider?.currentAccessToken = user.authentication.accessToken!
-            appDelegate.customIdentityProvider?.isAuthenticated = true
-            self.mainDealwAuthSucess()
         } else {
             print("\(error.localizedDescription)")
+        }
+        firstly {
+            appDelegate.customIdentityProvider!.token(LoginType.GOOGLE, email: nil, password: nil)
+            }.then { message in
+                self.mainDealwAuthSucess()
+            }.catch { error in
+                print(error)
         }
     }
 
