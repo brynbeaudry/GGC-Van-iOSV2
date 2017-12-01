@@ -10,9 +10,7 @@ import UIKit
 import AWSCore
 import AWSCognito
 import AWSCognitoIdentityProvider
-import Alamofire;
-import EVReflection
-import PromiseKit
+
 
 
 class SignUpViewController: UIViewController {
