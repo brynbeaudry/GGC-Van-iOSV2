@@ -11,10 +11,12 @@ import AWSCore
 import AWSCognito
 import AWSCognitoIdentityProvider
 import Alamofire;
+import EVReflection
+import PromiseKit
 
 class SignUpViewController: UIViewController {
     var avDelegate: AuthViewDelegate?
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let AD = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -39,9 +41,21 @@ class SignUpViewController: UIViewController {
         let suG = DispatchGroup()
         suG.enter()
         // Actually make the signup call passing in those attributes
-        let emailAttribute = AWSCognitoIdentityUserAttributeType(name: "email", value: email.text!)
-        let userNameAttribute = AWSCognitoIdentityUserAttributeType(name: "preferred_username", value: userName.text!)
-        appDelegate.pool?.signUp(email.text!, password: password.text!, userAttributes: [emailAttribute, userNameAttribute], validationData: nil)
+        //LoginItems.sharedInstance.setEmail(email: tfEmail.text!)
+        //LoginItems.sharedInstance.setPassword(pass: tfPassword.text!)
+        let _ = [password.text!, password.text!]
+        let test = ["a@a.a", "qwerty"]
+        
+        
+        firstly {
+            AD.customIdentityProvider.signUp(email: test[0], password: test[1])
+            } .then { message in
+                print(message)
+                if(message == "SUCCESS")
+            } .catch {
+                
+        }
+        AD.customIdentityProvider.signUp(email: test[0], password: test[1])
             .continueWith { (response) -> Any? in
                 if response.error != nil {
                     // Error in the signup process
@@ -75,7 +89,7 @@ class SignUpViewController: UIViewController {
         //authenticate user
         let  lnDg = DispatchGroup()
         lnDg.enter()
-        appDelegate.customIdentityProvider?.loginType = LoginType.EMAIL
+        AD.customIdentityProvider?.loginType = LoginType.EMAIL
         
         // Sign in after sign up
         
@@ -87,7 +101,7 @@ class SignUpViewController: UIViewController {
     }
     
     func performSegueWithCompletion(id: String, sender: UIViewController,  completion: @escaping ()->()){
-        self.avDelegate = self.appDelegate.window?.rootViewController as? AuthViewDelegate
+        self.avDelegate = self.AD.window?.rootViewController as? AuthViewDelegate
         self.performSegue(withIdentifier: id, sender: self)
         print("")
         completion()
@@ -96,7 +110,7 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        print("Debug pool in Vc \(appDelegate.pool?.debugDescription)")
+        print("Debug pool in Vc \(AD.pool?.debugDescription)")
         
         
         // Do any additional setup after loading the view.

@@ -16,6 +16,7 @@ import FBSDKLoginKit
 import Alamofire
 import PromiseKit
 import EVReflection
+import SwiftyJSON
 
 public enum LoginType {
     case EMAIL, GOOGLE, FACEBOOK, NONE
@@ -185,6 +186,35 @@ class CustomIdentityProvider : NSObject {
         let aMirror = Mirror(reflecting: obj!)
         for (label, value) in aMirror.children {
             print(label, value)
+        }
+    }
+    
+    func signUp(email: String, password: String) -> Promise<Any> {
+        let url = "\(AD.BASE_URL)/api/register"
+        let parameters: Parameters = [
+            "email": email,
+            "password": password
+            ]
+        return Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding() ).responseString()
+            .then { resp in
+                if let json = JSON(resp){
+                    if json["success"] == true {
+                        return Promise(value: "SUCCESS" )
+                    }else{
+                        if let error : String = json["errors"][0] {
+                            if let desc : String = JSON(error)["description"]{
+                                return Promise(value : desc)
+                            }else{
+                                return Promise(value : "wtf")
+                            }
+                        }else{
+                            return Promise(value : "wtf")
+                        }
+                    }
+                }
+                return Promise(value: "NO_RESPONSE")
+            }.catch{ error in
+                print(error)
         }
     }
         /*

@@ -15,6 +15,7 @@ target 'GGCVan Client' do
     pod 'FBSDKCoreKit'
     pod 'FBSDKLoginKit'
     pod 'EVReflection', :git => 'https://github.com/evermeer/EVReflection.git'
+    pod 'SwiftyJSON'
 
   target 'GGCVan ClientTests' do
     inherit! :search_paths
