@@ -25,7 +25,7 @@ class CustomIdentityProvider : NSObject {
     public var loginType : LoginType = LoginType.EMAIL
     public var isAuthenticated : Bool = false;
     var avDelegate: AuthViewDelegate?
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let AD = UIApplication.shared.delegate as! AppDelegate
     let googleSignIn = GIDSignIn.sharedInstance()
     let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
     var loginDictionary = [LoginType : String]()
@@ -122,8 +122,8 @@ class CustomIdentityProvider : NSObject {
     
     
     func token( _ with: LoginType, email: String?, password : String?) -> Promise<Any> {
-        let url = "\(LOCALHOST)/connect/token"
-        switch appDelegate.customIdentityProvider?.loginType {
+        let url = "\(AD.BASE_URL)/connect/token"
+        switch AD.customIdentityProvider?.loginType {
         case .EMAIL?:
             let parameters: Parameters = [
                 "username": email ?? " ",
