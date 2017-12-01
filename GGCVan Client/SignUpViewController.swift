@@ -14,6 +14,7 @@ import Alamofire;
 import EVReflection
 import PromiseKit
 
+
 class SignUpViewController: UIViewController {
     var avDelegate: AuthViewDelegate?
     let AD = UIApplication.shared.delegate as! AppDelegate
@@ -38,67 +39,63 @@ class SignUpViewController: UIViewController {
     
     
     func getSignUpResponse(){
-        let suG = DispatchGroup()
-        suG.enter()
+        //let suG = DispatchGroup()
+        //suG.enter()
         // Actually make the signup call passing in those attributes
         //LoginItems.sharedInstance.setEmail(email: tfEmail.text!)
         //LoginItems.sharedInstance.setPassword(pass: tfPassword.text!)
-        let _ = [password.text!, password.text!]
-        let test = ["a@a.a", "qwerty"]
-        
+        let signUpItems = [email.text!, password.text!]
+        //let test = ["a@a.a", "qwerty"]
+        //LoginItems.sharedInstance.setEmail(email: self.email.text!)
+        //LoginItems.sharedInstance.setPassword(pass: self.password.text!)
         
         firstly {
-            AD.customIdentityProvider.signUp(email: test[0], password: test[1])
-            } .then { message in
-                print(message)
-                if(message == "SUCCESS")
-            } .catch {
-                
-        }
-        AD.customIdentityProvider.signUp(email: test[0], password: test[1])
-            .continueWith { (response) -> Any? in
-                if response.error != nil {
+            AD.customIdentityProvider!.signUp(email: signUpItems[0], password: signUpItems[1])
+        }.then { message -> Void in
+                if(message == "SUCCESS"){
+                    self.afterSignUpSignIn()
+                }else{
                     // Error in the signup process
-                    let alert = UIAlertController(title: "Error", message: response.error?.localizedDescription, preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
-                    self.present(alert, animated: true, completion: nil)
-                } else {
-                    // Does user need verification?
-                    print("Response Result : \(String(describing: response.result))")
-                    //if the user needs verification
-                    if (!Bool(truncating: (response.result?.userConfirmed)!)) {
-                        print("User Not confirmed")
-                        // User needs confirmation, so we need to proceed to the verify view controller
-                    } else {
-                        // basically, you signed up sucessfully
-                        print("User Debug no verification: \(response.result!.user)")
-                        //set login items
-                        DispatchQueue.main.async{
-                            LoginItems.sharedInstance.setEmail(email: self.email.text!)
-                            LoginItems.sharedInstance.setPassword(pass: self.password.text!)
-                        }
-                        suG.leave()
-                    }//end of user signup/sign in successful
-                }//end of user doesn't need to be verified
-                return nil //returning sign up
-        }//end of getting sign up response from async task
-        suG.notify(queue: .main, execute: {self.afterSignUpSignIn()})
-    }
+                }
+        }.catch { error in
+            print(error)
+        }
+    }//end of getting sign up response from async task
+        //suG.notify(queue: .main, execute: {self.afterSignUpSignIn()})
     
     func afterSignUpSignIn(){
         //authenticate user
-        let  lnDg = DispatchGroup()
-        lnDg.enter()
+        //let  lnDg = DispatchGroup()
+        //lnDg.enter()
         AD.customIdentityProvider?.loginType = LoginType.EMAIL
+        let signUpItems = [password.text!, password.text!]
         
         // Sign in after sign up
+        firstly {
+            AD.customIdentityProvider!.token(LoginType.EMAIL, email: signUpItems[0], password: signUpItems[1])
+        }.then { resp -> Void in
+            //success message and deal with success
+            //tokenDG.leave()
+            if let message : String = resp as? String {
+                print(message)
+                if message == "EMAIL_LOGIN_SUCCESS" {
+                    self.performSegueWithCompletion(id: "signUpBackToMain", sender: self, completion: {self.avDelegate?.authViewDidClose()})
+                }
+            }
+        }.catch { error in
+            print(error)
+        }
+    }
         
+        /*
         lnDg.leave()
-
+        
         lnDg.notify(queue: .main, execute: {
             self.performSegueWithCompletion(id: "signUpBackToMain", sender: self, completion: {self.avDelegate?.authViewDidClose()})
         })
-    }
+         */
     
     func performSegueWithCompletion(id: String, sender: UIViewController,  completion: @escaping ()->()){
         self.avDelegate = self.AD.window?.rootViewController as? AuthViewDelegate

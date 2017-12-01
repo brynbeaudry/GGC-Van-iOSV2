@@ -124,20 +124,19 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         let _ = [tfEmail.text!, tfPassword.text!]
         let test = ["a@a.a", "qwerty"]
         //  TODO: LOGIN HERE  BY EMAIL
-        let tokenDG = DispatchGroup()
-        tokenDG.enter()
+        //let tokenDG = DispatchGroup()
+        //tokenDG.enter()
         print("Paarams \(test[0]) \(test[1])")
         firstly {
             appDelegate.customIdentityProvider!.token(LoginType.EMAIL, email: test[0], password: test[1])
-        }.then { message in
+        }.then { message -> Void in
             //success message and deal with success
             //tokenDG.leave()
-            //print(message)
+            print(message)
             self.mainDealwAuthSucess()
         }.catch { error in
             print(error)
         }
-
     }
     
     func mainDealwAuthSucess(){

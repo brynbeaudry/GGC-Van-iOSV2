@@ -48,12 +48,14 @@ class MainViewController: UIViewController, AuthViewDelegate {
                 appDelegate.customIdentityProvider?.fbLoginManager.logOut()
             }
         }
+        
+        //Print token
         if(appDelegate.customIdentityProvider?.currentToken != nil){
             print("Attempting to print current token :")
             appDelegate.customIdentityProvider?.printCurrentToken()
         }
         
-        //reset
+        //reset token, reset auth wall
         self.appDelegate.customIdentityProvider?.isAuthenticated = false
         let when = DispatchTime.now() + 2 // change 2 to desired number of seconds
         //put the auth wall back up for testing

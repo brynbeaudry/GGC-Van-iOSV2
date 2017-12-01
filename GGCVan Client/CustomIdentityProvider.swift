@@ -134,11 +134,12 @@ class CustomIdentityProvider : NSObject {
                 ]
             return Alamofire.request(url, method: .post, parameters: parameters, encoding: URLEncoding() ).responseString()
                 .then { json in
+                    print(json)
                     let tokenResponse = Token(json : json)
                     self.currentToken = tokenResponse
                     print("Current Access Token \(self.currentToken?.access_token ?? "No current Access Token")")
                     self.isAuthenticated = true
-                    return Promise(value: "EMAIL LOGIN SUCCESS")
+                    return Promise(value: "EMAIL_LOGIN_SUCCESS")
                 }.catch{ error in
                     print(error)
                 }
@@ -155,7 +156,7 @@ class CustomIdentityProvider : NSObject {
                         self.currentToken = tokenResponse
                         print("Current Access Token \(self.currentToken?.access_token ?? "No current Access Token")")
                         self.isAuthenticated = true
-                        return Promise(value: "GOOGLE LOGIN SUCCESS")
+                        return Promise(value: "GOOGLE_LOGIN_SUCCESS")
                     }.catch{ error in
                         print(error)
                     }
@@ -172,7 +173,7 @@ class CustomIdentityProvider : NSObject {
                         self.currentToken = tokenResponse
                         print("Current Access Token \(self.currentToken?.access_token ?? "No current Access Token")")
                         self.isAuthenticated = true
-                        return Promise(value: "FACEBOOK LOGIN SUCCESS")
+                        return Promise(value: "FACEBOOK_LOGIN_SUCCESS")
                     }.catch{ error in
                         print(error)
                     }
@@ -185,37 +186,28 @@ class CustomIdentityProvider : NSObject {
         let obj = self.currentToken
         let aMirror = Mirror(reflecting: obj!)
         for (label, value) in aMirror.children {
-            print(label, value)
+            print(label ?? "label is null", value)
         }
     }
     
-    func signUp(email: String, password: String) -> Promise<Any> {
+    func signUp(email: String, password: String) -> Promise<String> {
         let url = "\(AD.BASE_URL)/api/register"
         let parameters: Parameters = [
             "email": email,
             "password": password
             ]
-        return Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding() ).responseString()
+        return Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding() ).responseJSON()
             .then { resp in
-                if let json = JSON(resp){
-                    if json["success"] == true {
-                        return Promise(value: "SUCCESS" )
-                    }else{
-                        if let error : String = json["errors"][0] {
-                            if let desc : String = JSON(error)["description"]{
-                                return Promise(value : desc)
-                            }else{
-                                return Promise(value : "wtf")
-                            }
-                        }else{
-                            return Promise(value : "wtf")
-                        }
+                let json = JSON(resp)
+                if json["succeeded"] == true {
+                    return Promise(value: "SUCCESS" )
+                }else{
+                    if let first_error = json["errors"].array?[0] {
+                        return Promise(value : first_error["description"].stringValue)
                     }
+                    return Promise(value : "wtf")
                 }
-                return Promise(value: "NO_RESPONSE")
-            }.catch{ error in
-                print(error)
-        }
+            }
     }
         /*
         return firstly {
