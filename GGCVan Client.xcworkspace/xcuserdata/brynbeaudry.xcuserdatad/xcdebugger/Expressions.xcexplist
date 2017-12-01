@@ -6,6 +6,12 @@
          contextName = "-[AWSCognitoIdentityUser getDetails]:AWSCognitoIdentityUser.m">
       </ContextState>
       <ContextState
+         contextName = "SignUpViewController.getSignUpResponse():SignUpViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "-[AWSCognitoIdentityUser getSession]:AWSCognitoIdentityUser.m">
+      </ContextState>
+      <ContextState
          contextName = "LoginViewController.sign(_:didSignInFor:withError:):LoginViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -14,7 +20,12 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MainViewController.authViewDidClose():MainViewController.swift">
+         contextName = "closure #1 in CustomIdentityProvider.signUp(email:password:):CustomIdentityProvider.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "(String)json.rawString">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "MainViewController.printCurrentUser():MainViewController.swift">
@@ -25,10 +36,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[AWSCognitoCredentialsProvider identityProvider]:AWSCredentialsProvider.h">
+         contextName = "MainViewController.authViewDidClose():MainViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "-[AWSCognitoIdentityUser getSession]:AWSCognitoIdentityUser.m">
+         contextName = "-[AWSCognitoCredentialsProvider identityProvider]:AWSCredentialsProvider.h">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

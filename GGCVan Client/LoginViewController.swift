@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import AWSCore
-import AWSCognito
-import AWSCognitoIdentityProvider
 import GoogleSignIn
 import Google
 import FBSDKCoreKit

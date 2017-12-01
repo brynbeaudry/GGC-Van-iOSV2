@@ -6,8 +6,6 @@ target 'GGCVan Client' do
   use_frameworks!
 
   # Pods for GGCVan Client
-    pod 'AWSCognito'
-    pod 'AWSCognitoIdentityProvider'
     pod 'AFNetworking', '~> 2.5'
     pod 'GoogleSignIn', '~> 4.1'
     pod 'Google'
