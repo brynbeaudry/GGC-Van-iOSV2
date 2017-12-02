@@ -6,14 +6,15 @@
 //
 
 import Foundation
-import EVReflection
 
-open class LoginViewModel: EVObject {
 
-    public var email: String = ""
-    public var password: String = ""
-    public var rememberMe: Bool = false
+open class LoginViewModel: Codable {
 
-    //public init() {}
+    public var email: String?
+    public var userName: String?
+    public var password: String?
+    public var rememberMe: Bool?
+
+    public init() {}
 
 }

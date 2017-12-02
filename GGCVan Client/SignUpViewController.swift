@@ -7,26 +7,25 @@
 //
 
 import UIKit
-import AWSCore
-import AWSCognito
-import AWSCognitoIdentityProvider
-
-
+import Alamofire
+import PromiseKit
+import EVReflection
+import SwiftyJSON
 
 class SignUpViewController: UIViewController {
     var avDelegate: AuthViewDelegate?
     let AD = UIApplication.shared.delegate as! AppDelegate
-    @IBOutlet weak var email: UITextField!
-    @IBOutlet weak var userName: UITextField!
-    @IBOutlet weak var password: UITextField!
-    @IBOutlet weak var passwordConfirm: UITextField!
-    
+
+    @IBOutlet var tfEmail: UITextField!
+    @IBOutlet var tfPassword: UITextField!
+    @IBOutlet var tfConfirmPassword: UITextField!
+    @IBOutlet var tfUsername: UITextField!
     
     @IBAction func signupPressed(_ sender: Any) {
         // Get a reference to the user pool
         // Collect all of the attributes that should be included in the signup call
         //check password
-        if(password.text == passwordConfirm.text){
+        if(tfPassword.text == tfConfirmPassword.text){
             getSignUpResponse()
         }else{
             let alert = UIAlertController(title: "Error", message: "Passwords don't match", preferredStyle: .alert)
@@ -42,13 +41,13 @@ class SignUpViewController: UIViewController {
         // Actually make the signup call passing in those attributes
         //LoginItems.sharedInstance.setEmail(email: tfEmail.text!)
         //LoginItems.sharedInstance.setPassword(pass: tfPassword.text!)
-        let signUpItems = [email.text!, password.text!]
+        let signUpItems = [tfEmail.text!, tfPassword.text!, tfUsername.text!]
         //let test = ["a@a.a", "qwerty"]
         //LoginItems.sharedInstance.setEmail(email: self.email.text!)
         //LoginItems.sharedInstance.setPassword(pass: self.password.text!)
         
         firstly {
-            AD.customIdentityProvider!.signUp(email: signUpItems[0], password: signUpItems[1])
+            AD.customIdentityProvider!.signUp(email: signUpItems[0], password: signUpItems[1], username: signUpItems[2])
         }.then { message -> Void in
                 if(message == "SUCCESS"){
                     self.afterSignUpSignIn()
@@ -68,11 +67,11 @@ class SignUpViewController: UIViewController {
         //let  lnDg = DispatchGroup()
         //lnDg.enter()
         AD.customIdentityProvider?.loginType = LoginType.EMAIL
-        let signUpItems = [password.text!, password.text!]
+        //let signUpItems = [tfEmail.text!, tfPassword.text!]
         
         // Sign in after sign up
         firstly {
-            AD.customIdentityProvider!.token(LoginType.EMAIL, email: signUpItems[0], password: signUpItems[1])
+            AD.customIdentityProvider!.token(LoginType.EMAIL, email: tfEmail.text!, password: tfPassword.text!)
         }.then { resp -> Void in
             //success message and deal with success
             //tokenDG.leave()
@@ -105,7 +104,6 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        print("Debug pool in Vc \(AD.pool?.debugDescription)")
         
         
         // Do any additional setup after loading the view.

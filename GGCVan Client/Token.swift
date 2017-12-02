@@ -18,4 +18,5 @@ public class Token : EVObject {
     var refresh_token: String = ""
     var id_token: String = ""
     var resource: String = ""
+    
 }

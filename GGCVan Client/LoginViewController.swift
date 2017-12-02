@@ -25,7 +25,6 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var avDelegate: AuthViewDelegate?
     let googleSignIn = GIDSignIn.sharedInstance()
-    var user : AWSCognitoIdentityUser!
     @IBOutlet var tfEmail: UITextField!
     @IBOutlet var tfPassword: UITextField!
     var login = FBSDKLoginManager()

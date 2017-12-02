@@ -6,14 +6,14 @@
 //
 
 import Foundation
-import EVReflection
 
-open class EventGuest: EVObject {
 
-    public var eventId: Int32 = 0
-    public var event: Event = Event();
-    public var guestId: String = ""
-    public var guest: ApplicationUser = ApplicationUser()
+open class EventGuest: Codable {
+
+    public var eventId: Int32?
+    public var event: Event?
+    public var guestId: String?
+    public var guest: ApplicationUser?
 
     public init() {}
 

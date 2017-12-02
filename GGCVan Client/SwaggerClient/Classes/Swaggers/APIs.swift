@@ -7,8 +7,7 @@
 import Foundation
 
 open class SwaggerClientAPI {
-    let AD = UIApplication.shared.delegate as! AppDelegate
-    open static var basePath = AD.BASE_URL
+    open static var basePath = "https://localhost"
     open static var credential: URLCredential?
     open static var customHeaders: [String:String] = [:]
     open static var requestBuilderFactory: RequestBuilderFactory = AlamofireRequestBuilderFactory()

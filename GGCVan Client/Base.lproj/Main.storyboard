@@ -378,9 +378,6 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="signupPressed:" destination="w5w-la-GJR" eventType="editingDidEnd" id="0ew-hi-C7E"/>
-                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZiG-A8-Nng">
                                         <rect key="frame" x="0.0" y="303" width="239" height="30"/>
@@ -413,10 +410,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Sign Up" id="Yh2-Lj-fMj"/>
                     <connections>
-                        <outlet property="email" destination="Dsk-IP-Qfn" id="uBa-y9-Ay8"/>
-                        <outlet property="password" destination="eIN-w4-UzX" id="bTk-ac-QPE"/>
-                        <outlet property="passwordConfirm" destination="ZiG-A8-Nng" id="92K-lX-lDm"/>
-                        <outlet property="userName" destination="V72-y7-6za" id="cAq-NG-jww"/>
+                        <outlet property="tfConfirmPassword" destination="ZiG-A8-Nng" id="927-9Y-HDW"/>
+                        <outlet property="tfEmail" destination="Dsk-IP-Qfn" id="Noa-7W-jIS"/>
+                        <outlet property="tfPassword" destination="eIN-w4-UzX" id="bL4-63-HpA"/>
+                        <outlet property="tfUsername" destination="V72-y7-6za" id="enZ-iA-JxG"/>
                         <segue destination="stG-BJ-oDY" kind="unwind" identifier="signUpBackToMain" unwindAction="backToMainWithSegue:" id="l8X-ql-Q9J"/>
                     </connections>
                 </viewController>
@@ -447,6 +444,7 @@
                 <tabBarController title="User Area Tab Ctrl" automaticallyAdjustsScrollViewInsets="NO" id="W59-4I-nts" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VAN-gg-dxV">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
@@ -457,7 +455,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="crb-bc-UTy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-532.5" y="-1332.0422535211267"/>
+            <point key="canvasLocation" x="-489" y="-1543"/>
         </scene>
     </scenes>
     <resources>

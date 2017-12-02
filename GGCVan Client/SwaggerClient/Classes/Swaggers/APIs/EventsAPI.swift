@@ -149,7 +149,7 @@ open class EventsAPI {
   "game" : {
     "numberOfPlayers" : 7,
     "imageUrl" : "aeiou",
-    "description" : "aeiou",
+    "gameDescription" : "aeiou",
     "id" : 2,
     "title" : "aeiou",
     "url" : "aeiou"
@@ -157,8 +157,8 @@ open class EventsAPI {
   "eventGuests" : [ "" ],
   "latitude" : 0.14658129805029452,
   "locationDescription" : "aeiou",
-  "description" : "aeiou",
   "title" : "aeiou",
+  "eventDescription" : "aeiou",
   "host" : "aeiou",
   "startTime" : "2000-01-23T04:56:07.000+00:00",
   "id" : 0,

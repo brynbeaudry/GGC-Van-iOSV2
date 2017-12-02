@@ -6,17 +6,17 @@
 //
 
 import Foundation
-import EVReflection
 
-open class Game: EVObject {
 
-    public var id: Int32 = 0
-    public var title: String = ""
-    public var description: String = ""
-    public var imageUrl: String = ""
-    public var url: String = ""
-    public var numberOfPlayers: Int32 = 0
+open class Game: Codable {
 
-    //public init() {}
+    public var id: Int32?
+    public var title: String?
+    public var gameDescription: String?
+    public var imageUrl: String?
+    public var url: String?
+    public var numberOfPlayers: Int32?
+
+    public init() {}
 
 }

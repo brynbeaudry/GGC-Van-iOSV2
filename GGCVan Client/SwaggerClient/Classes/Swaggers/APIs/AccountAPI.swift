@@ -352,13 +352,14 @@ open class AccountAPI {
     /**
 
      - parameter email: (query)  (optional)
+     - parameter userName: (query)  (optional)
      - parameter password: (query)  (optional)
      - parameter rememberMe: (query)  (optional)
      - parameter returnUrl: (query)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func accountLoginPost(email: String? = nil, password: String? = nil, rememberMe: Bool? = nil, returnUrl: String? = nil, completion: @escaping ((_ error: Error?) -> Void)) {
-        accountLoginPostWithRequestBuilder(email: email, password: password, rememberMe: rememberMe, returnUrl: returnUrl).execute { (response, error) -> Void in
+    open class func accountLoginPost(email: String? = nil, userName: String? = nil, password: String? = nil, rememberMe: Bool? = nil, returnUrl: String? = nil, completion: @escaping ((_ error: Error?) -> Void)) {
+        accountLoginPostWithRequestBuilder(email: email, userName: userName, password: password, rememberMe: rememberMe, returnUrl: returnUrl).execute { (response, error) -> Void in
             completion(error);
         }
     }
@@ -368,13 +369,14 @@ open class AccountAPI {
      - POST /Account/Login
      
      - parameter email: (query)  (optional)
+     - parameter userName: (query)  (optional)
      - parameter password: (query)  (optional)
      - parameter rememberMe: (query)  (optional)
      - parameter returnUrl: (query)  (optional)
 
      - returns: RequestBuilder<Void> 
      */
-    open class func accountLoginPostWithRequestBuilder(email: String? = nil, password: String? = nil, rememberMe: Bool? = nil, returnUrl: String? = nil) -> RequestBuilder<Void> {
+    open class func accountLoginPostWithRequestBuilder(email: String? = nil, userName: String? = nil, password: String? = nil, rememberMe: Bool? = nil, returnUrl: String? = nil) -> RequestBuilder<Void> {
         let path = "/Account/Login"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -382,6 +384,7 @@ open class AccountAPI {
         let url = NSURLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
             "Email": email, 
+            "UserName": userName, 
             "Password": password, 
             "RememberMe": rememberMe, 
             "returnUrl": returnUrl

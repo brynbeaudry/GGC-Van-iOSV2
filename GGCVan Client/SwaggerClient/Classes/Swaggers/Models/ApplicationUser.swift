@@ -6,28 +6,23 @@
 //
 
 import Foundation
-//import Alamofire
-//import PromiseKit
-import EVReflection
-//import SwiftyJSON
 
 
+open class ApplicationUser: Codable {
 
-open class ApplicationUser: EVObject {
+    public var userName: String?
+    public var firstName: String?
+    public var lastName: String?
+    public var fullName: String?
+    public var email: String?
+    public var providerName: String?
+    public var providerId: String?
+    public var pictureUrl: String?
+    public var bio: String?
+    public var createdEvents: [Event]?
+    public var joinedEvents: [EventGuest]?
+    public var id: String?
 
-    public var userName: String = ""
-    public var firstName: String = ""
-    public var lastName: String = ""
-    public var fullName: String = ""
-    public var email: String = ""
-    public var providerName: String = ""
-    public var providerId: String = ""
-    public var pictureUrl: String = ""
-    public var bio: String = ""
-    public var createdEvents: [Event] = []
-    public var joinedEvents: [EventGuest] = []
-    public var id: String = ""
-
-    //public init() {}
+    public init() {}
 
 }

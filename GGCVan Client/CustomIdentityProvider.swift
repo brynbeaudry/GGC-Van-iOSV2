@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import AWSCore
-import AWSCognitoIdentityProvider
 import GoogleSignIn
 import Google
 import FBSDKCoreKit
@@ -30,7 +28,6 @@ class CustomIdentityProvider : NSObject {
     let googleSignIn = GIDSignIn.sharedInstance()
     let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
     var loginDictionary = [LoginType : String]()
-    var currentAWSUser : AWSCognitoIdentityUser?
     var currentAccessToken : String?
     var currentIdentityId : String?
     var currentAuthorizationToken : String?
@@ -124,6 +121,7 @@ class CustomIdentityProvider : NSObject {
     
     func token( _ with: LoginType, email: String?, password : String?) -> Promise<Any> {
         let url = "\(AD.BASE_URL)/connect/token"
+        print("email \(email ?? "")  password: \(password ?? "")")
         switch AD.customIdentityProvider?.loginType {
         case .EMAIL?:
             let parameters: Parameters = [
@@ -190,11 +188,12 @@ class CustomIdentityProvider : NSObject {
         }
     }
     
-    func signUp(email: String, password: String) -> Promise<String> {
+    func signUp(email: String, password: String, username : String) -> Promise<String> {
         let url = "\(AD.BASE_URL)/api/register"
         let parameters: Parameters = [
             "email": email,
-            "password": password
+            "password": password,
+            "username" : username
             ]
         return Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding() ).responseJSON()
             .then { resp in

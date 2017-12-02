@@ -8,9 +8,6 @@
 
 import UIKit
 import CoreData
-import AWSCore
-import AWSCognito
-import AWSCognitoIdentityProvider
 import GoogleSignIn
 import Google
 import FBSDKCoreKit
@@ -31,8 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let clientIdGoogle : String! = nil
     var cognitoConfig : NSDictionary! = nil
     var window: UIWindow?
-    var pool: AWSCognitoIdentityUserPool?
-    var credentialsProvider: AWSCognitoCredentialsProvider?
     var customIdentityProvider: CustomIdentityProvider?
     //let BASE_URL = "http://localhost:54321"
     let BASE_URL = "http://ggcdev.bbeau.ca"

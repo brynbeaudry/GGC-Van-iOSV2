@@ -45,6 +45,7 @@ open class AuthorizationAPI {
      - parameter accessToken: (query)  (optional)
      - parameter acrValues: (query)  (optional)
      - parameter assertion: (query)  (optional)
+     - parameter claims: (query)  (optional)
      - parameter claimsLocales: (query)  (optional)
      - parameter clientAssertion: (query)  (optional)
      - parameter clientAssertionType: (query)  (optional)
@@ -76,12 +77,13 @@ open class AuthorizationAPI {
      - parameter state: (query)  (optional)
      - parameter token: (query)  (optional)
      - parameter tokenTypeHint: (query)  (optional)
+     - parameter registration: (query)  (optional)
      - parameter uiLocales: (query)  (optional)
      - parameter username: (query)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func connectAuthorizeGet(accessToken: String? = nil, acrValues: String? = nil, assertion: String? = nil, claimsLocales: String? = nil, clientAssertion: String? = nil, clientAssertionType: String? = nil, clientId: String? = nil, clientSecret: String? = nil, code: String? = nil, codeChallenge: String? = nil, codeChallengeMethod: String? = nil, codeVerifier: String? = nil, display: String? = nil, grantType: String? = nil, identityProvider: String? = nil, idTokenHint: String? = nil, loginHint: String? = nil, maxAge: Int64? = nil, nonce: String? = nil, password: String? = nil, postLogoutRedirectUri: String? = nil, prompt: String? = nil, redirectUri: String? = nil, refreshToken: String? = nil, request: String? = nil, requestId: String? = nil, requestUri: String? = nil, resource: String? = nil, responseMode: String? = nil, responseType: String? = nil, scope: String? = nil, state: String? = nil, token: String? = nil, tokenTypeHint: String? = nil, uiLocales: String? = nil, username: String? = nil, completion: @escaping ((_ error: Error?) -> Void)) {
-        connectAuthorizeGetWithRequestBuilder(accessToken: accessToken, acrValues: acrValues, assertion: assertion, claimsLocales: claimsLocales, clientAssertion: clientAssertion, clientAssertionType: clientAssertionType, clientId: clientId, clientSecret: clientSecret, code: code, codeChallenge: codeChallenge, codeChallengeMethod: codeChallengeMethod, codeVerifier: codeVerifier, display: display, grantType: grantType, identityProvider: identityProvider, idTokenHint: idTokenHint, loginHint: loginHint, maxAge: maxAge, nonce: nonce, password: password, postLogoutRedirectUri: postLogoutRedirectUri, prompt: prompt, redirectUri: redirectUri, refreshToken: refreshToken, request: request, requestId: requestId, requestUri: requestUri, resource: resource, responseMode: responseMode, responseType: responseType, scope: scope, state: state, token: token, tokenTypeHint: tokenTypeHint, uiLocales: uiLocales, username: username).execute { (response, error) -> Void in
+    open class func connectAuthorizeGet(accessToken: String? = nil, acrValues: String? = nil, assertion: String? = nil, claims: [String:String]? = nil, claimsLocales: String? = nil, clientAssertion: String? = nil, clientAssertionType: String? = nil, clientId: String? = nil, clientSecret: String? = nil, code: String? = nil, codeChallenge: String? = nil, codeChallengeMethod: String? = nil, codeVerifier: String? = nil, display: String? = nil, grantType: String? = nil, identityProvider: String? = nil, idTokenHint: String? = nil, loginHint: String? = nil, maxAge: Int64? = nil, nonce: String? = nil, password: String? = nil, postLogoutRedirectUri: String? = nil, prompt: String? = nil, redirectUri: String? = nil, refreshToken: String? = nil, request: String? = nil, requestId: String? = nil, requestUri: String? = nil, resource: String? = nil, responseMode: String? = nil, responseType: String? = nil, scope: String? = nil, state: String? = nil, token: String? = nil, tokenTypeHint: String? = nil, registration: [String:String]? = nil, uiLocales: String? = nil, username: String? = nil, completion: @escaping ((_ error: Error?) -> Void)) {
+        connectAuthorizeGetWithRequestBuilder(accessToken: accessToken, acrValues: acrValues, assertion: assertion, claims: claims, claimsLocales: claimsLocales, clientAssertion: clientAssertion, clientAssertionType: clientAssertionType, clientId: clientId, clientSecret: clientSecret, code: code, codeChallenge: codeChallenge, codeChallengeMethod: codeChallengeMethod, codeVerifier: codeVerifier, display: display, grantType: grantType, identityProvider: identityProvider, idTokenHint: idTokenHint, loginHint: loginHint, maxAge: maxAge, nonce: nonce, password: password, postLogoutRedirectUri: postLogoutRedirectUri, prompt: prompt, redirectUri: redirectUri, refreshToken: refreshToken, request: request, requestId: requestId, requestUri: requestUri, resource: resource, responseMode: responseMode, responseType: responseType, scope: scope, state: state, token: token, tokenTypeHint: tokenTypeHint, registration: registration, uiLocales: uiLocales, username: username).execute { (response, error) -> Void in
             completion(error);
         }
     }
@@ -93,6 +95,7 @@ open class AuthorizationAPI {
      - parameter accessToken: (query)  (optional)
      - parameter acrValues: (query)  (optional)
      - parameter assertion: (query)  (optional)
+     - parameter claims: (query)  (optional)
      - parameter claimsLocales: (query)  (optional)
      - parameter clientAssertion: (query)  (optional)
      - parameter clientAssertionType: (query)  (optional)
@@ -124,12 +127,13 @@ open class AuthorizationAPI {
      - parameter state: (query)  (optional)
      - parameter token: (query)  (optional)
      - parameter tokenTypeHint: (query)  (optional)
+     - parameter registration: (query)  (optional)
      - parameter uiLocales: (query)  (optional)
      - parameter username: (query)  (optional)
 
      - returns: RequestBuilder<Void> 
      */
-    open class func connectAuthorizeGetWithRequestBuilder(accessToken: String? = nil, acrValues: String? = nil, assertion: String? = nil, claimsLocales: String? = nil, clientAssertion: String? = nil, clientAssertionType: String? = nil, clientId: String? = nil, clientSecret: String? = nil, code: String? = nil, codeChallenge: String? = nil, codeChallengeMethod: String? = nil, codeVerifier: String? = nil, display: String? = nil, grantType: String? = nil, identityProvider: String? = nil, idTokenHint: String? = nil, loginHint: String? = nil, maxAge: Int64? = nil, nonce: String? = nil, password: String? = nil, postLogoutRedirectUri: String? = nil, prompt: String? = nil, redirectUri: String? = nil, refreshToken: String? = nil, request: String? = nil, requestId: String? = nil, requestUri: String? = nil, resource: String? = nil, responseMode: String? = nil, responseType: String? = nil, scope: String? = nil, state: String? = nil, token: String? = nil, tokenTypeHint: String? = nil, uiLocales: String? = nil, username: String? = nil) -> RequestBuilder<Void> {
+    open class func connectAuthorizeGetWithRequestBuilder(accessToken: String? = nil, acrValues: String? = nil, assertion: String? = nil, claims: [String:String]? = nil, claimsLocales: String? = nil, clientAssertion: String? = nil, clientAssertionType: String? = nil, clientId: String? = nil, clientSecret: String? = nil, code: String? = nil, codeChallenge: String? = nil, codeChallengeMethod: String? = nil, codeVerifier: String? = nil, display: String? = nil, grantType: String? = nil, identityProvider: String? = nil, idTokenHint: String? = nil, loginHint: String? = nil, maxAge: Int64? = nil, nonce: String? = nil, password: String? = nil, postLogoutRedirectUri: String? = nil, prompt: String? = nil, redirectUri: String? = nil, refreshToken: String? = nil, request: String? = nil, requestId: String? = nil, requestUri: String? = nil, resource: String? = nil, responseMode: String? = nil, responseType: String? = nil, scope: String? = nil, state: String? = nil, token: String? = nil, tokenTypeHint: String? = nil, registration: [String:String]? = nil, uiLocales: String? = nil, username: String? = nil) -> RequestBuilder<Void> {
         let path = "/connect/authorize"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -139,6 +143,7 @@ open class AuthorizationAPI {
             "AccessToken": accessToken, 
             "AcrValues": acrValues, 
             "Assertion": assertion, 
+            "Claims": claims, 
             "ClaimsLocales": claimsLocales, 
             "ClientAssertion": clientAssertion, 
             "ClientAssertionType": clientAssertionType, 
@@ -170,6 +175,7 @@ open class AuthorizationAPI {
             "State": state, 
             "Token": token, 
             "TokenTypeHint": tokenTypeHint, 
+            "Registration": registration, 
             "UiLocales": uiLocales, 
             "Username": username
         ])
@@ -185,6 +191,7 @@ open class AuthorizationAPI {
      - parameter accessToken: (query)  (optional)
      - parameter acrValues: (query)  (optional)
      - parameter assertion: (query)  (optional)
+     - parameter claims: (query)  (optional)
      - parameter claimsLocales: (query)  (optional)
      - parameter clientAssertion: (query)  (optional)
      - parameter clientAssertionType: (query)  (optional)
@@ -216,12 +223,13 @@ open class AuthorizationAPI {
      - parameter state: (query)  (optional)
      - parameter token: (query)  (optional)
      - parameter tokenTypeHint: (query)  (optional)
+     - parameter registration: (query)  (optional)
      - parameter uiLocales: (query)  (optional)
      - parameter username: (query)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func connectAuthorizePost(accessToken: String? = nil, acrValues: String? = nil, assertion: String? = nil, claimsLocales: String? = nil, clientAssertion: String? = nil, clientAssertionType: String? = nil, clientId: String? = nil, clientSecret: String? = nil, code: String? = nil, codeChallenge: String? = nil, codeChallengeMethod: String? = nil, codeVerifier: String? = nil, display: String? = nil, grantType: String? = nil, identityProvider: String? = nil, idTokenHint: String? = nil, loginHint: String? = nil, maxAge: Int64? = nil, nonce: String? = nil, password: String? = nil, postLogoutRedirectUri: String? = nil, prompt: String? = nil, redirectUri: String? = nil, refreshToken: String? = nil, request: String? = nil, requestId: String? = nil, requestUri: String? = nil, resource: String? = nil, responseMode: String? = nil, responseType: String? = nil, scope: String? = nil, state: String? = nil, token: String? = nil, tokenTypeHint: String? = nil, uiLocales: String? = nil, username: String? = nil, completion: @escaping ((_ error: Error?) -> Void)) {
-        connectAuthorizePostWithRequestBuilder(accessToken: accessToken, acrValues: acrValues, assertion: assertion, claimsLocales: claimsLocales, clientAssertion: clientAssertion, clientAssertionType: clientAssertionType, clientId: clientId, clientSecret: clientSecret, code: code, codeChallenge: codeChallenge, codeChallengeMethod: codeChallengeMethod, codeVerifier: codeVerifier, display: display, grantType: grantType, identityProvider: identityProvider, idTokenHint: idTokenHint, loginHint: loginHint, maxAge: maxAge, nonce: nonce, password: password, postLogoutRedirectUri: postLogoutRedirectUri, prompt: prompt, redirectUri: redirectUri, refreshToken: refreshToken, request: request, requestId: requestId, requestUri: requestUri, resource: resource, responseMode: responseMode, responseType: responseType, scope: scope, state: state, token: token, tokenTypeHint: tokenTypeHint, uiLocales: uiLocales, username: username).execute { (response, error) -> Void in
+    open class func connectAuthorizePost(accessToken: String? = nil, acrValues: String? = nil, assertion: String? = nil, claims: [String:String]? = nil, claimsLocales: String? = nil, clientAssertion: String? = nil, clientAssertionType: String? = nil, clientId: String? = nil, clientSecret: String? = nil, code: String? = nil, codeChallenge: String? = nil, codeChallengeMethod: String? = nil, codeVerifier: String? = nil, display: String? = nil, grantType: String? = nil, identityProvider: String? = nil, idTokenHint: String? = nil, loginHint: String? = nil, maxAge: Int64? = nil, nonce: String? = nil, password: String? = nil, postLogoutRedirectUri: String? = nil, prompt: String? = nil, redirectUri: String? = nil, refreshToken: String? = nil, request: String? = nil, requestId: String? = nil, requestUri: String? = nil, resource: String? = nil, responseMode: String? = nil, responseType: String? = nil, scope: String? = nil, state: String? = nil, token: String? = nil, tokenTypeHint: String? = nil, registration: [String:String]? = nil, uiLocales: String? = nil, username: String? = nil, completion: @escaping ((_ error: Error?) -> Void)) {
+        connectAuthorizePostWithRequestBuilder(accessToken: accessToken, acrValues: acrValues, assertion: assertion, claims: claims, claimsLocales: claimsLocales, clientAssertion: clientAssertion, clientAssertionType: clientAssertionType, clientId: clientId, clientSecret: clientSecret, code: code, codeChallenge: codeChallenge, codeChallengeMethod: codeChallengeMethod, codeVerifier: codeVerifier, display: display, grantType: grantType, identityProvider: identityProvider, idTokenHint: idTokenHint, loginHint: loginHint, maxAge: maxAge, nonce: nonce, password: password, postLogoutRedirectUri: postLogoutRedirectUri, prompt: prompt, redirectUri: redirectUri, refreshToken: refreshToken, request: request, requestId: requestId, requestUri: requestUri, resource: resource, responseMode: responseMode, responseType: responseType, scope: scope, state: state, token: token, tokenTypeHint: tokenTypeHint, registration: registration, uiLocales: uiLocales, username: username).execute { (response, error) -> Void in
             completion(error);
         }
     }
@@ -233,6 +241,7 @@ open class AuthorizationAPI {
      - parameter accessToken: (query)  (optional)
      - parameter acrValues: (query)  (optional)
      - parameter assertion: (query)  (optional)
+     - parameter claims: (query)  (optional)
      - parameter claimsLocales: (query)  (optional)
      - parameter clientAssertion: (query)  (optional)
      - parameter clientAssertionType: (query)  (optional)
@@ -264,12 +273,13 @@ open class AuthorizationAPI {
      - parameter state: (query)  (optional)
      - parameter token: (query)  (optional)
      - parameter tokenTypeHint: (query)  (optional)
+     - parameter registration: (query)  (optional)
      - parameter uiLocales: (query)  (optional)
      - parameter username: (query)  (optional)
 
      - returns: RequestBuilder<Void> 
      */
-    open class func connectAuthorizePostWithRequestBuilder(accessToken: String? = nil, acrValues: String? = nil, assertion: String? = nil, claimsLocales: String? = nil, clientAssertion: String? = nil, clientAssertionType: String? = nil, clientId: String? = nil, clientSecret: String? = nil, code: String? = nil, codeChallenge: String? = nil, codeChallengeMethod: String? = nil, codeVerifier: String? = nil, display: String? = nil, grantType: String? = nil, identityProvider: String? = nil, idTokenHint: String? = nil, loginHint: String? = nil, maxAge: Int64? = nil, nonce: String? = nil, password: String? = nil, postLogoutRedirectUri: String? = nil, prompt: String? = nil, redirectUri: String? = nil, refreshToken: String? = nil, request: String? = nil, requestId: String? = nil, requestUri: String? = nil, resource: String? = nil, responseMode: String? = nil, responseType: String? = nil, scope: String? = nil, state: String? = nil, token: String? = nil, tokenTypeHint: String? = nil, uiLocales: String? = nil, username: String? = nil) -> RequestBuilder<Void> {
+    open class func connectAuthorizePostWithRequestBuilder(accessToken: String? = nil, acrValues: String? = nil, assertion: String? = nil, claims: [String:String]? = nil, claimsLocales: String? = nil, clientAssertion: String? = nil, clientAssertionType: String? = nil, clientId: String? = nil, clientSecret: String? = nil, code: String? = nil, codeChallenge: String? = nil, codeChallengeMethod: String? = nil, codeVerifier: String? = nil, display: String? = nil, grantType: String? = nil, identityProvider: String? = nil, idTokenHint: String? = nil, loginHint: String? = nil, maxAge: Int64? = nil, nonce: String? = nil, password: String? = nil, postLogoutRedirectUri: String? = nil, prompt: String? = nil, redirectUri: String? = nil, refreshToken: String? = nil, request: String? = nil, requestId: String? = nil, requestUri: String? = nil, resource: String? = nil, responseMode: String? = nil, responseType: String? = nil, scope: String? = nil, state: String? = nil, token: String? = nil, tokenTypeHint: String? = nil, registration: [String:String]? = nil, uiLocales: String? = nil, username: String? = nil) -> RequestBuilder<Void> {
         let path = "/connect/authorize"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -279,6 +289,7 @@ open class AuthorizationAPI {
             "AccessToken": accessToken, 
             "AcrValues": acrValues, 
             "Assertion": assertion, 
+            "Claims": claims, 
             "ClaimsLocales": claimsLocales, 
             "ClientAssertion": clientAssertion, 
             "ClientAssertionType": clientAssertionType, 
@@ -310,6 +321,7 @@ open class AuthorizationAPI {
             "State": state, 
             "Token": token, 
             "TokenTypeHint": tokenTypeHint, 
+            "Registration": registration, 
             "UiLocales": uiLocales, 
             "Username": username
         ])
@@ -354,6 +366,7 @@ open class AuthorizationAPI {
      - parameter accessToken: (query)  (optional)
      - parameter acrValues: (query)  (optional)
      - parameter assertion: (query)  (optional)
+     - parameter claims: (query)  (optional)
      - parameter claimsLocales: (query)  (optional)
      - parameter clientAssertion: (query)  (optional)
      - parameter clientAssertionType: (query)  (optional)
@@ -385,12 +398,13 @@ open class AuthorizationAPI {
      - parameter state: (query)  (optional)
      - parameter token: (query)  (optional)
      - parameter tokenTypeHint: (query)  (optional)
+     - parameter registration: (query)  (optional)
      - parameter uiLocales: (query)  (optional)
      - parameter username: (query)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func connectTokenPost(accessToken: String? = nil, acrValues: String? = nil, assertion: String? = nil, claimsLocales: String? = nil, clientAssertion: String? = nil, clientAssertionType: String? = nil, clientId: String? = nil, clientSecret: String? = nil, code: String? = nil, codeChallenge: String? = nil, codeChallengeMethod: String? = nil, codeVerifier: String? = nil, display: String? = nil, grantType: String? = nil, identityProvider: String? = nil, idTokenHint: String? = nil, loginHint: String? = nil, maxAge: Int64? = nil, nonce: String? = nil, password: String? = nil, postLogoutRedirectUri: String? = nil, prompt: String? = nil, redirectUri: String? = nil, refreshToken: String? = nil, request: String? = nil, requestId: String? = nil, requestUri: String? = nil, resource: String? = nil, responseMode: String? = nil, responseType: String? = nil, scope: String? = nil, state: String? = nil, token: String? = nil, tokenTypeHint: String? = nil, uiLocales: String? = nil, username: String? = nil, completion: @escaping ((_ error: Error?) -> Void)) {
-        connectTokenPostWithRequestBuilder(accessToken: accessToken, acrValues: acrValues, assertion: assertion, claimsLocales: claimsLocales, clientAssertion: clientAssertion, clientAssertionType: clientAssertionType, clientId: clientId, clientSecret: clientSecret, code: code, codeChallenge: codeChallenge, codeChallengeMethod: codeChallengeMethod, codeVerifier: codeVerifier, display: display, grantType: grantType, identityProvider: identityProvider, idTokenHint: idTokenHint, loginHint: loginHint, maxAge: maxAge, nonce: nonce, password: password, postLogoutRedirectUri: postLogoutRedirectUri, prompt: prompt, redirectUri: redirectUri, refreshToken: refreshToken, request: request, requestId: requestId, requestUri: requestUri, resource: resource, responseMode: responseMode, responseType: responseType, scope: scope, state: state, token: token, tokenTypeHint: tokenTypeHint, uiLocales: uiLocales, username: username).execute { (response, error) -> Void in
+    open class func connectTokenPost(accessToken: String? = nil, acrValues: String? = nil, assertion: String? = nil, claims: [String:String]? = nil, claimsLocales: String? = nil, clientAssertion: String? = nil, clientAssertionType: String? = nil, clientId: String? = nil, clientSecret: String? = nil, code: String? = nil, codeChallenge: String? = nil, codeChallengeMethod: String? = nil, codeVerifier: String? = nil, display: String? = nil, grantType: String? = nil, identityProvider: String? = nil, idTokenHint: String? = nil, loginHint: String? = nil, maxAge: Int64? = nil, nonce: String? = nil, password: String? = nil, postLogoutRedirectUri: String? = nil, prompt: String? = nil, redirectUri: String? = nil, refreshToken: String? = nil, request: String? = nil, requestId: String? = nil, requestUri: String? = nil, resource: String? = nil, responseMode: String? = nil, responseType: String? = nil, scope: String? = nil, state: String? = nil, token: String? = nil, tokenTypeHint: String? = nil, registration: [String:String]? = nil, uiLocales: String? = nil, username: String? = nil, completion: @escaping ((_ error: Error?) -> Void)) {
+        connectTokenPostWithRequestBuilder(accessToken: accessToken, acrValues: acrValues, assertion: assertion, claims: claims, claimsLocales: claimsLocales, clientAssertion: clientAssertion, clientAssertionType: clientAssertionType, clientId: clientId, clientSecret: clientSecret, code: code, codeChallenge: codeChallenge, codeChallengeMethod: codeChallengeMethod, codeVerifier: codeVerifier, display: display, grantType: grantType, identityProvider: identityProvider, idTokenHint: idTokenHint, loginHint: loginHint, maxAge: maxAge, nonce: nonce, password: password, postLogoutRedirectUri: postLogoutRedirectUri, prompt: prompt, redirectUri: redirectUri, refreshToken: refreshToken, request: request, requestId: requestId, requestUri: requestUri, resource: resource, responseMode: responseMode, responseType: responseType, scope: scope, state: state, token: token, tokenTypeHint: tokenTypeHint, registration: registration, uiLocales: uiLocales, username: username).execute { (response, error) -> Void in
             completion(error);
         }
     }
@@ -402,6 +416,7 @@ open class AuthorizationAPI {
      - parameter accessToken: (query)  (optional)
      - parameter acrValues: (query)  (optional)
      - parameter assertion: (query)  (optional)
+     - parameter claims: (query)  (optional)
      - parameter claimsLocales: (query)  (optional)
      - parameter clientAssertion: (query)  (optional)
      - parameter clientAssertionType: (query)  (optional)
@@ -433,12 +448,13 @@ open class AuthorizationAPI {
      - parameter state: (query)  (optional)
      - parameter token: (query)  (optional)
      - parameter tokenTypeHint: (query)  (optional)
+     - parameter registration: (query)  (optional)
      - parameter uiLocales: (query)  (optional)
      - parameter username: (query)  (optional)
 
      - returns: RequestBuilder<Void> 
      */
-    open class func connectTokenPostWithRequestBuilder(accessToken: String? = nil, acrValues: String? = nil, assertion: String? = nil, claimsLocales: String? = nil, clientAssertion: String? = nil, clientAssertionType: String? = nil, clientId: String? = nil, clientSecret: String? = nil, code: String? = nil, codeChallenge: String? = nil, codeChallengeMethod: String? = nil, codeVerifier: String? = nil, display: String? = nil, grantType: String? = nil, identityProvider: String? = nil, idTokenHint: String? = nil, loginHint: String? = nil, maxAge: Int64? = nil, nonce: String? = nil, password: String? = nil, postLogoutRedirectUri: String? = nil, prompt: String? = nil, redirectUri: String? = nil, refreshToken: String? = nil, request: String? = nil, requestId: String? = nil, requestUri: String? = nil, resource: String? = nil, responseMode: String? = nil, responseType: String? = nil, scope: String? = nil, state: String? = nil, token: String? = nil, tokenTypeHint: String? = nil, uiLocales: String? = nil, username: String? = nil) -> RequestBuilder<Void> {
+    open class func connectTokenPostWithRequestBuilder(accessToken: String? = nil, acrValues: String? = nil, assertion: String? = nil, claims: [String:String]? = nil, claimsLocales: String? = nil, clientAssertion: String? = nil, clientAssertionType: String? = nil, clientId: String? = nil, clientSecret: String? = nil, code: String? = nil, codeChallenge: String? = nil, codeChallengeMethod: String? = nil, codeVerifier: String? = nil, display: String? = nil, grantType: String? = nil, identityProvider: String? = nil, idTokenHint: String? = nil, loginHint: String? = nil, maxAge: Int64? = nil, nonce: String? = nil, password: String? = nil, postLogoutRedirectUri: String? = nil, prompt: String? = nil, redirectUri: String? = nil, refreshToken: String? = nil, request: String? = nil, requestId: String? = nil, requestUri: String? = nil, resource: String? = nil, responseMode: String? = nil, responseType: String? = nil, scope: String? = nil, state: String? = nil, token: String? = nil, tokenTypeHint: String? = nil, registration: [String:String]? = nil, uiLocales: String? = nil, username: String? = nil) -> RequestBuilder<Void> {
         let path = "/connect/token"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -448,6 +464,7 @@ open class AuthorizationAPI {
             "AccessToken": accessToken, 
             "AcrValues": acrValues, 
             "Assertion": assertion, 
+            "Claims": claims, 
             "ClaimsLocales": claimsLocales, 
             "ClientAssertion": clientAssertion, 
             "ClientAssertionType": clientAssertionType, 
@@ -479,6 +496,7 @@ open class AuthorizationAPI {
             "State": state, 
             "Token": token, 
             "TokenTypeHint": tokenTypeHint, 
+            "Registration": registration, 
             "UiLocales": uiLocales, 
             "Username": username
         ])
