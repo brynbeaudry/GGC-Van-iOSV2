@@ -119,25 +119,34 @@ class CustomIdentityProvider : NSObject {
     }
     
     
-    func token( _ with: LoginType, email: String?, password : String?) -> Promise<Any> {
+    func token( _ with: LoginType, email: String, password : String) -> Promise<Any> {
         let url = "\(AD.BASE_URL)/connect/token"
-        print("email \(email ?? "")  password: \(password ?? "")")
+        print("email \(email)  password: \(password)")
         switch AD.customIdentityProvider?.loginType {
         case .EMAIL?:
-            let parameters: Parameters = [
-                "username": email ?? " ",
-                "password": password ?? " ",
+            let headers = [
+                "Content-Type": "application/x-www-form-urlencoded"
+            ]
+            let parameters  = [
                 "grant_type": "password",
-                "response_type" : "code",
-                ]
-            return Alamofire.request(url, method: .post, parameters: parameters, encoding: URLEncoding() ).responseString()
-                .then { json in
-                    print(json)
-                    let tokenResponse = Token(json : json)
-                    self.currentToken = tokenResponse
-                    print("Current Access Token \(self.currentToken?.access_token ?? "No current Access Token")")
-                    self.isAuthenticated = true
-                    return Promise(value: "EMAIL_LOGIN_SUCCESS")
+                "password": password,
+                "username": email,
+                "response_type" : "code"
+            ]
+            //test paramas
+            
+            return Alamofire.request(url, method: .post, parameters: parameters, headers: headers ).responseJSON()
+                .then { resp in
+                    print(resp)
+                    let json = JSON(resp)
+                    if json["error_description"] == JSON.null {
+                        self.currentToken = Token(json: json.rawString()!)
+                        print("Current Access Token \(self.currentToken?.access_token ?? "No current Access Token")")
+                        self.isAuthenticated = true
+                        return Promise(value: "EMAIL_LOGIN_SUCCESS")
+                    }else{
+                        return Promise(value: "EMAIL_LOGIN_FAILURE")
+                    }
                 }.catch{ error in
                     print(error)
                 }

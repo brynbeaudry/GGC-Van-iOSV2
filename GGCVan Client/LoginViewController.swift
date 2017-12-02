@@ -52,7 +52,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
                 }
                 //get token from the server
                 firstly {
-                    self.appDelegate.customIdentityProvider!.token(LoginType.FACEBOOK, email: nil, password: nil)
+                    self.appDelegate.customIdentityProvider!.token(LoginType.FACEBOOK, email: "", password: "")
                     }.then { message in
                         self.fbLoginDspGrp.leave()
                     }.catch { error in
@@ -94,7 +94,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
             print("\(error.localizedDescription)")
         }
         firstly {
-            appDelegate.customIdentityProvider!.token(LoginType.GOOGLE, email: nil, password: nil)
+            appDelegate.customIdentityProvider!.token(LoginType.GOOGLE, email: "", password: "")
             }.then { message in
                 self.mainDealwAuthSucess()
             }.catch { error in

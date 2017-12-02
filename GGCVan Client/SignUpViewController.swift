@@ -36,42 +36,46 @@ class SignUpViewController: UIViewController {
     
     
     func getSignUpResponse(){
-        //let suG = DispatchGroup()
-        //suG.enter()
+        let suG = DispatchGroup()
+        suG.enter()
         // Actually make the signup call passing in those attributes
         //LoginItems.sharedInstance.setEmail(email: tfEmail.text!)
-        //LoginItems.sharedInstance.setPassword(pass: tfPassword.text!)
-        let signUpItems = [tfEmail.text!, tfPassword.text!, tfUsername.text!]
         //let test = ["a@a.a", "qwerty"]
         //LoginItems.sharedInstance.setEmail(email: self.email.text!)
         //LoginItems.sharedInstance.setPassword(pass: self.password.text!)
         
         firstly {
-            AD.customIdentityProvider!.signUp(email: signUpItems[0], password: signUpItems[1], username: signUpItems[2])
+            //let signUpItems : [String] = [self.tfEmail.text!, self.tfPassword.text!, self.tfUsername.text!]
+            //let signUpItems : [String] = [self.tfEmail.text!, self.tfPassword.text!, self.tfUsername.text!]
+            AD.customIdentityProvider!.signUp(email: self.tfEmail.text!, password: self.tfPassword.text!, username: self.tfUsername.text!)
         }.then { message -> Void in
                 if(message == "SUCCESS"){
                     self.afterSignUpSignIn()
+                    suG.leave()
                 }else{
                     // Error in the signup process
-                    let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Error", message: message , preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
+                    suG.leave()
                 }
         }.catch { error in
             print(error)
         }
+        suG.notify(queue: .main, execute: {self.afterSignUpSignIn()})
+        
     }//end of getting sign up response from async task
         //suG.notify(queue: .main, execute: {self.afterSignUpSignIn()})
     
     func afterSignUpSignIn(){
         //authenticate user
-        //let  lnDg = DispatchGroup()
-        //lnDg.enter()
+        let  lnDg = DispatchGroup()
+        lnDg.enter()
         AD.customIdentityProvider?.loginType = LoginType.EMAIL
         //let signUpItems = [tfEmail.text!, tfPassword.text!]
         
         // Sign in after sign up
         firstly {
-            AD.customIdentityProvider!.token(LoginType.EMAIL, email: tfEmail.text!, password: tfPassword.text!)
+            AD.customIdentityProvider!.token(LoginType.EMAIL, email: self.tfEmail.text!, password: self.tfPassword.text!)
         }.then { resp -> Void in
             //success message and deal with success
             //tokenDG.leave()
@@ -80,10 +84,14 @@ class SignUpViewController: UIViewController {
                 if message == "EMAIL_LOGIN_SUCCESS" {
                     self.performSegueWithCompletion(id: "signUpBackToMain", sender: self, completion: {self.avDelegate?.authViewDidClose()})
                 }
+                
             }
+            lnDg.leave()
+            print("end of after sign in sign up")
         }.catch { error in
             print(error)
         }
+        print("end of after sign in sign up")
     }
         
         /*
