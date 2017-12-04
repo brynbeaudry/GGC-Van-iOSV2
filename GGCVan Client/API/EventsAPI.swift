@@ -26,7 +26,7 @@ class EventsAPI : NSObject {
     func getEvents() -> Promise<[Event]>{
         
         let url = self.BASE_URL
-        let headers = self.headers
+        //let headers = self.headers
         var request = URLRequest(url: NSURL(string:url!)! as URL)
         request.httpMethod = "GET"
         request.setValue("Bearer \(IP?.currentToken?.access_token ?? "Something went wrong")", forHTTPHeaderField: "Authorization")

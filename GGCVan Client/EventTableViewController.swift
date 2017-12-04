@@ -20,6 +20,37 @@ class EventTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    func getImageFromWeb(_ urlString: String, closure: @escaping (Data?) -> ()) {
+        guard let url = URL(string: urlString) else {
+            return closure(nil)
+        }
+        let task = URLSession(configuration: .default).dataTask(with: url) { (data, response, error) in
+            guard error == nil else {
+                print("error: \(String(describing: error))")
+                return closure(nil)
+            }
+            guard response != nil else {
+                print("no response")
+                return closure(nil)
+            }
+            guard data != nil else {
+                print("no data")
+                return closure(nil)
+            }
+            DispatchQueue.main.async {
+                closure(data)
+            }
+        }; task.resume()
+    }
+
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //self.getCells()
+        
+        //get the list of events from the api
         dgHaveInitialData.enter()
         firstly {
             eventsApi.getEvents()
@@ -32,16 +63,10 @@ class EventTableViewController: UITableViewController {
             } .catch { error in
                 print(error)
                 self.dgHaveInitialData.leave()
-            }
+        }
         dgHaveInitialData.notify(queue: .main, execute: {
             self.tableView.reloadData()
         })
-    }
-
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        //self.getCells()
         
 
         // Uncomment the following line to preserve selection between presentations
@@ -71,10 +96,25 @@ class EventTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "EventTableViewCell", for: indexPath) as? EventTableViewCell else{
+            fatalError("The cell is not the intended type")
+        }
+        self.tableView.rowHeight = UITableViewAutomaticDimension;
+        self.tableView.estimatedRowHeight = 50;
         let event = events![indexPath.row]
-        cell.textLabel!.text = event.title
+        //let dgHaveDownloadedImage = DispatchGroup()
+        getImageFromWeb(event.game.imageUrl) { (data) in
+            if let data = data {
+                let scale : CGFloat = 3
+                let image = UIImage(data: data, scale: scale)
+                cell.uiImage.image = image
+
+                
+                //self.view.addSubview(imageView)
+            } // if you use an Else statement, it will be in background
+        }
         // Configure the cell...
+        cell.uiTitle.text = event.title
 
         return cell
     }
