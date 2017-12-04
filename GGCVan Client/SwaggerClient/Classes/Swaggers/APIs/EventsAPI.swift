@@ -116,8 +116,8 @@ open class EventsAPI {
 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func apiEventsGet(completion: @escaping ((_ data: [Event]?,_ error: Error?) -> Void)) {
-        apiEventsGetWithRequestBuilder().execute { (response, error) -> Void in
+    open class func apiEventsGet(accessToken: String , completion: @escaping ((_ data: [Event]?,_ error: Error?) -> Void)) {
+        apiEventsGetWithRequestBuilder().addHeader(name: "Authorization", value: "Bearer \(accessToken)").execute { (response, error) -> Void in
             completion(response?.body, error);
         }
     }

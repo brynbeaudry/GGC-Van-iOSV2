@@ -8,7 +8,7 @@
 import Foundation
 
 
-open class ApplicationUser: Codable {
+open class ApplicationUser: E {
 
     public var userName: String?
     public var firstName: String?

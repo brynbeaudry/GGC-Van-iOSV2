@@ -56,7 +56,7 @@ class MainViewController: UIViewController, AuthViewDelegate {
         }
         
         //reset token, reset auth wall
-        
+        /*
         //set unautheticated
         self.AD.customIdentityProvider?.isAuthenticated = false
         let when = DispatchTime.now() + 2 // change 2 to desired number of seconds
@@ -64,7 +64,7 @@ class MainViewController: UIViewController, AuthViewDelegate {
         DispatchQueue.main.asyncAfter(deadline: when) {
             self.performSegue(withIdentifier: "modalAuthWall", sender: self)
         }
-        
+        */
         
         //is authorized, goto User Area
         if (AD.customIdentityProvider?.isAuthenticated)! {

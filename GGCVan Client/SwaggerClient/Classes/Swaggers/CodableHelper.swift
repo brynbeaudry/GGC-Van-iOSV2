@@ -17,9 +17,9 @@ open class CodableHelper {
         var returnedError: Error? = nil
         
         let decoder = JSONDecoder()
-        decoder.dataDecodingStrategy = JSONDecoder.DataDecodingStrategy.base64
+        decoder.dataDecodingStrategy = JSONDecoder.DataDecodingStrategy.deferredToData
         if #available(iOS 10.0, *) {
-            decoder.dateDecodingStrategy = JSONDecoder.DateDecodingStrategy.iso8601
+            decoder.dateDecodingStrategy = JSONDecoder.DateDecodingStrategy.deferredToDate
         }
         
         do {
@@ -41,9 +41,9 @@ open class CodableHelper {
         } else {
             // Fallback on earlier versions
         }
-        encoder.dataEncodingStrategy = JSONEncoder.DataEncodingStrategy.base64
+        encoder.dataEncodingStrategy = JSONEncoder.DataEncodingStrategy.deferredToData
         if #available(iOS 10.0, *) {
-            encoder.dateEncodingStrategy = .iso8601
+            encoder.dateEncodingStrategy = .deferredToDate
         }
         
         do {

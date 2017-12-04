@@ -131,7 +131,8 @@ class CustomIdentityProvider : NSObject {
                 "grant_type": "password",
                 "password": password,
                 "username": email,
-                "response_type" : "code"
+                "response_type" : "code",
+                "scope": "openid profile email"
             ]
             //test paramas
             

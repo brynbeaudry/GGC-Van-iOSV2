@@ -117,8 +117,8 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         self.appDelegate.customIdentityProvider?.loginType = LoginType.EMAIL
         //LoginItems.sharedInstance.setEmail(email: tfEmail.text!)
         //LoginItems.sharedInstance.setPassword(pass: tfPassword.text!)
-        let _ = [tfEmail.text!, tfPassword.text!]
-        let test = ["a@a.a", "qwerty"]
+        let test = [tfEmail.text!, tfPassword.text!]
+        //let test = ["a@a.a", "qwerty"]
         //  TODO: LOGIN HERE  BY EMAIL
         //let tokenDG = DispatchGroup()
         //tokenDG.enter()

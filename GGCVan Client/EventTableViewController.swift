@@ -13,12 +13,31 @@ import EVReflection
 import SwiftyJSON
 
 class EventTableViewController: UITableViewController {
+    let AD = UIApplication.shared.delegate as! AppDelegate
     let dgHaveInitialData = DispatchGroup();
+    let eventsApi = EventsAPI()
+    var events : [Event]?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        dgHaveInitialData.enter()
+        firstly {
+            eventsApi.getEvents()
+            }.then { events -> Void in
+                for event in events {
+                    print(event.title)
+                }
+                self.events = events
+                self.dgHaveInitialData.leave()
+            } .catch { error in
+                print(error)
+                self.dgHaveInitialData.leave()
+            }
+        dgHaveInitialData.notify(queue: .main, execute: {
+            self.tableView.reloadData()
+        })
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,18 +65,19 @@ class EventTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return events?.count ?? 0
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        let event = events![indexPath.row]
+        cell.textLabel!.text = event.title
         // Configure the cell...
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
