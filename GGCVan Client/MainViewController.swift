@@ -33,7 +33,7 @@ class MainViewController: UIViewController, AuthViewDelegate {
                 AD.customIdentityProvider?.printGoogleUser()
                 
                 //disable when real
-                GIDSignIn.sharedInstance().disconnect()
+                //GIDSignIn.sharedInstance().disconnect()
             }
             print("after clear")
             //printCurrentUser()
@@ -45,7 +45,7 @@ class MainViewController: UIViewController, AuthViewDelegate {
                 AD.customIdentityProvider?.getFBUserData() //waits
                 
                 //disable when real
-                AD.customIdentityProvider?.fbLoginManager.logOut()
+                //AD.customIdentityProvider?.fbLoginManager.logOut()
             }
         }
         
@@ -68,11 +68,12 @@ class MainViewController: UIViewController, AuthViewDelegate {
         
         //is authorized, goto User Area
         if (AD.customIdentityProvider?.isAuthenticated)! {
-            self.performSegue(withIdentifier: "GotoUserArea", sender: self)
+            let when = DispatchTime.now() + 2 // change 2 to desired number of seconds
+            //put the auth wall back up for testing
+            DispatchQueue.main.asyncAfter(deadline: when) {
+                self.performSegue(withIdentifier: "GotoUserArea", sender: self)
+            }
         }
-        
-        
-   
     }
     
     func getFBUserData(){

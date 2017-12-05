@@ -16,8 +16,8 @@ open class Event: EVObject {
      var id: Int32 = 0
      var title: String = ""
      var creator: ApplicationUser = ApplicationUser()
-     var startTime: Date? = Date(fromDateTimeString: "")
-     var endTime: Date? = Date(fromDateTimeString: "")
+     var startTime: String? = ""
+     var endTime: String? = ""
      var latitude: Double = 0
      var longitude: Double = 0
      var eventDescription: String = ""

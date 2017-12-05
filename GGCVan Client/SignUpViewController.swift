@@ -16,6 +16,7 @@ class SignUpViewController: UIViewController {
     var avDelegate: AuthViewDelegate?
     let AD = UIApplication.shared.delegate as! AppDelegate
 
+
     @IBOutlet var tfEmail: UITextField!
     @IBOutlet var tfPassword: UITextField!
     @IBOutlet var tfConfirmPassword: UITextField!
@@ -43,28 +44,32 @@ class SignUpViewController: UIViewController {
         //let test = ["a@a.a", "qwerty"]
         //LoginItems.sharedInstance.setEmail(email: self.email.text!)
         //LoginItems.sharedInstance.setPassword(pass: self.password.text!)
-        
+        var signUpSuccess : Bool = false
         firstly {
             //let signUpItems : [String] = [self.tfEmail.text!, self.tfPassword.text!, self.tfUsername.text!]
             //let signUpItems : [String] = [self.tfEmail.text!, self.tfPassword.text!, self.tfUsername.text!]
             AD.customIdentityProvider!.signUp(email: self.tfEmail.text!, password: self.tfPassword.text!, username: self.tfUsername.text!)
         }.then { message -> Void in
                 if(message == "SUCCESS"){
-                    self.afterSignUpSignIn()
-                    suG.leave()
+                    //self.afterSignUpSignIn()
+                    signUpSuccess = true
                 }else{
                     // Error in the signup process
                     let alert = UIAlertController(title: "Error", message: message , preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
-                    suG.leave()
                 }
+            suG.leave()
         }.catch { error in
             print(error)
         }
-        suG.notify(queue: .main, execute: {self.afterSignUpSignIn()})
+        suG.notify(queue: .main, execute: {
+            if  signUpSuccess {
+                self.afterSignUpSignIn()
+            }
+        })
         
     }//end of getting sign up response from async task
-        //suG.notify(queue: .main, execute: {self.afterSignUpSignIn()})
+    
     
     func afterSignUpSignIn(){
         //authenticate user
@@ -72,7 +77,7 @@ class SignUpViewController: UIViewController {
         lnDg.enter()
         AD.customIdentityProvider?.loginType = LoginType.EMAIL
         //let signUpItems = [tfEmail.text!, tfPassword.text!]
-        
+        var signInSuccess = false
         // Sign in after sign up
         firstly {
             AD.customIdentityProvider!.token(LoginType.EMAIL, email: self.tfEmail.text!, password: self.tfPassword.text!)
@@ -82,16 +87,26 @@ class SignUpViewController: UIViewController {
             if let message : String = resp as? String {
                 print(message)
                 if message == "EMAIL_LOGIN_SUCCESS" {
-                    self.performSegueWithCompletion(id: "signUpBackToMain", sender: self, completion: {self.avDelegate?.authViewDidClose()})
+                    print("end of after sign in sign up")
+                    signInSuccess = true
                 }
-                
+                lnDg.leave()
+            }else{
+                print("couldn't read message")
+                lnDg.leave()
             }
-            lnDg.leave()
-            print("end of after sign in sign up")
         }.catch { error in
             print(error)
         }
-        print("end of after sign in sign up")
+        lnDg.notify(queue: .main, execute : {
+            if signInSuccess {
+                    self.dismiss(animated: true, completion: {
+                        self.performSegue(withIdentifier: "signUpBackToMain", sender: self)
+                        self.avDelegate = self.AD.window?.rootViewController as? AuthViewDelegate
+                        self.avDelegate?.authViewDidClose()
+                    })
+            }
+        })
     }
         
         /*
@@ -104,9 +119,11 @@ class SignUpViewController: UIViewController {
     
     func performSegueWithCompletion(id: String, sender: UIViewController,  completion: @escaping ()->()){
         self.avDelegate = self.AD.window?.rootViewController as? AuthViewDelegate
-        self.performSegue(withIdentifier: id, sender: self)
-        print("")
-        completion()
+        //let dgBackToMain = DispatchGroup()
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: id, sender: self)
+            completion()
+        }
     }
  
     override func viewDidLoad() {
