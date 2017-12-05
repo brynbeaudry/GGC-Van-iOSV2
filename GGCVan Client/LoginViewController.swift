@@ -128,8 +128,16 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         }.then { message -> Void in
             //success message and deal with success
             //tokenDG.leave()
-            print(message)
-            self.mainDealwAuthSucess()
+            let message = message as! String
+            if(message == "EMAIL_LOGIN_SUCCESS"){
+                print(message)
+                self.mainDealwAuthSucess()
+            }else if (message == "EMAIL_LOGIN_FAILURE"){
+                let alert = UIAlertController(title: "Error", message: "Invalid email password combo", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+            
         }.catch { error in
             print(error)
         }
