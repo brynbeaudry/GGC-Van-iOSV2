@@ -28,9 +28,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let clientIdGoogle : String! = nil
     var cognitoConfig : NSDictionary! = nil
     var window: UIWindow?
-    var customIdentityProvider: CustomIdentityProvider?
+    var customIdentityProvider: CustomIdentityProvider?	
    //let BASE_URL = "http://localhost:54321"
-    let BASE_URL = "http://ggcdev.bbeau.ca"
+    //let BASE_URL = "http://ggcdev.bbeau.ca"
+    let BASE_URL = "http://ggcvan.bbeau.ca"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
