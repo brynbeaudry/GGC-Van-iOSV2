@@ -114,9 +114,10 @@ class EventTableViewController: UIViewController, UITableViewDataSource, UITable
         //let dgHaveDownloadedImage = DispatchGroup()
         getImageFromWeb(event.game.imageUrl) { (data) in
             if let data = data {
-                let scale : CGFloat = 3
-                let image = UIImage(data: data, scale: scale)
-                cell.uiImage.image = image
+                //let scale : CGFloat = 3
+                let image = UIImage(data: data)
+                self.scaleDownAndSetImage(image: image!, imageView: cell.uiImage)
+                //cell.uiImage.image = image
                 //self.view.addSubview(imageView)
             } // if you use an Else statement, it will be in background
         }
@@ -124,6 +125,17 @@ class EventTableViewController: UIViewController, UITableViewDataSource, UITable
         cell.uiTitle.text = event.title
 
         return cell
+    }
+    
+    func scaleDownAndSetImage(image: UIImage, imageView : UIImageView) {
+        //titleLabel.text = title
+        
+        if image.size.width > imageView.frame.width {
+            let size = CGSize(width: imageView.frame.width, height: max(110, imageView.frame.width * image.size.height / image.size.width))
+            imageView.image = image.scaledAspectFit(to: size)
+        } else {
+            imageView.image = image
+        }
     }
     
 

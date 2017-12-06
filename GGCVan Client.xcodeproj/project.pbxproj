@@ -22,6 +22,7 @@
 		3C3FA3141FD4E511007700D7 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3FA30F1FD4E50D007700D7 /* Game.swift */; };
 		3C3FA3151FD4E511007700D7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3FA3101FD4E50D007700D7 /* LoginViewModel.swift */; };
 		3C3FA3181FD4E580007700D7 /* EventsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3FA3171FD4E580007700D7 /* EventsAPI.swift */; };
+		3C45FCC91FD7C0550047CC0C /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C45FCC81FD7C0550047CC0C /* UIImageExtension.swift */; };
 		3C4D29661FD18D3000BD1630 /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4D29651FD18D3000BD1630 /* EventTableViewController.swift */; };
 		3C5D75FE1FD526EC00F0EE47 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5D75FD1FD526EC00F0EE47 /* EventTableViewCell.swift */; };
 		3C7B05A91F9DE4B600FB64E2 /* DismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7B05A81F9DE4B600FB64E2 /* DismissKeyboard.swift */; };
@@ -81,6 +82,7 @@
 		3C3FA30F1FD4E50D007700D7 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		3C3FA3101FD4E50D007700D7 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		3C3FA3171FD4E580007700D7 /* EventsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsAPI.swift; sourceTree = "<group>"; };
+		3C45FCC81FD7C0550047CC0C /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		3C4D29651FD18D3000BD1630 /* EventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
 		3C5D75FD1FD526EC00F0EE47 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		3C7B05A81F9DE4B600FB64E2 /* DismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboard.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				0E17DC831F9A90A900A97185 /* Info.plist */,
 				0E17DC7B1F9A90A900A97185 /* GGCVan_Client.xcdatamodeld */,
 				3C7B05A81F9DE4B600FB64E2 /* DismissKeyboard.swift */,
+				3C45FCC81FD7C0550047CC0C /* UIImageExtension.swift */,
 				3C7D70941FAC3F2700F311E5 /* AuthNavigationControllerViewController.swift */,
 				3C4D29651FD18D3000BD1630 /* EventTableViewController.swift */,
 				3CE076CB1FD5CE0B0013B47B /* EventDetailViewController.swift */,
@@ -584,6 +587,7 @@
 				3CE076CC1FD5CE0B0013B47B /* EventDetailViewController.swift in Sources */,
 				3C7D70951FAC3F2800F311E5 /* AuthNavigationControllerViewController.swift in Sources */,
 				3CD9E3381FABBB8100445B61 /* AuthViewDelegate.swift in Sources */,
+				3C45FCC91FD7C0550047CC0C /* UIImageExtension.swift in Sources */,
 				3C3298541FB0301A00AC79DF /* CustomIdentityProvider.swift in Sources */,
 				3CD9E3321FAB6DF700445B61 /* LoginItems.swift in Sources */,
 				3C3FA3141FD4E511007700D7 /* Game.swift in Sources */,
