@@ -160,6 +160,7 @@ class CustomIdentityProvider : NSObject {
                     ]
                 return Alamofire.request(url, method: .post, parameters: parameters, encoding: URLEncoding() ).responseString()
                     .then { json in
+                        print(json)
                         let tokenResponse = Token(json : json)
                         self.currentToken = tokenResponse
                         print("Current Access Token \(self.currentToken?.access_token ?? "No current Access Token")")
