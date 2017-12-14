@@ -74,8 +74,8 @@ class EventDetailViewController: UIViewController {
             }
             dgHaveEventDetails.notify(queue: .main, execute: {
                 self.uiHeader.text = "\(self.event!.title) Hosted By \(self.event!.host)"
-                self.uiStartTime.text = "Start Time : \(String(describing: self.event!.startTime))"
-                self.uiEndTime.text = "End Time : \(String(describing: self.event!.endTime))"
+                self.uiStartTime.text = "Start Time : \(self.event!.startTime ?? "Morning")"
+                self.uiEndTime.text = "End Time : \(self.event!.endTime ?? "All Day")"
                 self.uiLatitude.text = "Latitude : \(String(describing: self.event!.latitude))"
                 self.uiLongitude.text = "Longitude : \(String(describing: self.event!.longitude))"
                 self.uiDescription.text = "Description : \(self.event!.eventDescription)"
