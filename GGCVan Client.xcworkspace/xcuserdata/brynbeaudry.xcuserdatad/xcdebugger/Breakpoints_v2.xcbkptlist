@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/SignUpViewController.swift"
-            timestampString = "534235748.103379"
+            timestampString = "534914607.093912"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
@@ -22,15 +22,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/SignUpViewController.swift"
-            timestampString = "534235748.104034"
+            timestampString = "534914607.094607"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "getSignUpResponse()"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/SignUpViewController.swift"
-            timestampString = "534235748.104472"
+            timestampString = "534914607.095045"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "afterSignUpSignIn()"
             landmarkType = "7">
             <Locations>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/SignUpViewController.swift"
-            timestampString = "534235748.104918"
+            timestampString = "534914607.095482"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "afterSignUpSignIn()"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/SignUpViewController.swift"
-            timestampString = "534235748.105353"
+            timestampString = "534914607.095908"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "afterSignUpSignIn()"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/CustomIdentityProvider.swift"
-            timestampString = "534242433.943085"
+            timestampString = "534914607.096342"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "141"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/CustomIdentityProvider.swift"
-            timestampString = "534242433.943802"
+            timestampString = "534914607.096878"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "130"
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/SignUpViewController.swift"
-            timestampString = "534235748.105892"
+            timestampString = "534914607.097344"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"
@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/CustomIdentityProvider.swift"
-            timestampString = "534242433.944255"
+            timestampString = "534914607.097805"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "164"
@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/CustomIdentityProvider.swift"
-            timestampString = "534242433.944676"
+            timestampString = "534914607.098338"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "162"
@@ -202,7 +202,7 @@
                   moduleName = "GGCVan Client"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/brynbeaudry/iOSProjects/GGCVanClient/GGCVan%20Client/CustomIdentityProvider.swift"
-                  timestampString = "534242434.47548"
+                  timestampString = "534914607.704314"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "162"
@@ -217,7 +217,7 @@
                   moduleName = "GGCVan Client"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/brynbeaudry/iOSProjects/GGCVanClient/GGCVan%20Client/CustomIdentityProvider.swift"
-                  timestampString = "534242434.479405"
+                  timestampString = "534914607.707912"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "163"
@@ -234,12 +234,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GGCVan Client/CustomIdentityProvider.swift"
-            timestampString = "534242433.945085"
+            timestampString = "534914607.098867"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "163"
             endingLineNumber = "163"
             landmarkName = "token(_:email:password:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GGCVan Client/SignUpViewController.swift"
+            timestampString = "534914607.099368"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "getSignUpResponse()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GGCVan Client/CustomIdentityProvider.swift"
+            timestampString = "534914607.099884"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
+            landmarkName = "signUp(email:password:username:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GGCVan Client/SignUpViewController.swift"
+            timestampString = "534914607.100346"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "getSignUpResponse()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

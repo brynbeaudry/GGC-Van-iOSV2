@@ -55,8 +55,9 @@ class SignUpViewController: UIViewController {
                     signUpSuccess = true
                 }else{
                     // Error in the signup process
-                    let alert = UIAlertController(title: "Error", message: message , preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
+                    self.present(alert, animated: true, completion: nil)
                 }
             suG.leave()
         }.catch { error in

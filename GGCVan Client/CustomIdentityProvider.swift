@@ -211,9 +211,9 @@ class CustomIdentityProvider : NSObject {
                 let json = JSON(resp)
                 if json["succeeded"] == true {
                     return Promise(value: "SUCCESS" )
-                }else{
-                    if let first_error = json["errors"].array?[0] {
-                        return Promise(value : first_error["description"].stringValue)
+                }else {
+                    if let first_error : String = json["errors"][0]["description"].rawString(){
+                        return Promise(value : first_error)
                     }
                     return Promise(value : "wtf")
                 }
